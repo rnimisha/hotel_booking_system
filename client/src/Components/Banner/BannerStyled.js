@@ -43,7 +43,7 @@ export const Slogan = styled.div`
 `
 
 export const Heading = styled.h1`
-    font-size : 4rem;
+    font-size : 5rem;
     font-family: 'Crimson Pro', serif;
     font-weight: 300;
 `

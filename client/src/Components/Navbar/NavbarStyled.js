@@ -27,7 +27,35 @@ export const MenuItem = styled.div`
     font-size: 1.1rem;
     font-weight: 400;
     color: ${props => (props.navStyle === `color-nav` ? `#1f1f1f` : `#f7f7f7`)};
+
+    &:hover{
+        color : #877147;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #877147;
+        bottom: 0;
+        left: 0;
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform .3s ease-in-out;
+    }
+
+    &:hover::before {
+        transform-origin: left;
+        transform: scaleX(1);
+    }
 `
 
+export const Logo = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    height: 100px;
+`
 
 // #877147

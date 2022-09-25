@@ -4,7 +4,9 @@ import {Link} from 'react-router-dom'
 import NavItem from '../NavItem/NavItem';
 
 //styles
-import { Menus, NavigationBar} from './NavbarStyled';
+import { Logo, Menus, NavigationBar} from './NavbarStyled';
+
+import logoimg from '../../Assets/images/logo.png'
 
 const Navbar = () => {
 
@@ -23,7 +25,9 @@ const Navbar = () => {
     return (
         <NavigationBar navStyle={colorChange ? 'color-nav' : 'video-nav'}>
             <Link to ='/'>
-                <div>Logo</div>
+                <Logo>
+                    <img src={logoimg} alt="AH" style={{paddingTop : '10px'}} />
+                </Logo>
             </Link>
             <Menus>
                 <NavItem colorChange={colorChange} path= '/rooms'>

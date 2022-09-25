@@ -1,8 +1,15 @@
-import React, {useState} from 'react'
-import { Menus, NavigationBar, MenuItem } from './NavbarStyled';
+// libraries and packages
+import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
+import NavItem from '../NavItem/NavItem';
+
+//styles
+import { Menus, NavigationBar} from './NavbarStyled';
 
 const Navbar = () => {
+
     const [colorChange, setColorchange] = useState(false);
+    
     const changeNavbarColor = () =>{
         if(window.scrollY >= 80){
         setColorchange(true);
@@ -12,14 +19,25 @@ const Navbar = () => {
         }
     };
     window.addEventListener('scroll', changeNavbarColor);
+
     return (
         <NavigationBar navStyle={colorChange ? 'color-nav' : 'video-nav'}>
-            <div>L R</div>
+            <Link to ='/'>
+                <div>Logo</div>
+            </Link>
             <Menus>
-                <MenuItem>Rooms</MenuItem>
-                <MenuItem>Services</MenuItem>
-                <MenuItem>About</MenuItem>
-                <MenuItem>Book Now</MenuItem>
+                <NavItem colorChange={colorChange} path= '/rooms'>
+                    Rooms
+                </NavItem>
+                <NavItem colorChange={colorChange} path= '/rooms'>
+                    Services
+                </NavItem>
+                <NavItem colorChange={colorChange} path= '/rooms'>
+                    Gallery
+                </NavItem>
+                <NavItem colorChange={colorChange} path= '/rooms'>
+                    Login
+                </NavItem>
             </Menus>
         </NavigationBar>
     )

@@ -24,5 +24,10 @@ export const Menus = styled.div`
 `
 
 export const MenuItem = styled.div`
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: ${props => (props.navStyle === `color-nav` ? `#1f1f1f` : `#f7f7f7`)};
 `
+
+
+// #877147

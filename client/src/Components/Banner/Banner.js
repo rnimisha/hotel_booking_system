@@ -1,6 +1,6 @@
 import React from 'react'
 import { MainBanner , VideoContainer, VideoOverlay} from './BannerStyled'
-import bannerVideo from '../../Assets/images/1.MP4'
+import bannerVideo from '../../Assets/images/firebanner.mp4'
 
 const Banner = () => {
   return (

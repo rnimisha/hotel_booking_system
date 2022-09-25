@@ -11,8 +11,8 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
     font-weight: 300;
-    color: #000;
-    background-color: #fff;
+    color: #1f1f1f;
+    background-color: #f7f7f7;
   }
 `
 

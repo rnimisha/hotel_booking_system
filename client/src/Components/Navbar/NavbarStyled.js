@@ -7,8 +7,8 @@ export const NavigationBar = styled.nav`
     top: 0;
     width: 100vw;
     height: 10vh;
-    background-color: ${props => (props.navStyle === `color-nav` ? `#fff` : `transparent`)};
-    color: ${props => (props.navStyle === `color-nav` ? `#000` : `#fff`)};
+    background-color: ${props => (props.navStyle === `color-nav` ? `#f7f7f7` : `transparent`)};
+    color: ${props => (props.navStyle === `color-nav` ? `#1f1f1f` : `#f7f7f7`)};
     display: flex;
     justify-content: space-between;
     font-size: 2.5rem;

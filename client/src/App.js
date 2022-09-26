@@ -1,11 +1,11 @@
-//library and packages
+// library and packages
 import React from 'react'
-import {Route, Routes, BrowserRouter} from 'react-router-dom'
+import { Route, Routes, BrowserRouter } from 'react-router-dom'
 
-//styles
+// styles
 import GlobalStyles from './Assets/styles/GlobalStylesStyled.js'
 
-//components
+// components
 import Navbar from './Components/Navbar/Navbar.js'
 import Home from './Container/Home/Home.js'
 import Rooms from './Container/Rooms/Rooms.js'

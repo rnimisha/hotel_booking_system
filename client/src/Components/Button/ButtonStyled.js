@@ -1,7 +1,8 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const MainButton = styled.button`
-    padding: 24px 30px;
+    /* padding: 24px 30px; */
+    padding: ${props => props.padding};
     border-radius: 10px;
     font-size: 1.1rem;
     background-color: #877147;
@@ -12,7 +13,7 @@ export const MainButton = styled.button`
     align-items: center;
     border: 0 solid #E2E8F0;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    height: 56px;
+    /* height: 56px; */
     line-height: 24px;
     overflow-wrap: break-word;
     text-decoration: none;

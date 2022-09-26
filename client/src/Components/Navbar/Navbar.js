@@ -1,32 +1,30 @@
 // libraries and packages
-import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
-import NavItem from '../NavItem/NavItem';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import NavItem from '../NavItem/NavItem'
 
-//styles
-import { Logo, Menus, NavigationBar} from './NavbarStyled';
+// styles
+import { Logo, Menus, NavigationBar } from './NavbarStyled'
 
 import logoimg from '../../Assets/images/logo.png'
 
 const Navbar = () => {
+  const [colorChange, setColorchange] = useState(false)
 
-    const [colorChange, setColorchange] = useState(false);
-    
-    const changeNavbarColor = () =>{
-        if(window.scrollY >= 80){
-        setColorchange(true);
-        }
-        else{
-        setColorchange(false);
-        }
-    };
-    window.addEventListener('scroll', changeNavbarColor);
+  const changeNavbarColor = () => {
+    if (window.scrollY >= 80) {
+      setColorchange(true)
+    } else {
+      setColorchange(false)
+    }
+  }
+  window.addEventListener('scroll', changeNavbarColor)
 
-    return (
+  return (
         <NavigationBar navStyle={colorChange ? 'color-nav' : 'video-nav'}>
             <Link to ='/'>
                 <Logo>
-                    <img src={logoimg} alt="AH" style={{paddingTop : '10px'}} />
+                    <img src={logoimg} alt="AH" style={{ paddingTop: '10px' }} />
                 </Logo>
             </Link>
             <Menus>
@@ -44,7 +42,7 @@ const Navbar = () => {
                 </NavItem>
             </Menus>
         </NavigationBar>
-    )
+  )
 }
 
 export default Navbar

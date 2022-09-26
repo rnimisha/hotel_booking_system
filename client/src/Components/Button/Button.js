@@ -2,9 +2,9 @@ import React from 'react'
 
 import { MainButton } from './ButtonStyled'
 
-const Button = ({text}) => {
+const Button = ({ text, styling }) => {
   return (
-    <MainButton>
+    <MainButton padding={styling.padding} >
         {text}
     </MainButton>
   )

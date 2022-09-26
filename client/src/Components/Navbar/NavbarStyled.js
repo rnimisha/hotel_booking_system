@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const NavigationBar = styled.nav`
     z-index: 9999;
@@ -7,8 +7,8 @@ export const NavigationBar = styled.nav`
     top: 0;
     width: 100vw;
     height: 10vh;
-    background-color: ${props => (props.navStyle === `color-nav` ? `#f7f7f7` : `transparent`)};
-    color: ${props => (props.navStyle === `color-nav` ? `#1f1f1f` : `#f7f7f7`)};
+    background-color: ${props => (props.navStyle === 'color-nav' ? '#f7f7f7' : 'transparent')};
+    color: ${props => (props.navStyle === 'color-nav' ? '#1f1f1f' : '#f7f7f7')};
     display: flex;
     justify-content: space-between;
     font-size: 2.5rem;
@@ -26,7 +26,7 @@ export const Menus = styled.div`
 export const MenuItem = styled.div`
     font-size: 1.1rem;
     font-weight: 400;
-    color: ${props => (props.navStyle === `color-nav` ? `#1f1f1f` : `#f7f7f7`)};
+    color: ${props => (props.navStyle === 'color-nav' ? '#1f1f1f' : '#f7f7f7')};
 
     &:hover{
         color : #877147;
@@ -58,4 +58,8 @@ export const Logo = styled.div`
     height: 100px;
 `
 
-// #877147
+export const MenuBtn = styled.div`
+    font-size: 1.1rem;
+    font-weight: 400;
+    color : #f7f7f7; 
+`

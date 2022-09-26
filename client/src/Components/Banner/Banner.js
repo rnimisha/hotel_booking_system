@@ -1,5 +1,5 @@
 import React from 'react'
-import { MainBanner , Slogan, VideoContainer, VideoOverlay, Heading} from './BannerStyled'
+import { MainBanner, Slogan, VideoContainer, VideoOverlay, Heading } from './BannerStyled'
 import bannerVideo from '../../Assets/images/firebanner.mp4'
 import Button from '../Button/Button'
 
@@ -15,7 +15,7 @@ const Banner = () => {
           <Heading>
             A NEW VISION OF COMFORT
           </Heading>
-          <Button text='Book Now'/>
+          <Button text='Book Now' styling = {{ padding: '20px 30px' }}/>
         </Slogan>
     </MainBanner>
   )

@@ -1,6 +1,7 @@
 // libraries and packages
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import NavItem from '../NavItem/NavItem'
 
 // styles
@@ -23,21 +24,21 @@ const Navbar = () => {
   return (
         <NavigationBar navStyle={colorChange ? 'color-nav' : 'video-nav'}>
             <Link to ='/'>
-                <Logo>
+                <Logo onClick ={() => { setColorchange(false) }}>
                     <img src={logoimg} alt="AH" style={{ paddingTop: '10px' }} />
                 </Logo>
             </Link>
             <Menus>
-                <NavItem colorChange={colorChange} path= '/rooms'>
+                <NavItem colorChange={colorChange} path= '/rooms' >
                     Rooms
                 </NavItem>
-                <NavItem colorChange={colorChange} path= '/rooms'>
+                <NavItem colorChange={colorChange} path= '/rooms' >
                     Services
                 </NavItem>
-                <NavItem colorChange={colorChange} path= '/rooms'>
+                <NavItem colorChange={colorChange} path= '/rooms' >
                     Gallery
                 </NavItem>
-                <NavItem colorChange={colorChange} path= '/rooms'>
+                <NavItem colorChange={colorChange} path= '/rooms' >
                     Login
                 </NavItem>
             </Menus>

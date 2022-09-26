@@ -1,9 +1,11 @@
 import express from 'express'
-import { getAllRoom, insertRoom } from '../../controller/room-controller.js'
+import { getAllRoomType, insertRoom, insertRoomType } from '../../controller/room-controller.js'
 
 const router = express.Router()
 
-router.get('/', getAllRoom)
-router.post('/', insertRoom)
+router.get('/', getAllRoomType)
+
+router.post('/addroom', insertRoom)
+router.post('/addroomtype', insertRoomType)
 
 export default router

@@ -9,7 +9,7 @@ import roomImg from '../../Assets/images/room1.jpeg'
 const Rooms = () => {
   return (
     <>
-      <Header/>
+      <Header height='45vh'/>
       <Filter/>
       <RoomContainer>
         <IndividualRoom image = {roomImg} price ='12' name='Luxury Room'/>

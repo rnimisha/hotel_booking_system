@@ -38,7 +38,7 @@ const Navbar = () => {
                 <NavItem colorChange={colorChange} path= '/rooms' >
                     Gallery
                 </NavItem>
-                <NavItem colorChange={colorChange} path= '/rooms' >
+                <NavItem colorChange={colorChange} path= '/login' >
                     Login
                 </NavItem>
             </Menus>

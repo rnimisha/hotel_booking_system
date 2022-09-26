@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const TopHeader = styled.div`
     position: relative;
     width: 100vw;
-    height: 45vh;
+    /* height: 45vh; */
+    height: ${props => (props.height)};
 `
 
 export const ImgContainer = styled.img`

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { TextField } from '@mui/material'
+
 export const FormContainer = styled.div`
     /* position: absolute;
     left: 0;
@@ -45,4 +47,18 @@ export const Span = styled.span`
     &:hover{
         color:  #0c6354;
     }
+`
+export const BorderTextField = styled(TextField)`
+  & label.Mui-focused {
+    color: #877147;
+  }
+  & .MuiOutlinedInput-root {
+    &.Mui-focused fieldset {
+      border-color: #877147;
+    }
+  }
+
+  & .MuiInput-underline:after {
+    border-bottom-color: #877147;
+  }
 `

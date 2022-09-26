@@ -8,7 +8,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body{
-    font-family: 'Lato', sans-serif;
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Crimson Pro', serif;
     font-size: 1rem;
     font-weight: 300;
     color: #1f1f1f;

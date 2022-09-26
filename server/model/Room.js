@@ -7,8 +7,34 @@ const roomSchema = new mongoose.Schema({
     unique: true
   },
   roomType: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'roomType'
+    type: 'String',
+    required: true
+  },
+  price: {
+    type: 'Number',
+    required: true
+  },
+  capacity: {
+    type: 'Number',
+    required: true
+  },
+  bedrooms: {
+    type: 'Number',
+    required: true
+  },
+  bathrooms: {
+    type: 'Number',
+    required: true
+  },
+  description: {
+    type: 'String',
+    required: 'True'
+  },
+  ammenties: {
+    type: [String]
+  },
+  images: {
+    type: [String]
   }
 })
 

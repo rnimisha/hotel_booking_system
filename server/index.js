@@ -1,13 +1,17 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import connection from './db/connect.js'
+
+import RoomRouter from './routes/rooms/room-routes.js'
 dotenv.config()
 
 const app = express()
 app.listen(process.env.PORT)
-
 connection(process.env.URI)
 
+// routes
 app.get('/', (req, res) => {
   res.send('Working')
 })
+
+app.use('/rooms', RoomRouter)

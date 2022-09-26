@@ -37,3 +37,12 @@ export const FormBox = styled.div`
     flex-direction: column;
     gap: 1rem;
 `
+
+export const Span = styled.span`
+    color: #877147;
+    cursor: pointer;
+
+    &:hover{
+        color:  #0c6354;
+    }
+`

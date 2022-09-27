@@ -27,9 +27,9 @@ const RoomDetail = () => {
             <ImageContainer>
 d
             </ImageContainer>
-            <RoomInfo/>
+            <RoomInfo data ={roomDetail}/>
         </MainContainer>
-        <div style={{ height: '400px' }} data ={roomDetail}>
+        <div style={{ height: '400px' }}>
             jjj
         </div>
     </>

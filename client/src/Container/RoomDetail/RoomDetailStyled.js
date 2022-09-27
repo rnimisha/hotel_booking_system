@@ -12,5 +12,8 @@ export const MainContainer = styled.div`
 export const ImageContainer = styled.div`
     width: 65%;
     min-height: 500px;
-    background-color: aquamarine;
+`
+export const Image = styled.img`
+    width: 100%;
+    height: 500px;
 `

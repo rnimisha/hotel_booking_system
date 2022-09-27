@@ -5,7 +5,8 @@ import Header from '../../Components/Header/Header'
 import RoomInfo from '../../Components/RoomInfo/RoomInfo'
 
 // styles
-import { ImageContainer, MainContainer } from './RoomDetailStyled'
+import { Image, ImageContainer, MainContainer } from './RoomDetailStyled'
+import roomImg from '../../Assets/images/roomimg.jpeg'
 
 const RoomDetail = () => {
   const { id } = useParams()
@@ -25,7 +26,7 @@ const RoomDetail = () => {
         <Header height='45vh'/>
         <MainContainer>
             <ImageContainer>
-d
+              <Image src={roomImg} alt="" />
             </ImageContainer>
             <RoomInfo data ={roomDetail}/>
         </MainContainer>

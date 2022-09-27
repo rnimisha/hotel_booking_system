@@ -9,6 +9,27 @@ const roomSchema = new mongoose.Schema({
   roomType: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'roomType'
+  },
+  bookings: {
+    type: [
+      {
+        userID: mongoose.Schema.Types.ObjectId,
+        ref: 'users'
+      },
+      {
+        checkInDate: Date,
+        required: true
+      },
+      {
+        checkOutDate: Date,
+        required: true
+      }
+    ]
+  },
+  status: {
+    type: String,
+    required: true,
+    default: 'active'
   }
 }, {
   collection: 'rooms'

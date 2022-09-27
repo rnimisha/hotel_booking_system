@@ -19,10 +19,9 @@ export const AmmentiesContainer = styled.div`
     width: 70%;
     margin-left: 20%;
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: space-between; */
     gap: 1.5rem;
     flex-wrap: wrap;
-    align-items: center;
 `
 export const Span = styled.span`
     width: 30%;

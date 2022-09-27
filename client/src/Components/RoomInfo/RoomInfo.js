@@ -24,9 +24,9 @@ const RoomInfo = ({ data }) => {
       <Span>{data.description}</Span>
 
       <hr style={{ border: '0.5px solid #877147' }}/>
-      <LogoDetail> <PeopleAltOutlinedIcon sx={iconStyle}/><Span> capacity {data.capacity}</Span> </LogoDetail>
-      <LogoDetail> <BedOutlinedIcon sx={iconStyle}/> <Span>bed rooms { data.bedrooms}</Span></LogoDetail>
-      <LogoDetail> <BathtubOutlinedIcon sx={iconStyle}/><Span>bathrooms {data.bathrooms} </Span> </LogoDetail>
+      <LogoDetail> <PeopleAltOutlinedIcon sx={iconStyle}/><Span> {data.capacity} Capacity </Span> </LogoDetail>
+      <LogoDetail> <BedOutlinedIcon sx={iconStyle}/> <Span>{ data.bedrooms} Bedrooms </Span></LogoDetail>
+      <LogoDetail> <BathtubOutlinedIcon sx={iconStyle}/><Span> {data.bathrooms} Bathrooms </Span> </LogoDetail>
       <div style={{ width: '90%', paddingTop: '10px' }}>
         <Button text="Book Now" styling = {{ padding: '20px 60px' }}/>
       </div>

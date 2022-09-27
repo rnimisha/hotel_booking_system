@@ -7,6 +7,7 @@ import RoomInfo from '../../Components/RoomInfo/RoomInfo'
 // styles
 import { Image, ImageContainer, MainContainer } from './RoomDetailStyled'
 import roomImg from '../../Assets/images/roomimg.jpeg'
+import Ammenties from '../../Components/Ammenties/Ammenties'
 
 const RoomDetail = () => {
   const { id } = useParams()
@@ -30,9 +31,7 @@ const RoomDetail = () => {
             </ImageContainer>
             <RoomInfo data ={roomDetail}/>
         </MainContainer>
-        <div style={{ height: '400px' }}>
-            jjj
-        </div>
+        <Ammenties data ={roomDetail.ammenties}/>
     </>
   )
 }

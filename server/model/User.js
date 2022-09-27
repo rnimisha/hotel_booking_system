@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     required: true
   }
 }, {
-  collection: 'rooms'
+  collection: 'users'
 })
 
 const userModel = mongoose.model('users', userSchema)

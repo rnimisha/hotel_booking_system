@@ -1,11 +1,25 @@
 import roomTypeModel from '../model/roomType.js'
 import roomModel from '../model/room.js'
+import ammentiesModel from '../model/Ammenties.js'
 
 export const getAllRoomType = async (req, res) => {
   try {
     const allRooms = await roomTypeModel.find({})
     res.json({
       data: allRooms
+    })
+  } catch (err) {
+    res.status(400).json({
+      error: err.message
+    })
+  }
+}
+
+export const getRoomDetailById = async (req, res) => {
+  try {
+    const roomDetail = await roomTypeModel.findOne({ _id: req.params.id }).populate({ path: 'ammenties', model: ammentiesModel })
+    res.json({
+      data: roomDetail
     })
   } catch (err) {
     res.status(400).json({

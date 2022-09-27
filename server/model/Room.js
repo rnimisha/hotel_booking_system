@@ -13,15 +13,20 @@ const roomSchema = new mongoose.Schema({
   bookings: {
     type: [
       {
-        userID: mongoose.Schema.Types.ObjectId
-      },
-      {
-        checkInDate: Date,
-        required: true
-      },
-      {
-        checkOutDate: Date,
-        required: true
+        userID: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'users'
+        },
+
+        checkInDate: {
+          type: Date,
+          required: true
+        },
+
+        checkOutDate: {
+          type: Date,
+          required: true
+        }
       }
     ]
   },

@@ -6,6 +6,7 @@ import connection from './db/connect.js'
 
 import RoomRouter from './routes/rooms/room-routes.js'
 import AmmentiesRouter from './routes/ammenties/ammenties-routes.js'
+import BookRouter from './routes/book/book-routes.js'
 import UserRouter from './routes/users/user-routes.js'
 dotenv.config()
 
@@ -23,3 +24,4 @@ app.get('/', (req, res) => {
 app.use('/users', UserRouter)
 app.use('/rooms', RoomRouter)
 app.use('/ammenties', AmmentiesRouter)
+app.use('/book', BookRouter)

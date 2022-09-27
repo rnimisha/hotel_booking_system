@@ -26,7 +26,7 @@ const Rooms = () => {
         {
           rooms.map((item, id) => {
             return (
-              <IndividualRoom key={id} image = {roomImg} price ={item.price} name={item.name} people={item.capacity} bedrooms={item.bedrooms}/>
+              <IndividualRoom key={id} image = {roomImg} price ={item.price} name={item.name} people={item.capacity} bedrooms={item.bedrooms} id={item._id}/>
             )
           })
         }

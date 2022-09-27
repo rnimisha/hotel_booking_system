@@ -1,10 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { RoomBox, RoomImg, RoomName, Info, Price, RoomImgContainer } from './IndividualRoomStyled'
 
-const IndividualRoom = ({ image, price, name, bedrooms, people }) => {
+const IndividualRoom = ({ image, price, name, bedrooms, people, id }) => {
+  const navitage = useNavigate()
+  const showRoomDetails = () => {
+    navitage('/rooms/' + id)
+  }
   return (
     <RoomBox>
-        <RoomImgContainer>
+        <RoomImgContainer onClick = {showRoomDetails}>
             <RoomImg src={image} alt="" />
             <Price>Rs.{price}</Price>
         </RoomImgContainer>

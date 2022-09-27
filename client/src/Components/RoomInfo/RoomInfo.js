@@ -1,19 +1,35 @@
 import React from 'react'
 
 // styles
-import { InfoContainer } from './RoomInfoStyled'
+import { InfoContainer, LogoDetail, Price, Span } from './RoomInfoStyled'
+
+// icons
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined'
+import BedOutlinedIcon from '@mui/icons-material/BedOutlined'
+import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined'
 
 // components
 import Button from '../Button/Button'
 
 const RoomInfo = ({ data }) => {
+  const iconStyle = {
+    fontSize: '2rem',
+    stroke: '#ffffff',
+    strokeWidth: 1
+  }
   return (
     <InfoContainer>
-      <h2>{data.name}</h2>
-      <span>{data.price}</span>
-      <span> capacity {data.capacity}</span>
-      <span> bed rooms { data.bedrooms}</span>
-      <Button text="Book Now" styling = {{ padding: '20px 30px' }}/>
+      <h1 style={{ color: '#877147', fontSize: '3rem' }}>{data.name}</h1>
+      <span><Price>Rs. {data.price}</Price>/night</span>
+      <Span>{data.description}</Span>
+
+      <hr style={{ border: '0.5px solid #877147' }}/>
+      <LogoDetail> <PeopleAltOutlinedIcon sx={iconStyle}/><Span> capacity {data.capacity}</Span> </LogoDetail>
+      <LogoDetail> <BedOutlinedIcon sx={iconStyle}/> <Span>bed rooms { data.bedrooms}</Span></LogoDetail>
+      <LogoDetail> <BathtubOutlinedIcon sx={iconStyle}/><Span>bathrooms {data.bathrooms} </Span> </LogoDetail>
+      <div style={{ width: '90%', paddingTop: '10px' }}>
+        <Button text="Book Now" styling = {{ padding: '20px 60px' }}/>
+      </div>
     </InfoContainer>
   )
 }

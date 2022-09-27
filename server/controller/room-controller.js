@@ -4,7 +4,7 @@ import ammentiesModel from '../model/Ammenties.js'
 
 export const getAllRoomType = async (req, res) => {
   try {
-    const allRooms = await roomTypeModel.find({})
+    const allRooms = await roomTypeModel.find({}).populate({ path: 'ammenties', model: ammentiesModel })
     res.json({
       data: allRooms
     })

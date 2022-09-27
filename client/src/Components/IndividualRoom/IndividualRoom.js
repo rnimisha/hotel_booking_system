@@ -1,7 +1,7 @@
 import React from 'react'
 import { RoomBox, RoomImg, RoomName, Info, Price, RoomImgContainer } from './IndividualRoomStyled'
 
-const IndividualRoom = ({ image, price, name }) => {
+const IndividualRoom = ({ image, price, name, bedrooms, people }) => {
   return (
     <RoomBox>
         <RoomImgContainer>
@@ -9,7 +9,7 @@ const IndividualRoom = ({ image, price, name }) => {
             <Price>Rs.{price}</Price>
         </RoomImgContainer>
         <RoomName>{name}</RoomName>
-        <Info>3 people, 3 bedrooms</Info>
+        <Info>{people} people, {bedrooms} bedrooms</Info>
     </RoomBox>
   )
 }

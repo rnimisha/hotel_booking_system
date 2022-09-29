@@ -46,6 +46,7 @@ const ModalForm = ({ open, handleOpen, handleClose }) => {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        sx={{ zIndex: '9999' }}
         >
         <Container sx={style}>
             <Typography id="modal-modal-title" variant="h4" component="h2" sx={{ textAlign: 'center', fontFamily: 'Crimson Pro, serif', fontWeight: '100', color: '#877147' }}>

@@ -1,6 +1,7 @@
 // library and packages
 import React from 'react'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 // styles
 import GlobalStyles from './Assets/styles/GlobalStylesStyled.js'
@@ -13,9 +14,22 @@ import Register from './Container/Register/Register.js'
 import RoomDetail from './Container/RoomDetail/RoomDetail.js'
 import Rooms from './Container/Rooms/Rooms.js'
 
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      'Crimson Pro',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'serif'
+    ].join(',')
+  }
+})
+
 const App = () => {
   return (
     <>
+     <ThemeProvider theme={theme}>
       <GlobalStyles/>
       <BrowserRouter>
         <Navbar/>
@@ -27,6 +41,7 @@ const App = () => {
           <Route path='/register' element={<Register/>}/>
         </Routes>
       </BrowserRouter>
+      </ThemeProvider>
     </>
   )
 }

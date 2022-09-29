@@ -23,10 +23,6 @@ const GlobalStyles = createGlobalStyle`
   .MuiFormControlLabel-label{
     width: 100%;
   }
-  
-  .css-79ws1d-MuiModal-root{
-    z-index: 9999;
-  }
 `
 
 export default GlobalStyles

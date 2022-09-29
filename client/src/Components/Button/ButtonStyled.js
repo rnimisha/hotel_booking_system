@@ -21,6 +21,7 @@ export const MainButton = styled.button`
     touch-action: manipulation;
     display: inline-flex;
     justify-content: center;
+    font-family: 'Crimson Pro', serif;
     
 
     &:hover{

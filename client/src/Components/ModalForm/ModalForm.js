@@ -45,7 +45,6 @@ const ModalForm = ({ open, handleClose, id }) => {
       return response.json()
     }).then((data) => {
       setServices(data.data)
-      console.log(data.data)
     }).catch((error) => {
       console.log('Error : ' + error)
     })

@@ -5,6 +5,7 @@ import IndividualRoom from '../../Components/IndividualRoom/IndividualRoom'
 import { RoomContainer } from './RoomsStyled'
 
 import roomImg from '../../Assets/images/room1.jpeg'
+import headerImg from '../../Assets/images/header1.jpeg'
 
 const Rooms = () => {
   const [rooms, setRooms] = useState([])
@@ -20,7 +21,7 @@ const Rooms = () => {
 
   return (
     <>
-      <Header height='45vh'/>
+      <Header height='45vh' headerImg= {headerImg}/>
       <Filter/>
       <RoomContainer>
         {

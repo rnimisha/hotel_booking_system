@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 // components
 import Header from '../../Components/Header/Header'
 import RoomInfo from '../../Components/RoomInfo/RoomInfo'
+import headerImg from '../../Assets/images/header2.jpeg'
 
 // styles
 import { Image, ImageContainer, MainContainer } from './RoomDetailStyled'
@@ -33,7 +34,7 @@ const RoomDetail = () => {
   }, [])
   return (
     <>
-        <Header height='45vh'/>
+        <Header height='45vh' headerImg={headerImg}/>
         <MainContainer>
             <ImageContainer>
               <Image src={roomImg} alt="" />

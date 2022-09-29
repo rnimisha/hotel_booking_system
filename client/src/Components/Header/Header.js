@@ -1,9 +1,7 @@
 import React from 'react'
 import { ImgContainer, ImgOverlay, TopHeader } from './HeaderStyled'
 
-import headerImg from '../../Assets/images/img1.jpeg'
-
-const Header = ({ height }) => {
+const Header = ({ height, headerImg }) => {
   return (
     <TopHeader height={height}>
         <ImgContainer src={headerImg} />

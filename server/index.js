@@ -8,6 +8,7 @@ import RoomRouter from './routes/rooms/room-routes.js'
 import AmmentiesRouter from './routes/ammenties/ammenties-routes.js'
 import BookRouter from './routes/book/book-routes.js'
 import UserRouter from './routes/users/user-routes.js'
+import ServiceRouter from './routes/services/services-route.js'
 dotenv.config()
 
 const app = express()
@@ -25,3 +26,4 @@ app.use('/users', UserRouter)
 app.use('/rooms', RoomRouter)
 app.use('/ammenties', AmmentiesRouter)
 app.use('/book', BookRouter)
+app.use('/services', ServiceRouter)

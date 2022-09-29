@@ -19,7 +19,7 @@ export const Container = styled.div`
     min-height: 70%;
     border-radius: 20px;
     box-shadow: 24;
-    padding: 20px 40px;
+    padding: 40px;
     background-color: #f7f7f7;
 `
 export const TotalContainer = styled.div`

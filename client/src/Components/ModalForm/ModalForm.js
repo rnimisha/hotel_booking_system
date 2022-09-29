@@ -21,6 +21,7 @@ import { Form, Container, TotalContainer } from './ModalFormStyled'
 
 // components
 import Button from '../Button/Button'
+import Label from '../Label/Label'
 
 // style
 const style = {
@@ -71,29 +72,30 @@ const ModalForm = ({ open, handleOpen, handleClose }) => {
                     <FormControl sx={{ mt: 3 }} component="fieldset" variant="standard">
                         <FormLabel component="legend">Extra Service</FormLabel>
                         <FormGroup>
-                        <Form
+                        <FormControlLabel
                             control={
                             <Checkbox checked={true} name="Breakfast" />
                             }
-                            label="Breakfast............ Rs 20"
+                            label={<Label name = "Breakfast" price = '20'/>}
                         />
                         <FormControlLabel
                             control={
                             <Checkbox checked={false} name="Dinner" />
                             }
-                            label="Dinner............... Rs 20"
+                            label={<Label name = "Dinner" price = '20'/>}
                         />
                         <FormControlLabel
+                            // sx={{ width: '100%' }}
                             control={
                             <Checkbox checked={false} name="Driver" />
                             }
-                            label="Driver................. Rs 20"
+                            label={<Label name = "Driver" price = '20'/>}
                         />
                         <FormControlLabel
                             control={
                             <Checkbox checked={false} name="Gym & Spa" />
                             }
-                            label="Gym & Spa............... Rs 20"
+                            label={<Label name = "Gym & Spa" price = '20'/>}
                         />
                         </FormGroup>
                     </FormControl>

@@ -13,6 +13,7 @@ import Login from './Container/Login/Login.js'
 import Register from './Container/Register/Register.js'
 import RoomDetail from './Container/RoomDetail/RoomDetail.js'
 import Rooms from './Container/Rooms/Rooms.js'
+import ScrollToTop from './utils/ScrollToTop.js'
 
 const theme = createTheme({
   typography: {
@@ -33,6 +34,7 @@ const App = () => {
       <GlobalStyles/>
       <BrowserRouter>
         <Navbar/>
+        <ScrollToTop />
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/rooms' element={<Rooms/>}/>

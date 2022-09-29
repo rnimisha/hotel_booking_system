@@ -1,7 +1,7 @@
 import React from 'react'
 
 // styles
-import { InfoContainer, LogoDetail, Price, Span } from './RoomInfoStyled'
+import { InfoContainer, Price, Span } from './RoomInfoStyled'
 
 // icons
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined'
@@ -10,6 +10,7 @@ import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined'
 
 // components
 import Button from '../Button/Button'
+import LogoText from '../LogoText/LogoText'
 
 const RoomInfo = ({ data, handleOpen }) => {
   const iconStyle = {
@@ -19,16 +20,42 @@ const RoomInfo = ({ data, handleOpen }) => {
   }
   return (
     <InfoContainer>
-      <h1 style={{ color: '#877147', fontSize: '3rem' }}>{data.name}</h1>
-      <span><Price>Rs. {data.price}</Price>/night</span>
-      <Span>{data.description}</Span>
-
+      <h1 style={{
+        color: '#877147',
+        fontSize: '3rem'
+      }}>
+        {data.name}
+      </h1>
+      <span>
+        <Price>
+          Rs. {data.price}
+        </Price>/night
+      </span>
+      <Span>
+        {data.description}
+      </Span>
       <hr style={{ border: '0.5px solid #877147' }}/>
-      <LogoDetail> <PeopleAltOutlinedIcon sx={iconStyle}/><Span> {data.capacity} Capacity </Span> </LogoDetail>
-      <LogoDetail> <BedOutlinedIcon sx={iconStyle}/> <Span>{ data.bedrooms} Bedrooms </Span></LogoDetail>
-      <LogoDetail> <BathtubOutlinedIcon sx={iconStyle}/><Span> {data.bathrooms} Bathrooms </Span> </LogoDetail>
+
+      <LogoText
+      icon = {<PeopleAltOutlinedIcon sx={iconStyle}/>}
+      data= {data.capacity}
+      text = 'Capacity'/>
+
+      <LogoText
+      icon = {<BedOutlinedIcon sx={iconStyle}/>}
+      data= {data.bedrooms}
+      text = 'Bedrooms'/>
+
+      <LogoText
+      icon = {<BathtubOutlinedIcon sx={iconStyle}/>}
+      data= {data.bathrooms}
+      text = 'Bathrooms'/>
+
       <div style={{ width: '90%', paddingTop: '10px' }}>
-        <Button text="Book Now" styling = {{ padding: '20px 60px' }} clickEvent = {handleOpen}/>
+        <Button
+        text="Book Now"
+        styling = {{ padding: '20px 60px' }}
+        clickEvent = {handleOpen}/>
       </div>
     </InfoContainer>
   )

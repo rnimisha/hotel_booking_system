@@ -21,13 +21,24 @@ const Rooms = () => {
 
   return (
     <>
-      <Header height='45vh' headerImg= {headerImg}/>
+      <Header
+      height='45vh'
+      headerImg= {headerImg}
+      text = 'Rooms'
+      />
       <Filter/>
       <RoomContainer>
         {
           rooms.map((item, id) => {
             return (
-              <IndividualRoom key={id} image = {roomImg} price ={item.price} name={item.name} people={item.capacity} bedrooms={item.bedrooms} id={item._id}/>
+              <IndividualRoom
+              key={id}
+              image = {roomImg}
+              price ={item.price}
+              name={item.name}
+              people={item.capacity}
+              bedrooms={item.bedrooms}
+              id={item._id}/>
             )
           })
         }

@@ -7,10 +7,14 @@ import headerImg from '../../Assets/images/header1.jpeg'
 const LoginRegister = ({ form }) => {
   return (
     <>
-        <Header height='45vh' headerImg= {headerImg} />
+        <Header
+        height='45vh'
+        headerImg= {headerImg}
+        text = {form}
+        />
 
         {
-          form === 'login'
+          form === 'Login'
             ? <Form formtype='login'/>
             : <Form formtype='register'/>
 

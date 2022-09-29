@@ -38,8 +38,8 @@ const App = () => {
           <Route path='/' element={<Home/>}/>
           <Route path='/rooms' element={<Rooms/>}/>
           <Route path='/rooms/:id' element={<RoomDetail/>}/>
-          <Route path='/login' element={<LoginRegister form='login'/>}/>
-          <Route path='/register' element={<LoginRegister form='register'/>}/>
+          <Route path='/login' element={<LoginRegister form='Login'/>}/>
+          <Route path='/register' element={<LoginRegister form='Register'/>}/>
         </Routes>
       </BrowserRouter>
       </ThemeProvider>

@@ -34,15 +34,21 @@ const RoomDetail = () => {
   }, [])
   return (
     <>
-        <Header height='45vh' headerImg={headerImg}/>
+        <Header
+        height='45vh'
+        headerImg={headerImg}
+        text ={roomDetail.name}/>
         <MainContainer>
             <ImageContainer>
-              <Image src={roomImg} alt="" />
+              <Image src={roomImg} alt={roomDetail.name} />
             </ImageContainer>
             <RoomInfo data ={roomDetail} handleOpen={handleOpen}/>
         </MainContainer>
         <Ammenties data ={roomDetail.ammenties}/>
-        <ModalForm open={open} handleClose ={handleClose} id={id}/>
+        <ModalForm
+        open={open}
+        handleClose={handleClose}
+        id={id}/>
     </>
   )
 }

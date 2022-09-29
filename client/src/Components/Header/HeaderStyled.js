@@ -25,3 +25,9 @@ export const ImgOverlay = styled.div`
     opacity: 0.4;
 
 `
+export const Heading = styled.h3`
+    margin-top: 50px;
+    font-size : 5rem;
+    font-family: 'Crimson Pro', serif;
+    font-weight: 300;
+`

@@ -9,8 +9,7 @@ import GlobalStyles from './Assets/styles/GlobalStylesStyled.js'
 // components
 import Navbar from './Components/Navbar/Navbar.js'
 import Home from './Container/Home/Home.js'
-import Login from './Container/Login/Login.js'
-import Register from './Container/Register/Register.js'
+import LoginRegister from './Container/LoginRegister/LoginRegister.js'
 import RoomDetail from './Container/RoomDetail/RoomDetail.js'
 import Rooms from './Container/Rooms/Rooms.js'
 import ScrollToTop from './utils/ScrollToTop.js'
@@ -39,8 +38,8 @@ const App = () => {
           <Route path='/' element={<Home/>}/>
           <Route path='/rooms' element={<Rooms/>}/>
           <Route path='/rooms/:id' element={<RoomDetail/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/register' element={<Register/>}/>
+          <Route path='/login' element={<LoginRegister form='login'/>}/>
+          <Route path='/register' element={<LoginRegister form='register'/>}/>
         </Routes>
       </BrowserRouter>
       </ThemeProvider>

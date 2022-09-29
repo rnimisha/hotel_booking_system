@@ -4,13 +4,20 @@ import Header from '../../Components/Header/Header'
 import Form from '../../Components/Form/Form'
 import headerImg from '../../Assets/images/header1.jpeg'
 
-const Login = () => {
+const LoginRegister = ({ form }) => {
   return (
     <>
         <Header height='45vh' headerImg= {headerImg} />
-        <Form formtype='login'/>
+
+        {
+          form === 'login'
+            ? <Form formtype='login'/>
+            : <Form formtype='register'/>
+
+        }
+
     </>
   )
 }
 
-export default Login
+export default LoginRegister

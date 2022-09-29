@@ -42,7 +42,7 @@ const RoomDetail = () => {
             <RoomInfo data ={roomDetail} handleOpen={handleOpen}/>
         </MainContainer>
         <Ammenties data ={roomDetail.ammenties}/>
-        <ModalForm open={open} handleClose ={handleClose}/>
+        <ModalForm open={open} handleClose ={handleClose} id = {id}/>
     </>
   )
 }

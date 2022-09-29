@@ -11,7 +11,7 @@ import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined'
 // components
 import Button from '../Button/Button'
 
-const RoomInfo = ({ data }) => {
+const RoomInfo = ({ data, handleOpen }) => {
   const iconStyle = {
     fontSize: '2rem',
     stroke: '#ffffff',
@@ -28,7 +28,7 @@ const RoomInfo = ({ data }) => {
       <LogoDetail> <BedOutlinedIcon sx={iconStyle}/> <Span>{ data.bedrooms} Bedrooms </Span></LogoDetail>
       <LogoDetail> <BathtubOutlinedIcon sx={iconStyle}/><Span> {data.bathrooms} Bathrooms </Span> </LogoDetail>
       <div style={{ width: '90%', paddingTop: '10px' }}>
-        <Button text="Book Now" styling = {{ padding: '20px 60px' }}/>
+        <Button text="Book Now" styling = {{ padding: '20px 60px' }} clickEvent = {handleOpen}/>
       </div>
     </InfoContainer>
   )

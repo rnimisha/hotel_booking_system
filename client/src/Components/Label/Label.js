@@ -6,7 +6,7 @@ const Label = ({ name, price }) => {
   return (
     <TotalContainer>
         <div>{name}</div>
-        <div>{price}</div>
+        <div>Rs.{price}</div>
     </TotalContainer>
   )
 }

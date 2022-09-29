@@ -27,7 +27,6 @@ const RoomDetail = () => {
       return response.json()
     }).then((data) => {
       setRoomDetail(data.data)
-      console.log(data.data)
     }).catch((error) => {
       console.log('Error : ' + error)
     })
@@ -42,7 +41,7 @@ const RoomDetail = () => {
             <RoomInfo data ={roomDetail} handleOpen={handleOpen}/>
         </MainContainer>
         <Ammenties data ={roomDetail.ammenties}/>
-        <ModalForm open={open} handleClose ={handleClose} id = {id}/>
+        <ModalForm open={open} handleClose ={handleClose} id={id}/>
     </>
   )
 }

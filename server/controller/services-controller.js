@@ -1,6 +1,6 @@
 import servicesModel from '../model/Services.js'
 
-export const getAllServices = async (req, res) => {
+export const getAllServices = async (_, res) => {
   try {
     const allServices = await servicesModel.find({})
 

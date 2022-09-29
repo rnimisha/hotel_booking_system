@@ -18,7 +18,7 @@ app.listen(process.env.PORT)
 connection(process.env.URI)
 
 // routes
-app.get('/', (req, res) => {
+app.get('/', (_, res) => {
   res.send('Working')
 })
 

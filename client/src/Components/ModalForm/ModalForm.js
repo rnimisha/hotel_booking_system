@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 // material ui
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
@@ -37,7 +37,20 @@ const style = {
   p: 4
 }
 
-const ModalForm = ({ open, handleOpen, handleClose }) => {
+const ModalForm = ({ open, handleClose, id }) => {
+  const [services, setServices] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3000/services').then((response) => {
+      return response.json()
+    }).then((data) => {
+      setServices(data.data)
+      console.log(data.data)
+    }).catch((error) => {
+      console.log('Error : ' + error)
+    })
+  }, [])
+
   const [checkIn, setCheckIn] = React.useState(null)
   return (
     <div>
@@ -73,31 +86,19 @@ const ModalForm = ({ open, handleOpen, handleClose }) => {
                     <FormControl sx={{ mt: 3 }} component="fieldset" variant="standard">
                         <FormLabel component="legend">Extra Service</FormLabel>
                         <FormGroup>
-                        <FormControlLabel
-                            control={
-                            <Checkbox checked={true} name="Breakfast" />
+                            {
+                                services.map((serviceItem, id) => {
+                                  return (
+                                        <FormControlLabel
+                                        key ={id}
+                                            control={
+                                            <Checkbox checked={false} name={serviceItem._id} />
+                                            }
+                                            label={<Label name = {serviceItem.name} price = {serviceItem.price}/>}
+                                        />
+                                  )
+                                })
                             }
-                            label={<Label name = "Breakfast" price = '20'/>}
-                        />
-                        <FormControlLabel
-                            control={
-                            <Checkbox checked={false} name="Dinner" />
-                            }
-                            label={<Label name = "Dinner" price = '20'/>}
-                        />
-                        <FormControlLabel
-                            // sx={{ width: '100%' }}
-                            control={
-                            <Checkbox checked={false} name="Driver" />
-                            }
-                            label={<Label name = "Driver" price = '20'/>}
-                        />
-                        <FormControlLabel
-                            control={
-                            <Checkbox checked={false} name="Gym & Spa" />
-                            }
-                            label={<Label name = "Gym & Spa" price = '20'/>}
-                        />
                         </FormGroup>
                     </FormControl>
                     <TotalContainer>

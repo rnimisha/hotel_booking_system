@@ -26,6 +26,11 @@ const roomSchema = new mongoose.Schema({
         checkOutDate: {
           type: Date,
           required: true
+        },
+        services: {
+          type: [mongoose.Schema.Types.ObjectId],
+          ref: 'services',
+          default: []
         }
       }
     ]

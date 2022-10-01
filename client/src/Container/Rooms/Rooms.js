@@ -19,6 +19,10 @@ const Rooms = () => {
     })
   }, [])
 
+  const changeRooms = (newData) => {
+    setRooms(newData)
+  }
+
   return (
     <>
       <Header
@@ -26,7 +30,7 @@ const Rooms = () => {
       headerImg= {headerImg}
       text = 'Rooms'
       />
-      <Filter/>
+      <Filter roomData= {rooms} changeRooms= {changeRooms}/>
       <RoomContainer>
         {
           rooms.map((item, id) => {

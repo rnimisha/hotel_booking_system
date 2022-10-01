@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-import { TextField } from '@mui/material'
+import {
+  TextField, Select,
+  outlinedInputClasses,
+  selectClasses
+} from '@mui/material'
 
 export const FormContainer = styled.div`
     /* position: absolute;
@@ -60,5 +64,16 @@ export const BorderTextField = styled(TextField)`
 
   & .MuiInput-underline:after {
     border-bottom-color: #877147;
+  }
+`
+export const BorderSelect = styled(Select)`
+  & .${selectClasses.icon} {
+    color:  #877147;
+  }
+
+  &.${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline} 
+  {
+    border-color:  #877147 !important;
+    color:  #877147 !important;
   }
 `

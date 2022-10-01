@@ -121,6 +121,9 @@ const ModalForm = ({ open, handleClose, id }) => {
                                             <Checkbox
                                             checked={isChecked[id] || false}
                                             name={serviceItem._id}
+                                            style ={{
+                                              color: '#877147'
+                                            }}
                                             onClick={() => {
                                               handleCheckBox(id, serviceItem._id)
                                             }}/>

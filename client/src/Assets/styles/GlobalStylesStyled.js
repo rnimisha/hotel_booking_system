@@ -23,6 +23,13 @@ const GlobalStyles = createGlobalStyle`
   .MuiFormControlLabel-label{
     width: 100%;
   }
+
+  input[type="checkbox"]{
+    accent-color: #e74c3c;
+  }
+  .MuiInputLabel-root.Mui-focused{
+    color: #877147 !important;
+  }
 `
 
 export default GlobalStyles

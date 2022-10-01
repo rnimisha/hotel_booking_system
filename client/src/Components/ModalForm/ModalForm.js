@@ -45,7 +45,7 @@ const ModalForm = ({ open, handleClose, id }) => {
   const [bookingDetail, setBookingDetail] = useState({
     checkIn: '',
     checkOut: '',
-    services: ''
+    services: []
 
   })
 
@@ -60,10 +60,15 @@ const ModalForm = ({ open, handleClose, id }) => {
     })
   }, [])
 
-  const handleCheckBox = (index) => {
+  const handleCheckBox = (index, id) => {
     const temp = [...isChecked]
     temp[index] = !temp[index]
     setIsChecked(temp)
+
+    const serviceTemp = [...bookingDetail.services]
+    const position = serviceTemp.indexOf(id)
+    position === -1 ? serviceTemp.push(id) : serviceTemp.splice(position, 1)
+    setBookingDetail({ ...bookingDetail, services: serviceTemp })
   }
 
   return (
@@ -113,7 +118,12 @@ const ModalForm = ({ open, handleClose, id }) => {
                                         <FormControlLabel
                                         key ={id}
                                             control={
-                                            <Checkbox checked={isChecked[id]} name={serviceItem._id} onClick={() => { handleCheckBox(id) }}/>
+                                            <Checkbox
+                                            checked={isChecked[id] || false}
+                                            name={serviceItem._id}
+                                            onClick={() => {
+                                              handleCheckBox(id, serviceItem._id)
+                                            }}/>
                                             }
                                             label={<Label name = {serviceItem.name} price = {serviceItem.price}/>}
                                         />

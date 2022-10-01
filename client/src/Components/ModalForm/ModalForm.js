@@ -39,16 +39,30 @@ const style = {
 
 const ModalForm = ({ open, handleClose, id }) => {
   const [services, setServices] = useState([])
+  const [isChecked, setIsChecked] = useState(new Array(services.length).fill(false))
+  // const [bookingDetail, setBookingDetail] = useState({
+  //   checkIn: '',
+  //   checkOut: '',
+  //   services: ''
+
+  // })
 
   useEffect(() => {
     fetch('http://localhost:3000/services').then((response) => {
       return response.json()
     }).then((data) => {
       setServices(data.data)
+      // setIsChecked(new Array(services.length).fill(false))
     }).catch((error) => {
       console.log('Error : ' + error)
     })
   }, [])
+
+  const handleCheckBox = (index) => {
+    const temp = [...isChecked]
+    temp[index] = !temp[index]
+    setIsChecked(temp)
+  }
 
   const [checkIn, setCheckIn] = React.useState(null)
   return (
@@ -95,7 +109,7 @@ const ModalForm = ({ open, handleClose, id }) => {
                                         <FormControlLabel
                                         key ={id}
                                             control={
-                                            <Checkbox checked={false} name={serviceItem._id} />
+                                            <Checkbox checked={isChecked[id]} name={serviceItem._id} onClick={() => { handleCheckBox(id) }}/>
                                             }
                                             label={<Label name = {serviceItem.name} price = {serviceItem.price}/>}
                                         />
@@ -115,7 +129,7 @@ const ModalForm = ({ open, handleClose, id }) => {
                         </Typography>
                     </TotalContainer>
                     <div style={{ width: '80%', display: 'flex', justifyContent: 'center', marginLeft: '10%' }}>
-                        <Button text='Book now' styling = {{ padding: '20px 40px' }}/>
+                        <Button type = 'submit' text='Book now' styling = {{ padding: '20px 40px' }}/>
                     </div>
                 </LocalizationProvider>
             </Form>

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const NavigationBar = styled.nav`
-    z-index: 9999;
+    z-index: 1299;
     position: fixed;
     right: 0;
     top: 0;

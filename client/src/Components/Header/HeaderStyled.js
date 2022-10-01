@@ -21,7 +21,7 @@ export const ImgOverlay = styled.div`
     width: 100%; 
     height: 100%;
     background-color: black;
-    z-index: 9995;
+    z-index: 1295;
     opacity: 0.4;
 
 `

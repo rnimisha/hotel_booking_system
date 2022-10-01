@@ -21,7 +21,7 @@ export const VideoOverlay = styled.div`
     width: 100%; 
     height: 100%;
     background-color: black;
-    z-index: 9995;
+    z-index: 1297;
     opacity: 0.4;
 
 `
@@ -33,7 +33,7 @@ export const Slogan = styled.div`
     width: 100%; 
     height: 100%;
     color : #fff;
-    z-index: 9996;
+    z-index: 1298;
     display: flex;
     justify-content: center;
     align-items: center;

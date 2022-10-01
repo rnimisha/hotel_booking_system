@@ -11,7 +11,7 @@ export const FormContainer = styled.div`
     justify-content: center;
     /* align-items: center; */
     min-height: 100vh;
-    z-index: 9996;
+    z-index: 1298;
 
     /* background-color:hsla(30,0%,100%,1);
     background-image:

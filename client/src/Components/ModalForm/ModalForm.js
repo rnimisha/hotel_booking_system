@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import { format } from 'date-fns'
 // material ui
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
@@ -40,12 +40,14 @@ const style = {
 const ModalForm = ({ open, handleClose, id }) => {
   const [services, setServices] = useState([])
   const [isChecked, setIsChecked] = useState(new Array(services.length).fill(false))
-  // const [bookingDetail, setBookingDetail] = useState({
-  //   checkIn: '',
-  //   checkOut: '',
-  //   services: ''
+  const [checkIn, setCheckIn] = useState(null)
+  const [checkOut, setCheckOut] = useState(null)
+  const [bookingDetail, setBookingDetail] = useState({
+    checkIn: '',
+    checkOut: '',
+    services: ''
 
-  // })
+  })
 
   useEffect(() => {
     fetch('http://localhost:3000/services').then((response) => {
@@ -64,15 +66,14 @@ const ModalForm = ({ open, handleClose, id }) => {
     setIsChecked(temp)
   }
 
-  const [checkIn, setCheckIn] = React.useState(null)
   return (
     <div>
+      {console.log(bookingDetail)}
         <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        sx={{ zIndex: '9999' }}
         >
         <Container sx={style}>
             <Typography
@@ -87,16 +88,19 @@ const ModalForm = ({ open, handleClose, id }) => {
                     <DatePicker
                         label="Check in"
                         value={checkIn}
+                        inputFormat="MM/DD/YYYY"
                         onChange={(newValue) => {
                           setCheckIn(newValue)
+                          setBookingDetail({ ...bookingDetail, checkIn: format(newValue.toDate(), 'MM/dd/yyyy') })
                         }}
                         renderInput={(params) => <BorderTextField {...params} variant="standard"/>}
                     />
                     <DatePicker
                         label="Check out"
-                        value={checkIn}
+                        value={checkOut}
                         onChange={(newValue) => {
-                          setCheckIn(newValue)
+                          setCheckOut(newValue)
+                          setBookingDetail({ ...bookingDetail, checkOut: format(newValue.toDate(), 'MM/dd/yyyy') })
                         }}
                         renderInput={(params) => <BorderTextField {...params} variant="standard"/>}
                     />

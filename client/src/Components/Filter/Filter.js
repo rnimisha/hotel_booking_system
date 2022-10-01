@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { format } from 'date-fns'
+
+// style
 import { FilterBox } from './FilterStyled'
 import { BorderTextField, BorderSelect } from '../Form/FormStyle'
 
@@ -15,20 +18,37 @@ import {
 const Filter = () => {
   const [checkIn, setCheckIn] = useState(null)
   const [checkOut, setCheckOut] = useState(null)
+  const [filterData, setFilterDate] = useState({
+    roomtype: '',
+    capacity: null,
+    checkin: '',
+    checkout: ''
+  })
+
+  const handleFormData = (e) => {
+    const temp = { ...filterData }
+    const { name, value } = e.target
+    temp[name] = value
+    setFilterDate(temp)
+  }
   return (
     <FilterBox>
       <FormControl sx={{ width: '150px' }}>
           <InputLabel id="roomtype">Room Type</InputLabel>
           <BorderSelect
+              name="roomtype"
               labelId="roomtype"
-              label="Room Type">
-              <MenuItem value={10}>One</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              label="Room Type"
+              onChange={handleFormData}
+              value = {filterData.roomtype || ''}
+              >
+              <MenuItem value={1}>One</MenuItem>
+              <MenuItem value={100}>Twenty</MenuItem>
+              <MenuItem value={3000000}>Thirty</MenuItem>
           </BorderSelect>
       </FormControl>
       <FormControl sx={{ width: '150px' }}>
-          <BorderTextField label="Guest No." variant="outlined" />
+          <BorderTextField name="capacity" label="Capacity" variant="outlined" onChange={handleFormData} value={filterData.capacity || ''}/>
       </FormControl>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
@@ -37,6 +57,7 @@ const Filter = () => {
           inputFormat="MM/DD/YYYY"
           onChange={(newValue) => {
             setCheckIn(newValue)
+            handleFormData({ target: { name: 'checkin', value: format(newValue.toDate(), 'MM/dd/yyyy') } })
           }}
           renderInput={(params) => <BorderTextField {...params} variant="outlined" sx={{ width: '150px' }}/>}
         />
@@ -45,6 +66,7 @@ const Filter = () => {
             value={checkOut}
             onChange={(newValue) => {
               setCheckOut(newValue)
+              handleFormData({ target: { name: 'checkout', value: format(newValue.toDate(), 'MM/dd/yyyy') } })
             }}
             renderInput={(params) => <BorderTextField {...params} variant="outlined" sx={{ width: '150px' }}/>}
           />

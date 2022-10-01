@@ -10,11 +10,17 @@ const IndividualRoom = ({ image, price, name, bedrooms, people, id }) => {
   return (
     <RoomBox>
         <RoomImgContainer onClick = {showRoomDetails}>
-            <RoomImg src={image} alt="" />
-            <Price>Rs.{price}</Price>
+            <RoomImg src={image} alt={name} />
+            <Price>
+              Rs.{price}
+            </Price>
         </RoomImgContainer>
-        <RoomName>{name}</RoomName>
-        <Info>{people} people, {bedrooms} bedrooms</Info>
+        <RoomName>
+          {name}
+        </RoomName>
+        <Info>
+          {people} people, {bedrooms} bedrooms
+        </Info>
     </RoomBox>
   )
 }

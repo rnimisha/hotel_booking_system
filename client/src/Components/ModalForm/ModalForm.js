@@ -61,7 +61,11 @@ const ModalForm = ({ open, handleClose, id }) => {
         sx={{ zIndex: '9999' }}
         >
         <Container sx={style}>
-            <Typography id="modal-modal-title" variant="h4" component="h2" sx={{ textAlign: 'center', fontFamily: 'Crimson Pro, serif', fontWeight: '100', color: '#877147' }}>
+            <Typography
+            id="modal-modal-title"
+            variant="h4"
+            component="h2"
+            sx={{ textAlign: 'center', fontFamily: 'Crimson Pro, serif', fontWeight: '100', color: '#877147' }}>
                 Booking Form
             </Typography>
             <Form id="modal-modal-description">

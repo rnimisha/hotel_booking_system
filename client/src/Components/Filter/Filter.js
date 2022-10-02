@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { format } from 'date-fns'
 
 // style
@@ -18,6 +18,7 @@ import {
 const Filter = ({ filterData, setFilterDate }) => {
   const [checkIn, setCheckIn] = useState(null)
   const [checkOut, setCheckOut] = useState(null)
+  const [roomType, setRoomType] = useState([])
 
   const handleFormData = (e) => {
     const temp = { ...filterData }
@@ -25,6 +26,16 @@ const Filter = ({ filterData, setFilterDate }) => {
     temp[name] = value
     setFilterDate(temp)
   }
+
+  useEffect(() => {
+    fetch('http://localhost:3000/rooms').then((response) => {
+      return response.json()
+    }).then((data) => {
+      setRoomType(data.data)
+    }).catch((error) => {
+      console.log('Error : ' + error)
+    })
+  }, [])
 
   return (
     <FilterBox>
@@ -37,9 +48,14 @@ const Filter = ({ filterData, setFilterDate }) => {
               onChange={handleFormData}
               value = {filterData.roomtype || ''}
               >
-              <MenuItem value={1}>One</MenuItem>
-              <MenuItem value={100}>Twenty</MenuItem>
-              <MenuItem value={3000000}>Thirty</MenuItem>
+              <MenuItem value=''>All</MenuItem>
+              {
+                roomType.map((item, id) => {
+                  return (
+                    <MenuItem key={item._id} value={item.name}>{item.name}</MenuItem>
+                  )
+                })
+              }
           </BorderSelect>
       </FormControl>
       <FormControl sx={{ width: '150px' }}>

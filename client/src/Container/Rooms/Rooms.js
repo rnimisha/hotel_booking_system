@@ -17,11 +17,8 @@ const Rooms = () => {
   })
 
   useEffect(() => {
-    let query = 'http://localhost:3000/rooms/?1=1'
+    let query = `http://localhost:3000/rooms/?roomtype=${filterData.roomtype}`
 
-    if (filterData.roomtype !== '') {
-      query += `&roomtype=${filterData.roomtype}`
-    }
     if (filterData.capacity !== null) {
       query += `&capacity=${filterData.capacity}`
     }

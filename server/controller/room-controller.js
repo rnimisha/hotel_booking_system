@@ -2,11 +2,17 @@ import roomTypeModel from '../model/roomType.js'
 import roomModel from '../model/room.js'
 import ammentiesModel from '../model/Ammenties.js'
 
-export const getAllRoomType = async (req, res) => {
+export const getRooms = async (req, res) => {
   let filterObj = {}
 
   filterObj = req.query.roomtype ? { ...filterObj, name: req.query.roomtype } : { ...filterObj }
   filterObj = req.query.capacity ? { ...filterObj, capacity: Number(req.query.capacity) } : { ...filterObj }
+
+  // const bookingFilter = {
+  //   checkInDate: {
+  //     $gte: '2022-10-19', $lte: '2022-10-20'
+  //   }
+  // }
 
   try {
     const allRooms = await roomTypeModel.aggregate([

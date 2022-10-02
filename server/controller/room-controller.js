@@ -3,8 +3,30 @@ import roomModel from '../model/room.js'
 import ammentiesModel from '../model/Ammenties.js'
 
 export const getAllRoomType = async (req, res) => {
+  let filterObj = {}
+
+  filterObj = req.query.roomtype ? { ...filterObj, name: req.query.roomtype } : { ...filterObj }
+  filterObj = req.query.capacity ? { ...filterObj, capacity: Number(req.query.capacity) } : { ...filterObj }
+
   try {
-    const allRooms = await roomTypeModel.find({}).populate({ path: 'ammenties', model: ammentiesModel })
+    const allRooms = await roomTypeModel.aggregate([
+      {
+        $match: filterObj
+      },
+      {
+        $lookup: {
+          from: roomModel.collection.name,
+          localField: '_id',
+          foreignField: 'roomType',
+          as: 'roomDetails'
+        }
+      }
+    ])
+    await roomTypeModel.populate(allRooms, {
+      path: 'ammenties',
+      model: ammentiesModel
+    })
+
     res.json({
       data: allRooms
     })

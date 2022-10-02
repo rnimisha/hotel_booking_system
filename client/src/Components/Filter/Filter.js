@@ -15,15 +15,9 @@ import {
   FormControl
 } from '@mui/material'
 
-const Filter = () => {
+const Filter = ({ filterData, setFilterDate }) => {
   const [checkIn, setCheckIn] = useState(null)
   const [checkOut, setCheckOut] = useState(null)
-  const [filterData, setFilterDate] = useState({
-    roomtype: '',
-    capacity: null,
-    checkin: '',
-    checkout: ''
-  })
 
   const handleFormData = (e) => {
     const temp = { ...filterData }
@@ -31,6 +25,7 @@ const Filter = () => {
     temp[name] = value
     setFilterDate(temp)
   }
+
   return (
     <FilterBox>
       <FormControl sx={{ width: '150px' }}>

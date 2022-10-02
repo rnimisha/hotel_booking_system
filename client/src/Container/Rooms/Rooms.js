@@ -9,19 +9,37 @@ import headerImg from '../../Assets/images/header1.jpeg'
 
 const Rooms = () => {
   const [rooms, setRooms] = useState([])
+  const [filterData, setFilterDate] = useState({
+    roomtype: '',
+    capacity: null,
+    checkin: '',
+    checkout: ''
+  })
+
   useEffect(() => {
-    fetch('http://localhost:3000/rooms/').then((response) => {
+    let query = 'http://localhost:3000/rooms/?1=1'
+
+    if (filterData.roomtype !== '') {
+      query += `&roomtype=${filterData.roomtype}`
+    }
+    if (filterData.capacity !== null) {
+      query += `&capacity=${filterData.capacity}`
+    }
+    if (filterData.checkin !== '') {
+      query += `&checkin=${filterData.checkin}`
+    }
+    if (filterData.checkout !== '') {
+      query += `&checkout=${filterData.checkout}`
+    }
+
+    fetch(query).then((response) => {
       return response.json()
     }).then((data) => {
       setRooms(data.data)
     }).catch((error) => {
       console.log('Error : ' + error)
     })
-  }, [])
-
-  const changeRooms = (newData) => {
-    setRooms(newData)
-  }
+  }, [filterData])
 
   return (
     <>
@@ -30,7 +48,7 @@ const Rooms = () => {
       headerImg= {headerImg}
       text = 'Rooms'
       />
-      <Filter roomData= {rooms} changeRooms= {changeRooms}/>
+      <Filter filterData= {filterData} setFilterDate={setFilterDate}/>
       <RoomContainer>
         {
           rooms.map((item, id) => {

@@ -68,7 +68,7 @@ const Filter = ({ filterData, setFilterDate }) => {
           inputFormat="MM/DD/YYYY"
           onChange={(newValue) => {
             setCheckIn(newValue)
-            handleFormData({ target: { name: 'checkin', value: format(newValue.toDate(), 'MM/dd/yyyy') } })
+            handleFormData({ target: { name: 'checkin', value: format(newValue.toDate(), 'yyyy/MM/dd') } })
           }}
           renderInput={(params) => <BorderTextField {...params} variant="outlined" sx={{ width: '150px' }}/>}
         />
@@ -77,7 +77,7 @@ const Filter = ({ filterData, setFilterDate }) => {
             value={checkOut}
             onChange={(newValue) => {
               setCheckOut(newValue)
-              handleFormData({ target: { name: 'checkout', value: format(newValue.toDate(), 'MM/dd/yyyy') } })
+              handleFormData({ target: { name: 'checkout', value: format(newValue.toDate(), 'yyyy/MM/dd') } })
             }}
             renderInput={(params) => <BorderTextField {...params} variant="outlined" sx={{ width: '150px' }}/>}
           />

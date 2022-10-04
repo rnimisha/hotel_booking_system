@@ -15,19 +15,99 @@ export const getRooms = async (req, res) => {
   // }
 
   try {
-    const allRooms = await roomTypeModel.aggregate([
-      {
-        $match: filterObj
-      },
-      {
-        $lookup: {
-          from: roomModel.collection.name,
-          localField: '_id',
-          foreignField: 'roomType',
-          as: 'roomDetails'
+    let allRooms
+
+    if (req.query.checkin && req.query.checkout) {
+      allRooms = await roomTypeModel.aggregate([
+        {
+          $match: filterObj
+        },
+        {
+          $lookup: {
+            from: roomModel.collection.name,
+            localField: '_id',
+            foreignField: 'roomType',
+            as: 'roomDetails'
+          }
+        },
+        {
+          $unwind: '$roomDetails'
+        },
+        {
+          $match: {
+            $or: [
+              {
+                'roomDetails.bookings':
+                {
+                  $size: 0
+                }
+              },
+              {
+                $and: [
+                  {
+                    'roomDetails.bookings':
+                    {
+                      $elemMatch: {
+                        $or: [
+                          { checkInDate: { $gte: new Date('2025-01-02') } },
+                          { checkOutDate: { $lte: new Date('2021-01-01') } }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    'roomDetails.bookings':
+                    {
+                      $not:
+                      {
+                        $elemMatch:
+                        {
+
+                          $or:
+                         [
+                           { checkInDate: { $gte: new Date('2021-01-01'), $lte: new Date('2025-01-02') } },
+                           { to: { $lte: new Date('2025-01-02'), $gte: new Date('2021-01-01') } }
+                         ]
+                        }
+                      }
+                    }
+                  }
+                ]
+
+              // {
+              //   $elemMatch: {
+              //     $and: [
+              //       { checkInDate: { $gte: new Date('2025-01-02') } }, // greater than new checoutdate
+              //       { checkOutDate: { $lte: new Date('2025-01-01') } } // less than new check in date
+              //     ]
+              //   }
+              // }
+              }
+
+            ]
+          }
+        },
+        {
+          $group: {
+            _id: '$_id',
+            price: { $first: '$price' },
+            name: { $first: '$name' },
+            capacity: { $first: '$capacity' },
+            bedrooms: { $first: '$bedrooms' },
+            bathrooms: { $first: '$bathrooms' },
+            ammenties: { $first: '$ammenties' }
+          }
         }
-      }
-    ])
+      ])
+    } else {
+      allRooms = await roomTypeModel.aggregate([
+        {
+          $match: filterObj
+        }
+      ])
+    }
+    console.log(allRooms)
+
     await roomTypeModel.populate(allRooms, {
       path: 'ammenties',
       model: ammentiesModel

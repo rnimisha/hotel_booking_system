@@ -23,4 +23,6 @@ export const InnerContainer = styled.div`
     margin-top: 1%;
     border-radius: 20px;
     padding: 30px;
+    display: flex;
+    flex-direction:column;
 `

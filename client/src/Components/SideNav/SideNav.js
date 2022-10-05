@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { changeTitle } from '../../features/title/titleSlice'
 
 // styles
 import { LogoHeader, SideNavBar, LogoContainer, ToggleBtn, NavList, NavELement } from './SideNavStyled'
@@ -18,6 +20,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
 import LogoText from '../LogoText/LogoText'
 
 const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
+  const dispatch = useDispatch()
   return (
     <SideNavBar style={{
       width: isToggleMenu ? '8vw' : '20vw'
@@ -43,49 +46,55 @@ const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
             </ToggleBtn>
         </LogoHeader>
         <NavList>
-            <NavELement to ='/admin/dashboard'>
-                <LogoText
-                icon={<GridViewOutlinedIcon/>}
-                data={isToggleMenu ? '' : 'Dashboard'}
-                text=''
-                gapping='1rem'/>
+
+            <NavELement
+            to ='/admin/dashboard'
+            onClick={() => { dispatch(changeTitle('Dashboard')) }}>
+              <LogoText
+              icon={<GridViewOutlinedIcon/>}
+              data={isToggleMenu ? '' : 'Almond Hotel'}
+              text=''
+              gapping='1rem'/>
             </NavELement>
-            <NavELement to ='/admin/bookings'>
 
-                    <LogoText
-                    icon={<NightShelterOutlinedIcon/>}
-                    data={isToggleMenu ? '' : 'Bookings'}
-                    text=''
-                    gapping='1rem'/>
-
+            <NavELement
+            to ='/admin/bookings'
+            onClick={() => { dispatch(changeTitle('All Bookings')) }}>
+              <LogoText
+              icon={<NightShelterOutlinedIcon/>}
+              data={isToggleMenu ? '' : 'Bookings'}
+              text=''
+              gapping='1rem'/>
             </NavELement>
-            <NavELement to ='admin/rooms'>
 
-                    <LogoText
-                    icon={<LightOutlinedIcon/>}
-                    data={isToggleMenu ? '' : 'Rooms'}
-                    text=''
-                    gapping='1rem'/>
-
+            <NavELement
+            to ='admin/rooms'
+            onClick={() => { dispatch(changeTitle('All Rooms')) }}>
+              <LogoText
+              icon={<LightOutlinedIcon/>}
+              data={isToggleMenu ? '' : 'Rooms'}
+              text=''
+              gapping='1rem'/>
             </NavELement>
-            <NavELement to ='admin/profile'>
 
-                    <LogoText
-                    icon={<ManageAccountsOutlinedIcon/>}
-                    data={isToggleMenu ? '' : 'Profile'}
-                    text=''
-                    gapping='1rem'/>
-
+            <NavELement
+            to ='admin/profile'
+            onClick={() => { dispatch(changeTitle('My Profile')) }}>
+              <LogoText
+              icon={<ManageAccountsOutlinedIcon/>}
+              data={isToggleMenu ? '' : 'Profile'}
+              text=''
+              gapping='1rem'/>
             </NavELement>
+
             <NavELement to ='/logout'>
-
-                    <LogoText
-                    icon={<LogoutOutlinedIcon/>}
-                    data={isToggleMenu ? '' : 'Logout'}
-                    text=''
-                    gapping='1rem'/>
-
+              <LogoText
+              icon={<LogoutOutlinedIcon/>}
+              data={isToggleMenu ? '' : 'Logout'}
+              text=''
+              gapping='1rem'/>
             </NavELement>
+
         </NavList>
     </SideNavBar>
   )

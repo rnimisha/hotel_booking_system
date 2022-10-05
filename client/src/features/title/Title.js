@@ -1,6 +1,9 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const Title = () => {
+  const title = useSelector((state) => state.title.title)
+
   return (
     <div style={{
       borderBottom: '01px solid #ececec',
@@ -10,7 +13,7 @@ const Title = () => {
       color: '#171717'
 
     }}>
-       Dashboard
+       {title}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  title: ''
+  title: 'Almond Hotel'
 }
 
 const titleSlice = createSlice({

@@ -1,11 +1,12 @@
 import React from 'react'
 import SideNav from '../../Components/SideNav/SideNav'
-import { AdminContainer } from './AdminStyled'
+import { AdminContainer, MainContainer } from './AdminStyled'
 
 const Admin = () => {
   return (
     <AdminContainer>
         <SideNav/>
+        <MainContainer/>
     </AdminContainer>
   )
 }

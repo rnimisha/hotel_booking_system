@@ -17,7 +17,8 @@ export const Price = styled.span`
 export const LogoDetail = styled.div`
     display: flex;
     align-items: center;
-    gap: 4rem;
+    /* gap: 4rem; */
+    gap: ${props => props.gapping ? props.gapping : '4rem'}
 `
 export const Span = styled.span`
     font-size: 1.2rem;

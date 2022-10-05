@@ -9,7 +9,6 @@ export const AdminContainer = styled.div`
     position: relative;
 `
 export const MainContainer = styled.div`
-    width: 80%;
     background-color: #f1f1f1;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;

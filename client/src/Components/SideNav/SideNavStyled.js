@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
-export const SideNaviBar = styled.div`
-    width: 20%;
+export const SideNavBar = styled.div`
     height: 100vh;
     background-color: #fff;
     display: flex;

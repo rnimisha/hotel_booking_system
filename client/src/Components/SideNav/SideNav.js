@@ -1,7 +1,7 @@
 import React from 'react'
 
 // styles
-import { LogoHeader, SideNaviBar, LogoContainer, ToggleBtn, NavList, NavELement } from './SideNavStyled'
+import { LogoHeader, SideNavBar, LogoContainer, ToggleBtn, NavList, NavELement } from './SideNavStyled'
 
 // image
 import logoimg from '../../Assets/images/logo.png'
@@ -17,14 +17,17 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
 // components
 import LogoText from '../LogoText/LogoText'
 
-const SideNav = () => {
+const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
   return (
-    <SideNaviBar>
+    <SideNavBar style={{
+      width: isToggleMenu ? '8vw' : '20vw'
+    }}>
         <LogoHeader>
-            <LogoContainer style={{ marginTop: '10px' }}>
+            {!isToggleMenu && <LogoContainer style={{ marginTop: '10px' }}>
                 <img src={logoimg} alt="logo" style={{ height: '80px', width: '100px', cursor: 'pointer' }}/>
-            </LogoContainer>
-            <ToggleBtn>
+            </LogoContainer>}
+
+            <ToggleBtn onClick = {() => { setIsToggleMenu(!isToggleMenu) }}>
                 <SubjectIcon sx={{
                   fontSize: '2.3rem',
                   fontWeight: '100',
@@ -43,7 +46,7 @@ const SideNav = () => {
             <NavELement to ='/admin'>
                 <LogoText
                 icon={<GridViewOutlinedIcon/>}
-                data='Dashboard'
+                data={isToggleMenu ? '' : 'Dashboard'}
                 text=''
                 gapping='1rem'/>
             </NavELement>
@@ -51,7 +54,7 @@ const SideNav = () => {
 
                     <LogoText
                     icon={<NightShelterOutlinedIcon/>}
-                    data='Bookings'
+                    data={isToggleMenu ? '' : 'Bookings'}
                     text=''
                     gapping='1rem'/>
 
@@ -60,7 +63,7 @@ const SideNav = () => {
 
                     <LogoText
                     icon={<LightOutlinedIcon/>}
-                    data='Rooms'
+                    data={isToggleMenu ? '' : 'Rooms'}
                     text=''
                     gapping='1rem'/>
 
@@ -69,7 +72,7 @@ const SideNav = () => {
 
                     <LogoText
                     icon={<ManageAccountsOutlinedIcon/>}
-                    data='Profile'
+                    data={isToggleMenu ? '' : 'Profile'}
                     text=''
                     gapping='1rem'/>
 
@@ -78,13 +81,13 @@ const SideNav = () => {
 
                     <LogoText
                     icon={<LogoutOutlinedIcon/>}
-                    data='Logout'
+                    data={isToggleMenu ? '' : 'Logout'}
                     text=''
                     gapping='1rem'/>
 
             </NavELement>
         </NavList>
-    </SideNaviBar>
+    </SideNavBar>
   )
 }
 

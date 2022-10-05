@@ -15,6 +15,7 @@ import Rooms from './Container/Rooms/Rooms.js'
 import ScrollToTop from './utils/ScrollToTop.js'
 import Admin from './Container/Admin/Admin.js'
 import LayoutWithNav from './Components/Navbar/LayoutWithNav.js'
+import Booking from './Container/Admin/Booking/Booking.js'
 
 const theme = createTheme({
   typography: {
@@ -44,7 +45,11 @@ const App = () => {
             <Route path='/login' element={<LoginRegister form='Login'/>}/>
             <Route path='/register' element={<LoginRegister form='Register'/>}/>
           </Route>
-          <Route path='/admin' element={<Admin/>}/>
+          <Route path='admin' element={<Admin/>}>
+            <Route index element={<Admin/>}/>
+            <Route path='dashboard' element={<Admin/>}/>
+            <Route path='bookings' element={<Booking/>}/>
+          </Route>
         </Routes>
       </BrowserRouter>
       </ThemeProvider>

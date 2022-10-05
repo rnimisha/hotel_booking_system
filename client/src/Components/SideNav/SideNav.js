@@ -43,14 +43,14 @@ const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
             </ToggleBtn>
         </LogoHeader>
         <NavList>
-            <NavELement to ='/admin'>
+            <NavELement to ='/admin/dashboard'>
                 <LogoText
                 icon={<GridViewOutlinedIcon/>}
                 data={isToggleMenu ? '' : 'Dashboard'}
                 text=''
                 gapping='1rem'/>
             </NavELement>
-            <NavELement to ='admin/bookings'>
+            <NavELement to ='/admin/bookings'>
 
                     <LogoText
                     icon={<NightShelterOutlinedIcon/>}

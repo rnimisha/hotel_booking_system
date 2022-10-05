@@ -8,12 +8,6 @@ export const getRooms = async (req, res) => {
   filterObj = req.query.roomtype ? { ...filterObj, name: req.query.roomtype } : { ...filterObj }
   filterObj = req.query.capacity ? { ...filterObj, capacity: Number(req.query.capacity) } : { ...filterObj }
 
-  // const bookingFilter = {
-  //   checkInDate: {
-  //     $gte: '2022-10-19', $lte: '2022-10-20'
-  //   }
-  // }
-
   try {
     let allRooms
 
@@ -49,8 +43,8 @@ export const getRooms = async (req, res) => {
                     {
                       $elemMatch: {
                         $or: [
-                          { checkInDate: { $gte: new Date('2025-01-02') } },
-                          { checkOutDate: { $lte: new Date('2021-01-01') } }
+                          { checkInDate: { $gte: new Date(req.query.checkout) } },
+                          { checkOutDate: { $lte: new Date(req.query.checkin) } }
                         ]
                       }
                     }
@@ -65,8 +59,8 @@ export const getRooms = async (req, res) => {
 
                           $or:
                          [
-                           { checkInDate: { $gte: new Date('2021-01-01'), $lte: new Date('2025-01-02') } },
-                           { to: { $lte: new Date('2025-01-02'), $gte: new Date('2021-01-01') } }
+                           { checkInDate: { $gte: new Date(req.query.checkin), $lte: new Date(req.query.checkout) } },
+                           { to: { $lte: new Date(req.query.checkout), $gte: new Date(req.query.checkin) } }
                          ]
                         }
                       }
@@ -106,7 +100,6 @@ export const getRooms = async (req, res) => {
         }
       ])
     }
-    console.log(allRooms)
 
     await roomTypeModel.populate(allRooms, {
       path: 'ammenties',

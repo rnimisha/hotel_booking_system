@@ -1,7 +1,7 @@
 import React from 'react'
 
 // styles
-import { LogoHeader, SideNaviBar, LogoContainer, ToggleBtn, NavList, List } from './SideNavStyled'
+import { LogoHeader, SideNaviBar, LogoContainer, ToggleBtn, NavList, NavELement } from './SideNavStyled'
 
 // image
 import logoimg from '../../Assets/images/logo.png'
@@ -22,35 +22,67 @@ const SideNav = () => {
     <SideNaviBar>
         <LogoHeader>
             <LogoContainer style={{ marginTop: '10px' }}>
-                <img src={logoimg} alt="logo" style={{ height: '80px', width: '100px' }}/>
+                <img src={logoimg} alt="logo" style={{ height: '80px', width: '100px', cursor: 'pointer' }}/>
             </LogoContainer>
             <ToggleBtn>
-                <SubjectIcon style={{
+                <SubjectIcon sx={{
                   fontSize: '2.3rem',
                   fontWeight: '100',
                   backgroundColor: '#d4cec3',
                   padding: '6px',
                   borderRadius: '50px',
-                  color: '#877147'
+                  color: '#877147',
+                  cursor: 'pointer',
+                  '&:hover': {
+                    color: '#f1f1f1'
+                  }
                 }}/>
             </ToggleBtn>
         </LogoHeader>
         <NavList>
-            <List>
-                <LogoText icon={<GridViewOutlinedIcon/>} data='Dashboard' text='' gapping='1rem'/>
-            </List>
-            <List>
-                <LogoText icon={<NightShelterOutlinedIcon/>} data='Bookings' text='' gapping='1rem'/>
-            </List>
-            <List>
-                <LogoText icon={<LightOutlinedIcon/>} data='Rooms' text='' gapping='1rem'/>
-            </List>
-            <List>
-                <LogoText icon={<ManageAccountsOutlinedIcon/>} data='Profile' text='' gapping='1rem'/>
-            </List>
-            <List>
-                <LogoText icon={<LogoutOutlinedIcon/>} data='Logout' text='' gapping='1rem'/>
-            </List>
+            <NavELement to ='/admin'>
+                <LogoText
+                icon={<GridViewOutlinedIcon/>}
+                data='Dashboard'
+                text=''
+                gapping='1rem'/>
+            </NavELement>
+            <NavELement to ='admin/bookings'>
+
+                    <LogoText
+                    icon={<NightShelterOutlinedIcon/>}
+                    data='Bookings'
+                    text=''
+                    gapping='1rem'/>
+
+            </NavELement>
+            <NavELement to ='admin/rooms'>
+
+                    <LogoText
+                    icon={<LightOutlinedIcon/>}
+                    data='Rooms'
+                    text=''
+                    gapping='1rem'/>
+
+            </NavELement>
+            <NavELement to ='admin/profile'>
+
+                    <LogoText
+                    icon={<ManageAccountsOutlinedIcon/>}
+                    data='Profile'
+                    text=''
+                    gapping='1rem'/>
+
+            </NavELement>
+            <NavELement to ='/logout'>
+
+                    <LogoText
+                    icon={<LogoutOutlinedIcon/>}
+                    data='Logout'
+                    text=''
+                    gapping='1rem'/>
+
+            </NavELement>
         </NavList>
     </SideNaviBar>
   )

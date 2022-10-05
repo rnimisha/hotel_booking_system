@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const SideNaviBar = styled.div`
     width: 20%;
@@ -40,9 +41,28 @@ export const NavList = styled.div`
     gap: 1rem;
 `
 
-export const List = styled.div`
-    width: 80%;
-    margin-left: 10%;
+export const NavELement = styled(NavLink)`
+    width: 76%;
+    margin-left: 12%;
     font-size: 1.6rem;
-    padding: 10px;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 18px;
+    color: #171717;
+    background-color: transparent;
+    
+    &:hover {
+        background-color: #f1f1f1;
+        color: #877147;
+    }
+
+    &.active {
+        color: #877147;
+        background-color: #d4cec3;
+        &:hover {
+            background-color: #f1f1f1;
+            color: #877147;
+        }
+  }
 `

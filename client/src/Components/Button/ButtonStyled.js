@@ -13,7 +13,6 @@ export const MainButton = styled.button`
     align-items: center;
     border: 0 solid #E2E8F0;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    /* height: 56px; */
     line-height: 24px;
     overflow-wrap: break-word;
     text-decoration: none;

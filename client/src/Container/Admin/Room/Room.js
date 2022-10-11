@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import AddBox from '../../../Components/AddBox/AddBox'
 import Tables from '../../../Components/Tables/Tables'
 
 const Room = () => {
@@ -17,6 +18,7 @@ const Room = () => {
   }, [])
   return (
     <>
+    <AddBox text= 'Add Room'/>
     <Tables
     heading = {['', 'Name', 'Price', 'Capacity', 'Actions']}
     keys = {['name', 'price', 'price']}

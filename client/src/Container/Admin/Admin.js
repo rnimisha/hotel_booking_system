@@ -3,9 +3,11 @@ import React, { useState } from 'react'
 import SideNav from '../../Components/SideNav/SideNav'
 import Title from '../../features/title/Title'
 import { AdminContainer, InnerContainer, MainContainer } from './AdminStyled'
+import Room from './Room/Room'
 
-const Admin = () => {
+const Admin = ({ page }) => {
   const [isToggleMenu, setIsToggleMenu] = useState(false)
+  console.log(page)
   return (
     <AdminContainer>
         <SideNav isToggleMenu={isToggleMenu} setIsToggleMenu={setIsToggleMenu}/>
@@ -14,6 +16,7 @@ const Admin = () => {
         }}>
             <InnerContainer>
                 <Title/>
+                {page === 'room' && <Room/>}
             </InnerContainer>
         </MainContainer>
 

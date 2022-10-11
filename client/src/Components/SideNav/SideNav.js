@@ -68,7 +68,7 @@ const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
             </NavELement>
 
             <NavELement
-            to ='/admin/rooms'
+            to ='/admin/room'
             onClick={() => { dispatch(changeTitle('All Rooms')) }}>
               <LogoText
               icon={<LightOutlinedIcon/>}

@@ -21,32 +21,41 @@ const LoginForm = () => {
       .required('Required')
   })
 
-  const handleSubmit = values => {
+  const onSubmit = (values, { setSubmitting }) => {
     console.log(values)
+    setSubmitting(false)
   }
   return (
     <Formik
     initialValues = {initialValues}
     validationSchema = {loginValidationSchema}
-    onSubmit = {handleSubmit}
+    onSubmit = {onSubmit}
     >
-      <StyledForm>
-          <InputField
-          type='email'
-          name='useremail'
-          label='Email'/>
+      {({
+        isSubmitting,
+        valid
+      }) => {
+        return (
+          <StyledForm>
+              <InputField
+              name='useremail'
+              label='Email'/>
 
-          <InputField
-          type='password'
-          name='userpass'
-          label='Password'/>
-          <br />
+              <InputField
+              type='password'
+              name='userpass'
+              label='Password'/>
+              <br />
 
-          <Button
-          type="submit"
-          text='Login'
-          styling = {{ padding: '15px 40px', marginBottom: '5px' }}/>
-      </StyledForm>
+              <Button
+              text= {isSubmitting ? 'Submiting...' : 'Login'}
+              styling = {{ padding: '15px 40px', marginBottom: '5px' }}
+              disabled= {isSubmitting || !valid}
+              type= 'submit'
+              />
+          </StyledForm>
+        )
+      }}
     </Formik>
   )
 }

@@ -1,12 +1,14 @@
 import React from 'react'
-import { ErrorMessage, useField } from 'formik'
+import { useField, ErrorMessage } from 'formik'
 
 // styled TextField
 import { BorderTextField } from '../Form/FormStyle'
+import { Error } from './InputFieldStyled'
+
 import { FormControl } from '@mui/material'
 
 const InputField = ({ name, label, widthpx, ...props }) => {
-  const [field] = useField(name)
+  const [field, meta] = useField(name)
   return (
     <FormControl sx={{ width: widthpx || '220px' }}>
         <BorderTextField
@@ -14,8 +16,17 @@ const InputField = ({ name, label, widthpx, ...props }) => {
         {...props}
         variant= 'standard'
         label={label}
+        error = {!!((meta?.touched && meta?.error))}
         />
-        <ErrorMessage name={name}/>
+        <ErrorMessage name={name}>
+          {
+            (msg) => (
+                <Error>
+                  {msg}
+                </Error>
+            )
+          }
+        </ErrorMessage>
     </FormControl>
   )
 }

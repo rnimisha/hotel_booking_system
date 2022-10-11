@@ -52,7 +52,7 @@ const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
             onClick={() => { dispatch(changeTitle('Dashboard')) }}>
               <LogoText
               icon={<GridViewOutlinedIcon/>}
-              data={isToggleMenu ? '' : 'Almond Hotel'}
+              data={isToggleMenu ? '' : 'Dashboard'}
               text=''
               gapping='1rem'/>
             </NavELement>
@@ -68,7 +68,7 @@ const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
             </NavELement>
 
             <NavELement
-            to ='admin/rooms'
+            to ='/admin/rooms'
             onClick={() => { dispatch(changeTitle('All Rooms')) }}>
               <LogoText
               icon={<LightOutlinedIcon/>}
@@ -78,7 +78,7 @@ const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
             </NavELement>
 
             <NavELement
-            to ='admin/profile'
+            to ='/admin/profile'
             onClick={() => { dispatch(changeTitle('My Profile')) }}>
               <LogoText
               icon={<ManageAccountsOutlinedIcon/>}

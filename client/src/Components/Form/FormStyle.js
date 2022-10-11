@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Form } from 'formik'
 
 import {
   TextField, Select,
@@ -16,14 +17,6 @@ export const FormContainer = styled.div`
     /* align-items: center; */
     min-height: 100vh;
     z-index: 1298;
-
-    /* background-color:hsla(30,0%,100%,1);
-    background-image:
-    radial-gradient(at 55% 55%, hsla(265,0%,97%,1) 0px, transparent 50%),
-    radial-gradient(at 81% 6%, hsla(38,9%,55%,1) 0px, transparent 50%),
-    radial-gradient(at 5% 5%, hsla(19,13%,61%,1) 0px, transparent 50%),
-    radial-gradient(at 59% 65%, hsla(24,19%,87%,1) 0px, transparent 50%); */
-
 `
 export const FormBox = styled.div`
     width: 40%;
@@ -76,4 +69,13 @@ export const BorderSelect = styled(Select)`
     border-color:  #877147 !important;
     color:  #877147 !important;
   }
+`
+
+export const StyledForm = styled(Form)`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
 `

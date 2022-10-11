@@ -18,7 +18,7 @@ const Room = () => {
   return (
     <>
     <Tables
-    heading = {['View', 'Name', 'Price', 'Capacity', 'Edit/Add']}
+    heading = {['', 'Name', 'Price', 'Capacity', 'Actions']}
     keys = {['name', 'price', 'price']}
     rowData = {rooms}
     />

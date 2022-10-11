@@ -25,10 +25,7 @@ const LoginForm = () => {
     validationSchema = {LOGIN_VALIDATION_SCHEMA}
     onSubmit = {onSubmit}
     >
-      {({
-        isSubmitting,
-        valid
-      }) => {
+      {({ isSubmitting }) => {
         return (
           <StyledForm>
               <InputField name='useremail' label='Email'/>

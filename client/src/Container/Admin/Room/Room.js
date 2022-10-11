@@ -19,6 +19,8 @@ const Room = () => {
     <>
     <Tables
     heading = {['View', 'Name', 'Price', 'Capacity', 'Edit/Add']}
+    keys = {['name', 'price', 'price']}
+    rowData = {rooms}
     />
     </>
   )

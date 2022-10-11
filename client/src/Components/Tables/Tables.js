@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow'
 import TableCell from '@mui/material/TableCell'
 import Paper from '@mui/material/Paper'
 
-const Tables = ({ heading }) => {
+const Tables = ({ heading, keys, rowData }) => {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }}>
@@ -21,17 +21,21 @@ const Tables = ({ heading }) => {
           </TableRow>
         </TableHead>
         <TableBody>
+        {rowData.map((row) => (
             <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
+              key={row.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+              <TableCell>
                 later
               </TableCell>
-              <TableCell align="left"> later</TableCell>
-              <TableCell align="left"> later</TableCell>
-              <TableCell align="left"> later</TableCell>
-              <TableCell align="left"> later</TableCell>
+              {
+                keys.map((item, id) =>
+                    <TableCell key={id} align="left">{row[item]}</TableCell>
+                )
+              }
+              <TableCell align="left">later</TableCell>
             </TableRow>
+        ))}
         </TableBody>
       </Table>
     </TableContainer>

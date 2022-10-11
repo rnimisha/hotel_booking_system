@@ -9,15 +9,15 @@ const Form = ({ formtype }) => {
     <FormContainer>
         <FormBox>
             {
-                formtype === 'login'
-                  ? <>
-                        <LoginForm/>
-                        <Navigate msg='Dont have account yet?' path='register'/>
-                    </>
-                  : <>
-                        <RegisterForm/>
-                        <Navigate msg='Already have account?' path='login'/>
-                    </>
+              formtype === 'login'
+                ? <>
+                      <LoginForm/>
+                      <Navigate msg='Dont have account yet?' path='register'/>
+                  </>
+                : <>
+                      <RegisterForm/>
+                      <Navigate msg='Already have account?' path='login'/>
+                  </>
             }
         </FormBox>
     </FormContainer>

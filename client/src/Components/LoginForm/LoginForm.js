@@ -1,6 +1,6 @@
 import React from 'react'
 import { Formik } from 'formik'
-import * as Yup from 'yup'
+import LOGIN_VALIDATION_SCHEMA from '../../Validation/LoginValidationSchema'
 
 // styled components
 import { StyledForm } from '../Form/FormStyle'
@@ -15,12 +15,6 @@ const LoginForm = () => {
     userpass: ''
   }
 
-  const loginValidationSchema = Yup.object().shape({
-    useremail: Yup.string()
-      .email('Invalid email')
-      .required('Required')
-  })
-
   const onSubmit = (values, { setSubmitting }) => {
     console.log(values)
     setSubmitting(false)
@@ -28,7 +22,7 @@ const LoginForm = () => {
   return (
     <Formik
     initialValues = {initialValues}
-    validationSchema = {loginValidationSchema}
+    validationSchema = {LOGIN_VALIDATION_SCHEMA}
     onSubmit = {onSubmit}
     >
       {({

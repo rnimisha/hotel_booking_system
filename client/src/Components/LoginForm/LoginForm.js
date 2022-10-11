@@ -37,20 +37,13 @@ const LoginForm = () => {
       }) => {
         return (
           <StyledForm>
-              <InputField
-              name='useremail'
-              label='Email'/>
-
-              <InputField
-              type='password'
-              name='userpass'
-              label='Password'/>
+              <InputField name='useremail' label='Email'/>
+              <InputField type='password' name='userpass' label='Password'/>
               <br />
-
               <Button
               text= {isSubmitting ? 'Submiting...' : 'Login'}
               styling = {{ padding: '15px 40px', marginBottom: '5px' }}
-              disabled= {isSubmitting || !valid}
+              disabled= {isSubmitting}
               type= 'submit'
               />
           </StyledForm>

@@ -1,29 +1,48 @@
 import React from 'react'
-
-import {
-  FormControl
-} from '@mui/material'
+import { Formik } from 'formik'
 
 import Button from '../Button/Button'
-import { BorderTextField } from '../Form/FormStyle'
+import { StyledForm } from '../Form/FormStyle'
+import InputField from '../InputField/InputField'
 
 const RegisterForm = () => {
+  const initialValues = {
+    username: '',
+    useremail: '',
+    userpass: '',
+    confirmpass: ''
+  }
+
+  const onSubmit = (values, { setSubmitting }) => {
+    console.log(values)
+    setSubmitting(false)
+  }
+
   return (
-      <form>
-          <FormControl sx={{ width: '220px' }}>
-              <BorderTextField label="Name" variant="standard" />
-          </FormControl>
-          <FormControl sx={{ width: '220px' }}>
-              <BorderTextField label="Email" variant="standard" />
-          </FormControl>
-          <FormControl sx={{ width: '220px' }}>
-              <BorderTextField type="password" label="Password" variant="standard" />
-          </FormControl>
-          <FormControl sx={{ width: '220px', marginBottom: '8px' }}>
-              <BorderTextField type="password" label="Confirm Password" variant="standard" />
-          </FormControl>
-          <Button text='Register' styling = {{ padding: '15px 40px' }}/>
-      </form>
+      <Formik
+      initialValues = {initialValues}
+      onSubmit = {onSubmit}
+      >
+        {({
+          isSubmitting,
+          valid
+        }) => {
+          return (
+          <StyledForm>
+            <InputField type='text' label='Name' name='username'/>
+            <InputField label='Email' name='useremail' />
+            <InputField type='password' label='Password' name='userpass'/>
+            <InputField type='text' label='Confirm Password' name='confirmpass'/>
+            <Button
+            text= {isSubmitting ? 'Submiting...' : 'Register'}
+            styling = {{ padding: '15px 40px', marginBottom: '5px' }}
+            disabled= {isSubmitting}
+            type= 'submit'
+            />
+          </StyledForm>
+          )
+        }}
+      </Formik>
   )
 }
 

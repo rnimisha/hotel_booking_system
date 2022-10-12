@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { format } from 'date-fns'
+import { useSelector, useDispatch } from 'react-redux'
+import { handleClose } from '../../features/modal/modalSlice'
+
 // material ui
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
@@ -37,7 +40,10 @@ const style = {
   p: 4
 }
 
-const ModalForm = ({ open, handleClose, id }) => {
+const ModalForm = ({ id }) => {
+  const open = useSelector((state) => state.modal.open)
+  const dispatch = useDispatch()
+
   const [services, setServices] = useState([])
   const [isChecked, setIsChecked] = useState(new Array(services.length).fill(false))
   const [checkIn, setCheckIn] = useState(null)
@@ -76,7 +82,7 @@ const ModalForm = ({ open, handleClose, id }) => {
       {console.log(bookingDetail)}
         <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => { dispatch(handleClose()) }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         >
@@ -146,7 +152,7 @@ const ModalForm = ({ open, handleClose, id }) => {
                         </Typography>
                     </TotalContainer>
                     <div style={{ width: '80%', display: 'flex', justifyContent: 'center', marginLeft: '10%' }}>
-                        <Button type = 'submit' text='Book now' styling = {{ padding: '20px 40px' }}/>
+                        <Button text='Book now' styling = {{ padding: '20px 40px' }}/>
                     </div>
                 </LocalizationProvider>
             </Form>

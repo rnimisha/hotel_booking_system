@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import titleReducer from '../features/title/titleSlice'
+import modalReducer from '../features/modal/modalSlice'
 
 const store = configureStore({
   reducer: {
-    title: titleReducer
+    title: titleReducer,
+    modal: modalReducer
   }
 })
 

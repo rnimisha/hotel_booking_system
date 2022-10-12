@@ -18,11 +18,6 @@ const RoomDetail = () => {
   // state for room details fetched from api
   const [roomDetail, setRoomDetail] = useState([])
 
-  // modal
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
-
   useEffect(() => {
     fetch('http://localhost:3000/rooms/' + id).then((response) => {
       return response.json()
@@ -42,12 +37,10 @@ const RoomDetail = () => {
             <ImageContainer>
               <Image src={roomImg} alt={roomDetail.name} />
             </ImageContainer>
-            <RoomInfo data ={roomDetail} handleOpen={handleOpen}/>
+            <RoomInfo data ={roomDetail}/>
         </MainContainer>
         <Ammenties data ={roomDetail.ammenties}/>
         <ModalForm
-        open={open}
-        handleClose={handleClose}
         id={id}/>
     </>
   )

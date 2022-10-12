@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { handleOpen } from '../../features/modal/modalSlice'
 
 // styles
 import { InfoContainer, Price, Span } from './RoomInfoStyled'
@@ -12,7 +14,8 @@ import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined'
 import Button from '../Button/Button'
 import LogoText from '../LogoText/LogoText'
 
-const RoomInfo = ({ data, handleOpen }) => {
+const RoomInfo = ({ data }) => {
+  const dispatch = useDispatch()
   const iconStyle = {
     fontSize: '2rem',
     stroke: '#ffffff',
@@ -55,7 +58,7 @@ const RoomInfo = ({ data, handleOpen }) => {
         <Button
         text="Book Now"
         styling = {{ padding: '20px 60px' }}
-        clickEvent = {handleOpen}/>
+        clickEvent = {() => { dispatch(handleOpen()) }}/>
       </div>
     </InfoContainer>
   )

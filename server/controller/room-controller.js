@@ -155,3 +155,19 @@ export const insertRoom = async (req, res) => {
     })
   }
 }
+
+export const updateRoomType = async (req, res) => {
+  try {
+    await roomTypeModel.findOneAndUpdate(
+      { _id: req.body.id },
+      req.body.data
+    )
+    res.json({
+      success: true
+    })
+  } catch (err) {
+    res.status(400).json({
+      error: err.message
+    })
+  }
+}

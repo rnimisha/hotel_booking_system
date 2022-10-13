@@ -18,7 +18,7 @@ import InputField from '../Form/InputField/InputField'
 import Button from '../Button/Button'
 import SelectField from '../Form/SelectField/SelectField'
 
-const RoomForm = () => {
+const RoomForm = ({ populate, setRoomId }) => {
   const [ammenties, setAmmenties] = useState([])
   const open = useSelector((state) => state.modal.open)
   const dispatch = useDispatch()
@@ -32,9 +32,11 @@ const RoomForm = () => {
   }, [])
 
   const initialValues = {
-    roomtypename: '',
+    name: '',
     capacity: '',
-    price: ''
+    price: '',
+    bedrooms: '',
+    barhrooms: ''
   }
 
   const onSubmit = (values, { setSubmitting }) => {
@@ -45,22 +47,27 @@ const RoomForm = () => {
     <div>
         <Modal
         open={open === 'addroomtype'}
-        onClose={() => { dispatch(handleClose()) }}
+        onClose={() => {
+          dispatch(handleClose())
+          setRoomId('')
+        }
+        }
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         >
         <Container style={{ width: '60%' }}>
             <FormHeading> Room Form </FormHeading>
           <Formik
-          initialValues={{ initialValues }}
-           onSubmit = {onSubmit}
+          enableReinitialize
+          initialValues={ populate === {} ? initialValues : populate }
+          onSubmit = {onSubmit}
           >
             {({ isSubmitting }) => {
               return (
                 <StyledForm>
                   <Grid container spacing ={{ xs: 2, md: 3 }} sx={{ padding: '10px 40px' }}>
                     <Grid item xs={12} md={12}>
-                        <InputField type='text' name='roomtypename' label='Name' widthpx='100%'/>
+                        <InputField type='text' name='name' label='Name' widthpx='100%'/>
                     </Grid>
                     <Grid item xs={12} md={6}>
                         <InputField type='number' name='capacity' label='Capacity' widthpx='100%'/>

@@ -10,6 +10,8 @@ import IndividualRoom from '../../../Components/RoomForm/IndividualRoom'
 const Room = () => {
   const dispatch = useDispatch()
   const [rooms, setRooms] = useState([])
+  const [roomId, setRoomId] = useState('')
+  const [populate, setPopulate] = useState({})
   useEffect(() => {
     const query = 'http://localhost:3000/rooms'
     fetch(query).then((response) => {
@@ -23,6 +25,20 @@ const Room = () => {
     })
   }, [])
 
+  useEffect(() => {
+    if (roomId !== '') {
+      fetch('http://localhost:3000/rooms/' + roomId).then((response) => {
+        return response.json()
+      }).then((data) => {
+        setPopulate(data.data)
+      }).catch((error) => {
+        console.log('Error : ' + error)
+      })
+    } else {
+      setPopulate({})
+    }
+  }, [roomId])
+
   return (
     <>
     <AddBox text= 'Add Room Type' clickEvent = {() => { dispatch(handleOpen('addroomtype')) }}/>
@@ -32,8 +48,10 @@ const Room = () => {
     rowData = {rooms}
     modalComponent = {<IndividualRoom/>}
     modalname= 'individualroom'
+    editmodalname = 'addroomtype'
+    setData = {setRoomId}
     />
-    <RoomForm/>
+    <RoomForm populate = {populate} setRoomId= {setRoomId}/>
     </>
   )
 }

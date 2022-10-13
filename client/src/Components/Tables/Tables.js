@@ -16,7 +16,7 @@ import {
 // styled component
 import { EditIcon, DeleteIcon, AddIcon } from './TableStyled'
 
-const Tables = ({ heading, keys, rowData, modalComponent, modalname }) => {
+const Tables = ({ heading, keys, rowData, modalComponent, modalname, editmodalname, setData }) => {
   const dispatch = useDispatch()
   return (
     <>
@@ -58,7 +58,11 @@ const Tables = ({ heading, keys, rowData, modalComponent, modalname }) => {
                       <TableCell align="left">
                           <Typography>
                               <DeleteIcon/>
-                              <EditIcon/>
+                              <EditIcon onClick={() => {
+                                dispatch(handleOpen(editmodalname))
+                                setData(data._id)
+                              }
+                              }/>
                               <AddIcon onClick={() => { dispatch(handleOpen(modalname)) }}/>
                           </Typography>
                       </TableCell>

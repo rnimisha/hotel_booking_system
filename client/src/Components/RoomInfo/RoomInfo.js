@@ -58,7 +58,7 @@ const RoomInfo = ({ data }) => {
         <Button
         text="Book Now"
         styling = {{ padding: '20px 60px' }}
-        clickEvent = {() => { dispatch(handleOpen()) }}/>
+        clickEvent = {() => { dispatch(handleOpen('bookingform')) }}/>
       </div>
     </InfoContainer>
   )

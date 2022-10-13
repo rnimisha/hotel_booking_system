@@ -44,7 +44,7 @@ const RoomForm = () => {
   return (
     <div>
         <Modal
-        open={open}
+        open={open === 'addroomtype'}
         onClose={() => { dispatch(handleClose()) }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

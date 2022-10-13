@@ -10,7 +10,7 @@ const Title = () => {
       padding: '20px',
       fontSize: '1.8rem',
       fontWeight: '100',
-      color: '#171717',
+      color: '#877147',
       marginBottom: '15px'
     }}>
        {title}

@@ -65,7 +65,7 @@ const ModalForm = ({ id }) => {
   return (
     <div>
         <Modal
-        open={open}
+        open={open === 'bookingform'}
         onClose={() => { dispatch(handleClose()) }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

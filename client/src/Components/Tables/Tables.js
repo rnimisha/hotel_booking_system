@@ -12,16 +12,17 @@ import {
 } from '@mui/material'
 
 // icons
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
 
 const Tables = ({ heading, keys, rowData }) => {
   // css object
   const iconStyle = {
     fontSize: '1.5rem',
     stroke: '#ffffff',
-    strokeWidth: 1
+    strokeWidth: 1,
+    marginLeft: '5px'
   }
   return (
     <TableContainer sx={{
@@ -49,13 +50,6 @@ const Tables = ({ heading, keys, rowData }) => {
             {rowData.map((data, id) => (
                 <TableRow key={data._id || id} >
 
-                    {/* view more icon */}
-                    <TableCell align = 'left'>
-                        <Typography>
-                            <VisibilityOutlinedIcon sx={iconStyle}/>
-                        </Typography>
-                    </TableCell>
-
                     {/* other rows */}
                     {keys.map((item, id) =>
                         <TableCell key={id} align="left">
@@ -68,8 +62,9 @@ const Tables = ({ heading, keys, rowData }) => {
                     {/* // actions icon */}
                     <TableCell align="left">
                         <Typography>
-                            <ModeEditOutlineOutlinedIcon sx={iconStyle}/>
                             <DeleteOutlineOutlinedIcon sx={iconStyle}/>
+                            <ModeEditOutlineOutlinedIcon sx={iconStyle}/>
+                            <AddBoxOutlinedIcon sx={iconStyle}/>
                         </Typography>
                     </TableCell>
                 </TableRow>

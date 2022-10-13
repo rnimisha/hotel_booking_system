@@ -24,9 +24,9 @@ const Room = () => {
 
   return (
     <>
-    <AddBox text= 'Add Room' clickEvent = {() => { dispatch(handleOpen()) }}/>
+    <AddBox text= 'Add Room Type' clickEvent = {() => { dispatch(handleOpen()) }}/>
     <Tables
-    heading = {['', 'Name', 'Price', 'Capacity', 'Actions']}
+    heading = {['Name', 'Price', 'Capacity', 'Actions']}
     keys = {['name', 'price', 'price']}
     rowData = {rooms}
     />

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Formik } from 'formik'
-import REGISTER_VALIDATION_SCHEMA from '../../Validation/RegisterValidationSchema'
+import REGISTER_VALIDATION_SCHEMA from '../../../Validation/RegisterValidationSchema'
 
-import Button from '../Button/Button'
-import { StyledForm } from '../Form/FormStyle'
-import InputField from '../InputField/InputField'
+import Button from '../../Button/Button'
+import { StyledForm } from '../FormStyle'
+import InputField from '../../InputField/InputField'
 
 const RegisterForm = () => {
   const initialValues = {

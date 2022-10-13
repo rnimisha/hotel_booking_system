@@ -1,13 +1,13 @@
 import React from 'react'
 import { Formik } from 'formik'
-import LOGIN_VALIDATION_SCHEMA from '../../Validation/LoginValidationSchema'
+import LOGIN_VALIDATION_SCHEMA from '../../../Validation/LoginValidationSchema'
 
 // styled components
-import { StyledForm } from '../Form/FormStyle'
+import { StyledForm } from '../FormStyle'
 
 // components
-import Button from '../Button/Button'
-import InputField from '../InputField/InputField'
+import Button from '../../Button/Button'
+import InputField from '../../InputField/InputField'
 
 const LoginForm = () => {
   const initialValues = {

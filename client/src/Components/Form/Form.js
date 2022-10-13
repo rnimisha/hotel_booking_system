@@ -1,6 +1,6 @@
 import React from 'react'
-import LoginForm from '../LoginForm/LoginForm'
-import RegisterForm from '../RegisterForm/RegisterForm'
+import LoginForm from './LoginForm/LoginForm'
+import RegisterForm from './RegisterForm/RegisterForm'
 import { FormContainer, FormBox } from './FormStyle'
 import Navigate from './Navigate'
 

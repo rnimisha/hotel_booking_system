@@ -26,20 +26,6 @@ import { Form, Container, TotalContainer } from './ModalFormStyled'
 import Button from '../Button/Button'
 import Label from '../Label/Label'
 
-// style
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '60%',
-  height: '70%',
-  bgcolor: 'background.paper',
-  borderRadius: '20px',
-  boxShadow: 24,
-  p: 4
-}
-
 const ModalForm = ({ id }) => {
   const open = useSelector((state) => state.modal.open)
   const dispatch = useDispatch()
@@ -86,7 +72,7 @@ const ModalForm = ({ id }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         >
-        <Container sx={style}>
+        <Container style={{ width: '60%' }}>
             <Typography
             id="modal-modal-title"
             variant="h4"

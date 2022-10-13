@@ -38,7 +38,7 @@ const IndividualRoom = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         >
-        <Container style={{ width: '60%', height: '50%' }}>
+        <Container style={{ width: '60%', minHeight: '40%' }}>
             <FormHeading> Room Number Form </FormHeading>
           <Formik
           initialValues={{ initialValues }}
@@ -47,17 +47,17 @@ const IndividualRoom = () => {
             {({ isSubmitting }) => {
               return (
                 <StyledForm>
-                  <Grid container spacing ={{ xs: 2, md: 3 }} sx={{ padding: '10px 40px' }}>
+                  <Grid container sx={{ padding: '10px 40px', marginBottom: '1.2rem' }}>
                     <Grid item xs={12} md={12}>
                         <InputField type='text' name='roomNo' label='Room Number' widthpx='100%'/>
                     </Grid>
                   </Grid>
-                    <Button
-                    text= {isSubmitting ? 'Submiting...' : 'Add Room'}
-                    styling = {{ padding: '15px 40px', marginBottom: '5px' }}
-                    disabled= {isSubmitting}
-                    type= 'submit'
-                    />
+                  <Button
+                  text= {isSubmitting ? 'Submiting...' : 'Add Room'}
+                  styling = {{ padding: '15px 40px', marginBottom: '5px' }}
+                  disabled= {isSubmitting}
+                  type= 'submit'
+                  />
                 </StyledForm>
               )
             }}

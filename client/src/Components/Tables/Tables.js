@@ -11,19 +11,10 @@ import {
   Typography
 } from '@mui/material'
 
-// icons
-import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
-import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
+// styled component
+import { EditIcon, DeleteIcon, AddIcon } from './TableStyled'
 
 const Tables = ({ heading, keys, rowData }) => {
-  // css object
-  const iconStyle = {
-    fontSize: '1.5rem',
-    stroke: '#ffffff',
-    strokeWidth: 1,
-    marginLeft: '5px'
-  }
   return (
     <TableContainer sx={{
       borderRadius: '25px',
@@ -62,9 +53,9 @@ const Tables = ({ heading, keys, rowData }) => {
                     {/* // actions icon */}
                     <TableCell align="left">
                         <Typography>
-                            <DeleteOutlineOutlinedIcon sx={iconStyle}/>
-                            <ModeEditOutlineOutlinedIcon sx={iconStyle}/>
-                            <AddBoxOutlinedIcon sx={iconStyle}/>
+                            <DeleteIcon/>
+                            <EditIcon/>
+                            <AddIcon/>
                         </Typography>
                     </TableCell>
                 </TableRow>

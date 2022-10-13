@@ -27,3 +27,9 @@ export const TotalContainer = styled.div`
     justify-content: space-between;
     align-items: center;
 `
+
+export const FormHeading = styled.h1`
+    text-align: center;
+    font-weight: 100;
+    color: #877147;
+`

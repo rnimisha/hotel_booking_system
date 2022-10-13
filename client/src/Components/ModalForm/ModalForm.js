@@ -13,14 +13,13 @@ import {
   FormGroup,
   Checkbox,
   FormControlLabel,
-  Typography,
-  Modal
-
+  Modal,
+  Typography
 } from '@mui/material'
 
 // styled components
 import { BorderTextField } from '../Form/FormStyle'
-import { Form, Container, TotalContainer } from './ModalFormStyled'
+import { Form, Container, TotalContainer, FormHeading } from './ModalFormStyled'
 
 // components
 import Button from '../Button/Button'
@@ -73,13 +72,7 @@ const ModalForm = ({ id }) => {
         aria-describedby="modal-modal-description"
         >
         <Container style={{ width: '60%' }}>
-            <Typography
-            id="modal-modal-title"
-            variant="h4"
-            component="h2"
-            sx={{ textAlign: 'center', fontFamily: 'Crimson Pro, serif', fontWeight: '100', color: '#877147' }}>
-                Booking Form
-            </Typography>
+            <FormHeading> Booking Form </FormHeading>
             <Form id="modal-modal-description">
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker

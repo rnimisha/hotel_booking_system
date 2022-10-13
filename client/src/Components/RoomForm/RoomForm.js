@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 
 // styled components
-import { Container } from '../ModalForm/ModalFormStyled'
+import { Container, FormHeading } from '../ModalForm/ModalFormStyled'
 import { StyledForm } from '../Form/FormStyle'
 
 import InputField from '../Form/InputField/InputField'
@@ -42,6 +42,7 @@ const RoomForm = () => {
         aria-describedby="modal-modal-description"
         >
         <Container style={{ width: '60%' }}>
+            <FormHeading> Room Form </FormHeading>
           <Formik
           initialValues={{ initialValues }}
            onSubmit = {onSubmit}
@@ -49,26 +50,26 @@ const RoomForm = () => {
             {({ isSubmitting }) => {
               return (
                 <StyledForm>
-                  <Grid container spacing ={3} sx={{ padding: '10px 40px' }}>
-                    <Grid item sx={12} md={12}>
+                  <Grid container spacing ={{ xs: 2, md: 3 }} sx={{ padding: '10px 40px' }}>
+                    <Grid item xs={12} md={12}>
                         <InputField type='text' name='roomtypename' label='Name' widthpx='100%'/>
                     </Grid>
-                    <Grid item sx={12} md={6}>
+                    <Grid item xs={12} md={6}>
                         <InputField type='number' name='capacity' label='Capacity' widthpx='100%'/>
                     </Grid>
-                    <Grid item sx={12} md={6}>
+                    <Grid item xs={12} md={6}>
                         <InputField type='number' name='price' label='Price' widthpx='100%'/>
                     </Grid>
-                    <Grid item sx={12} md={6}>
+                    <Grid item xs={12} md={6}>
                         <InputField type='number' name='bedrooms' label='Bedrooms' widthpx='100%'/>
                     </Grid>
-                     <Grid item sx={12} md={6}>
+                     <Grid item xs={12} md={6}>
                         <InputField type='number' name='bathrooms' label='Bathrooms' widthpx='100%'/>
                     </Grid>
-                    <Grid item sx={12} md={12}>
+                    <Grid item xs={12} md={12}>
                         <SelectField name='ammenties' label='Ammenties'/>
                     </Grid>
-                     <Grid item sx={12} md={12}>
+                     <Grid item xs={12} md={12}>
                         <InputField
                         type='text'
                         name='description'

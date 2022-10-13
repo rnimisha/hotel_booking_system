@@ -4,7 +4,7 @@ import REGISTER_VALIDATION_SCHEMA from '../../../Validation/RegisterValidationSc
 
 import Button from '../../Button/Button'
 import { StyledForm } from '../FormStyle'
-import InputField from '../../InputField/InputField'
+import InputField from '../InputField/InputField'
 
 const RegisterForm = () => {
   const initialValues = {

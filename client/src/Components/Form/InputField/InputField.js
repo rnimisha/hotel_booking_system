@@ -2,7 +2,7 @@ import React from 'react'
 import { useField, ErrorMessage } from 'formik'
 
 // styled TextField
-import { BorderTextField } from '../Form/FormStyle'
+import { BorderTextField } from '../FormStyle'
 import { Error } from './InputFieldStyled'
 
 import { FormControl } from '@mui/material'

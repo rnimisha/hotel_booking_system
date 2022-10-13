@@ -14,8 +14,9 @@ import {
 import { Container } from '../ModalForm/ModalFormStyled'
 import { StyledForm } from '../Form/FormStyle'
 
-import InputField from '../InputField/InputField'
+import InputField from '../Form/InputField/InputField'
 import Button from '../Button/Button'
+import SelectField from '../Form/SelectField/SelectField'
 
 const RoomForm = () => {
   const open = useSelector((state) => state.modal.open)
@@ -63,6 +64,9 @@ const RoomForm = () => {
                     </Grid>
                      <Grid item sx={12} md={6}>
                         <InputField type='number' name='bathrooms' label='Bathrooms' widthpx='100%'/>
+                    </Grid>
+                    <Grid item sx={12} md={12}>
+                        <SelectField name='ammenties' label='Ammenties'/>
                     </Grid>
                      <Grid item sx={12} md={12}>
                         <InputField

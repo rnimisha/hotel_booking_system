@@ -7,7 +7,7 @@ import { StyledForm } from '../FormStyle'
 
 // components
 import Button from '../../Button/Button'
-import InputField from '../../InputField/InputField'
+import InputField from '../InputField/InputField'
 
 const LoginForm = () => {
   const initialValues = {

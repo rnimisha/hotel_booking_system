@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik'
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -19,8 +19,17 @@ import Button from '../Button/Button'
 import SelectField from '../Form/SelectField/SelectField'
 
 const RoomForm = () => {
+  const [ammenties, setAmmenties] = useState([])
   const open = useSelector((state) => state.modal.open)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    fetch('http://localhost:3000/ammenties').then((response) => {
+      return response.json()
+    }).then((data) => {
+      setAmmenties(data.data)
+    })
+  }, [])
 
   const initialValues = {
     roomtypename: '',
@@ -66,7 +75,7 @@ const RoomForm = () => {
                         <InputField type='number' name='bathrooms' label='Bathrooms' widthpx='100%'/>
                     </Grid>
                     <Grid item xs={12} md={12}>
-                        <SelectField name='ammenties' label='Ammenties'/>
+                        <SelectField name='ammenties' label='Ammenties' options={ammenties}/>
                     </Grid>
                      <Grid item xs={12} md={12}>
                         <InputField

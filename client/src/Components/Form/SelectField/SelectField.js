@@ -2,12 +2,7 @@ import * as React from 'react'
 import { MultipleSelect } from 'react-select-material-ui'
 import { useField } from 'formik'
 
-const SelectField = ({ name, label, ...props }) => {
-  const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
+const SelectField = ({ name, label, options, ...props }) => {
   const [field, state, { setValue, setTouched }] = useField(name)
 
   const handleChange = (values) => {
@@ -31,9 +26,6 @@ const SelectField = ({ name, label, ...props }) => {
             msgNoOptionsMatchFilter: 'No city name matches the filter'
           }}
           error = {!!((state?.touched && state?.error))}
-          style={{
-            borderColor: 'red'
-          }}
         />
       </>
   )

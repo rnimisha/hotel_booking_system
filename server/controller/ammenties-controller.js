@@ -19,6 +19,7 @@ export const getAllAmmenties = async (req, res) => {
       [
         {
           $project: {
+            _id: 0,
             value: '$_id',
             label: '$name'
           }

@@ -12,3 +12,25 @@ export const addAmmenties = async (req, res) => {
     })
   }
 }
+
+export const getAllAmmenties = async (req, res) => {
+  try {
+    const data = await ammentiesModel.aggregate(
+      [
+        {
+          $project: {
+            value: '$_id',
+            label: '$name'
+          }
+        }
+      ]
+    )
+    res.json({
+      data
+    })
+  } catch (err) {
+    res.status(400).json({
+      error: err.message
+    })
+  }
+}

@@ -19,7 +19,6 @@ const Rooms = () => {
   useEffect(() => {
     let query = `http://localhost:3000/rooms/?roomtype=${filterData.roomtype}`
 
-    console.log(filterData.checkin)
     if (filterData.capacity !== null) {
       query += `&capacity=${filterData.capacity}`
     }
@@ -34,7 +33,6 @@ const Rooms = () => {
       return response.json()
     }).then((data) => {
       setRooms(data.data)
-      console.log(data.data)
     }).catch((error) => {
       console.log('Error : ' + error)
     })

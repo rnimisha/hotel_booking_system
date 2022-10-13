@@ -2,7 +2,6 @@ import roomModel from '../model/room.js'
 
 export const insertBooking = async (req, res) => {
   try {
-    console.log(req.body)
     await roomModel.findOneAndUpdate(
       { _id: req.body.id },
       { $push: { bookings: req.body.data } }

@@ -64,7 +64,6 @@ const ModalForm = ({ id }) => {
 
   return (
     <div>
-      {console.log(bookingDetail)}
         <Modal
         open={open}
         onClose={() => { dispatch(handleClose()) }}

@@ -12,7 +12,6 @@ const SelectField = ({ name, label, ...props }) => {
 
   const handleChange = (values) => {
     setValue(values)
-    console.log(values)
   }
 
   return (

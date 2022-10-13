@@ -16,7 +16,6 @@ const LoginForm = () => {
   }
 
   const onSubmit = (values, { setSubmitting }) => {
-    console.log(values)
     setSubmitting(false)
   }
   return (

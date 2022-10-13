@@ -29,7 +29,6 @@ const RoomForm = () => {
   }
 
   const onSubmit = (values, { setSubmitting }) => {
-    console.log(values)
     setSubmitting(false)
   }
 

@@ -1,5 +1,5 @@
 import express from 'express'
-import { getRooms, getRoomDetailById, insertRoom, insertRoomType, updateRoomType, deleteRoomType, getRoomNoByType } from '../../controller/room-controller.js'
+import { getRooms, getRoomDetailById, insertRoom, insertRoomType, updateRoomType, deleteRoomType, getRoomNoByType, deleteRoomNo } from '../../controller/room-controller.js'
 
 const router = express.Router()
 
@@ -13,5 +13,6 @@ router.post('/addroomtype', insertRoomType)
 router.put('/', updateRoomType)
 
 router.delete('/', deleteRoomType)
+router.delete('/roomno', deleteRoomNo)
 
 export default router

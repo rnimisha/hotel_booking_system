@@ -119,7 +119,7 @@ export const getRooms = async (req, res) => {
 
 export const getRoomNoByType = async (req, res) => {
   try {
-    const rooms = await roomModel.find({ roomType: req.params.roomtype })
+    const rooms = await roomModel.find({ roomType: req.params.roomtype, status: 'active' })
     res.json({
       data: rooms
     })
@@ -202,7 +202,7 @@ export const updateRoomType = async (req, res) => {
 
 export const deleteRoomType = async (req, res) => {
   try {
-    await roomTypeModel.findOneAndDelete({ _id: req.body.id, status: 'active' })
+    await roomTypeModel.findOneAndDelete({ _id: req.body.id })
     res.json({
       success: true
     })
@@ -214,11 +214,12 @@ export const deleteRoomType = async (req, res) => {
 }
 
 export const deleteRoomNo = async (req, res) => {
+  console.log('hello')
   try {
-    await roomTypeModel.findOneAndUpdate({
-      _id: req.body.id,
-      status: 'inactive'
-    })
+    await roomModel.findOneAndUpdate(
+      { _id: req.body.id },
+      { status: 'inactive' }
+    )
     res.json({
       success: true
     })

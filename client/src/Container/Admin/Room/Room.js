@@ -5,7 +5,6 @@ import { handleOpen, handleClose } from '../../../features/modal/modalSlice'
 import AddBox from '../../../Components/AddBox/AddBox'
 import Tables from '../../../Components/Tables/Tables'
 import RoomForm from '../../../Components/RoomForm/RoomForm'
-import IndividualRoom from '../../../Components/RoomForm/IndividualRoom'
 
 const Room = () => {
   const dispatch = useDispatch()
@@ -72,8 +71,6 @@ const Room = () => {
       heading = {['Name', 'Price(Rs.)', 'Capacity', 'Actions', 'Rooms']}
       keys = {['name', 'price', 'capacity']}
       rowData = {rooms}
-      modalComponent = {<IndividualRoom roomId={roomId} setRoomId= {setRoomId}/>}
-      modalname= 'individualroom'
       editmodalname = 'addroomtype'
       setData = {setRoomId}
       text='Do you want to delete the room?'

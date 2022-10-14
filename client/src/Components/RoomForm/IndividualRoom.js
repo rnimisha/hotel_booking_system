@@ -18,7 +18,7 @@ import { StyledForm } from '../Form/FormStyle'
 import InputField from '../Form/InputField/InputField'
 import Button from '../Button/Button'
 
-const IndividualRoom = ({ roomId, setRoomId }) => {
+const IndividualRoom = ({ roomId, getRoomList }) => {
   const open = useSelector((state) => state.modal.open)
   const dispatch = useDispatch()
 
@@ -28,6 +28,7 @@ const IndividualRoom = ({ roomId, setRoomId }) => {
   }
 
   const onSubmit = (values, { setSubmitting }) => {
+    console.log(values)
     const requestOptions =
       {
         method: 'POST',
@@ -43,9 +44,9 @@ const IndividualRoom = ({ roomId, setRoomId }) => {
       })
       .then((data) => {
         dispatch(handleClose())
-        setRoomId('')
       })
     setSubmitting(false)
+    getRoomList()
   }
 
   return (
@@ -54,7 +55,6 @@ const IndividualRoom = ({ roomId, setRoomId }) => {
         open={open === 'individualroom'}
         onClose={() => {
           dispatch(handleClose())
-          setRoomId('')
         }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -62,8 +62,9 @@ const IndividualRoom = ({ roomId, setRoomId }) => {
         <Container style={{ width: '60%', minHeight: '40%' }}>
             <FormHeading> Room Number Form </FormHeading>
           <Formik
-          initialValues={{ initialValues }}
-           onSubmit = {onSubmit}
+          enableReinitialize
+          initialValues={ initialValues }
+          onSubmit = {onSubmit}
           >
             {({ isSubmitting }) => {
               return (

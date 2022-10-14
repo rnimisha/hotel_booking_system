@@ -55,6 +55,28 @@ const RoomList = () => {
       })
   }
 
+  const checkAvailibility = (dateArray) => {
+    if (dateArray.length === 0) {
+      return true
+    }
+
+    let currentDate = new Date()
+    currentDate = currentDate.getTime()
+
+    const booked = dateArray.filter((item) => {
+      let checkin = new Date(item.checkInDate)
+      let checkout = new Date(item.checkOutDate)
+      checkin = checkin.getTime()
+      checkout = checkout.getTime()
+      return ((checkin < currentDate) && (checkout > currentDate))
+    })
+
+    if (booked.length === 0) {
+      return true
+    }
+    return false
+  }
+
   return (
     <>
        <AddBox text= 'Add Room No' clickEvent = {() => { dispatch(handleOpen('individualroom')) }}/>
@@ -68,16 +90,18 @@ const RoomList = () => {
                     <FormHeading style={{ fontSize: '3.5rem' }}>
                       {item.roomNo}
                     </FormHeading>
-                    <span>available</span>
-                    <Grid container spacing ={2} justifyContent="space-between">
+                    <span>
+                      {
+                        checkAvailibility(item.bookings) ? 'available' : 'unavailable'
+                      }
+
+                    </span>
+                    <Grid container spacing ={2} justifyContent="center">
                       <Grid item>
                         <DeleteIcon onClick={() => {
                           dispatch(handleOpen('confirmbox'))
                           setRoomNoId(item._id)
                         }}/>
-                      </Grid>
-                      <Grid item>
-                        <span>Bookings</span>
                       </Grid>
                     </Grid>
                   </Paper>

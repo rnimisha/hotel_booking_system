@@ -19,7 +19,7 @@ import InputField from '../Form/InputField/InputField'
 import Button from '../Button/Button'
 import SelectField from '../Form/SelectField/SelectField'
 
-const RoomForm = ({ populate, setRoomId, rooms, setRooms }) => {
+const RoomForm = ({ populate, roomId, setRoomId, rooms, setRooms, getRooms }) => {
   const [ammenties, setAmmenties] = useState([])
 
   const open = useSelector((state) => state.modal.open)
@@ -67,6 +67,27 @@ const RoomForm = ({ populate, setRoomId, rooms, setRooms }) => {
           dispatch(handleClose())
         })
       setSubmitting(false)
+    } else {
+      const requestOptions =
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: roomId,
+          data: values
+        })
+      }
+      fetch('http://localhost:3000/rooms', requestOptions)
+        .then((response) => {
+          return response.json()
+        })
+        .then((data) => {
+          getRooms()
+          dispatch(handleClose())
+        })
+      setSubmitting(false)
     }
   }
 
@@ -93,13 +114,6 @@ const RoomForm = ({ populate, setRoomId, rooms, setRooms }) => {
               return (
                 <StyledForm>
                   <Grid container spacing ={{ xs: 2, md: 3 }} sx={{ padding: '10px 40px' }}>
-                    {
-                      (Object.keys(populate).length !== 0)
-                        ? <Grid item xs={12} md={12} sx={{ display: 'none' }}>
-                              <InputField type='hidden' name='_id' label='_id' widthpx='100%'/>
-                          </Grid>
-                        : null
-                    }
                     <Grid item xs={12} md={12}>
                         <InputField type='text' name='name' label='Name' widthpx='100%'/>
                     </Grid>

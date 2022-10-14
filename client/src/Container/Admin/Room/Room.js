@@ -15,7 +15,7 @@ const Room = () => {
   // data of room to populate on form
   const [populate, setPopulate] = useState({})
 
-  useEffect(() => {
+  const getRooms = () => {
     const query = 'http://localhost:3000/rooms'
     fetch(query).then((response) => {
       return response.json()
@@ -24,6 +24,10 @@ const Room = () => {
     }).catch((error) => {
       console.log('Error : ' + error)
     })
+  }
+
+  useEffect(() => {
+    getRooms()
   }, [])
 
   useEffect(() => {
@@ -52,7 +56,7 @@ const Room = () => {
       editmodalname = 'addroomtype'
       setData = {setRoomId}
       />
-      <RoomForm populate = {populate} setRoomId= {setRoomId} rooms={rooms} setRooms={setRooms}/>
+      <RoomForm populate = {populate} roomId={roomId} setRoomId= {setRoomId} rooms={rooms} setRooms={setRooms} getRooms={getRooms}/>
     </>
   )
 }

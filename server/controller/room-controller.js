@@ -67,15 +67,6 @@ export const getRooms = async (req, res) => {
                     }
                   }
                 ]
-
-              // {
-              //   $elemMatch: {
-              //     $and: [
-              //       { checkInDate: { $gte: new Date('2025-01-02') } }, // greater than new checoutdate
-              //       { checkOutDate: { $lte: new Date('2025-01-01') } } // less than new check in date
-              //     ]
-              //   }
-              // }
               }
 
             ]
@@ -118,7 +109,21 @@ export const getRooms = async (req, res) => {
 
 export const getRoomDetailById = async (req, res) => {
   try {
-    const roomDetail = await roomTypeModel.findOne({ _id: req.params.id }).populate({ path: 'ammenties', model: ammentiesModel })
+    const roomDetail = await roomTypeModel.findOne(
+      {
+        _id: req.params.id
+      })
+      .populate(
+        {
+          path: 'ammenties',
+          model: ammentiesModel,
+          select: {
+            value: '$_id',
+            label: '$name',
+            name: 1
+          }
+        }
+      )
     res.json({
       data: roomDetail
     })

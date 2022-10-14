@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { changeTitle } from '../../features/title/titleSlice'
 
@@ -21,10 +21,23 @@ import LogoText from '../LogoText/LogoText'
 
 const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
   const dispatch = useDispatch()
+  const [width, setWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    function handleResize () {
+      setWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [width])
+
+  useEffect(() => {
+    width < 900 && setIsToggleMenu(true)
+    width > 900 && setIsToggleMenu(false)
+  }, [width])
+
   return (
-    <SideNavBar style={{
-      width: isToggleMenu ? '8vw' : '20vw'
-    }}>
+    <SideNavBar>
         <LogoHeader>
             {!isToggleMenu && <LogoContainer style={{ marginTop: '10px' }}>
                 <img src={logoimg} alt="logo" style={{ height: '80px', width: '100px', cursor: 'pointer' }}/>

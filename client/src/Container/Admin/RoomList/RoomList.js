@@ -14,6 +14,7 @@ import { DeleteIcon } from '../../../Components/Tables/TableStyled'
 import AddBox from '../../../Components/AddBox/AddBox'
 import IndividualRoom from '../../../Components/RoomForm/IndividualRoom'
 import ConfirmBox from '../../../Components/ConfirmBox/ConfirmBox'
+import { StatusBar } from './RoomListStyled'
 
 const RoomList = () => {
   const dispatch = useDispatch()
@@ -90,12 +91,15 @@ const RoomList = () => {
                     <FormHeading style={{ fontSize: '3.5rem' }}>
                       {item.roomNo}
                     </FormHeading>
-                    <span>
-                      {
-                        checkAvailibility(item.bookings) ? 'available' : 'unavailable'
-                      }
-
-                    </span>
+                    {
+                       checkAvailibility(item.bookings)
+                         ? <StatusBar color='#a6c29d'>
+                          available
+                       </StatusBar>
+                         : <StatusBar color ='#c9a5a5'>
+                          booked
+                       </StatusBar>
+                    }
                     <Grid container spacing ={2} justifyContent="center">
                       <Grid item>
                         <DeleteIcon onClick={() => {

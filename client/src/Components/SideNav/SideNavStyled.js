@@ -9,6 +9,16 @@ export const SideNavBar = styled.div`
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    width: 20vw;
+    @media (max-width: 800px) {
+       width: 10vw;
+    }
+     @media (max-width: 680px) {
+       width: 15vw;
+    }
+     @media (max-width: 460px) {
+       width: 20vw;
+    }
 `
 export const LogoHeader = styled.div`
     width: 100%;
@@ -50,6 +60,7 @@ export const NavELement = styled(NavLink)`
     border-radius: 18px;
     color: #171717;
     background-color: transparent;
+    font-size: 4rem !important;
     
     &:hover {
         background-color: #f1f1f1;

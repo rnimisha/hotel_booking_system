@@ -119,7 +119,7 @@ export const getRooms = async (req, res) => {
 
 export const getRoomNoByType = async (req, res) => {
   try {
-    const rooms = await roomModel.find()
+    const rooms = await roomModel.find({ roomType: req.params.roomtype })
     res.json({
       data: rooms
     })

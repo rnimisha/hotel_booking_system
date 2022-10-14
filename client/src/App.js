@@ -49,6 +49,7 @@ const App = () => {
           <Route path='admin/dashboard' element={<Admin page='dashboard'/>}/>
           <Route path='admin/bookings' element={<Admin page='booking'/>}/>
           <Route path='admin/room' element={<Admin page='room'/>}/>
+          <Route path='admin/roomlist/:roomid' element={<Admin page='roomlist'/>}/>
           <Route path='admin/profile' element={<Admin page='profile'/>}/>
         </Routes>
       </BrowserRouter>

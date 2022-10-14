@@ -14,8 +14,9 @@ import {
 } from '@mui/material'
 
 // styled component
-import { EditIcon, DeleteIcon, AddIcon } from './TableStyled'
+import { EditIcon, DeleteIcon, AddIcon, ViewIcon } from './TableStyled'
 import ConfirmBox from '../ConfirmBox/ConfirmBox'
+import { NavLink } from 'react-router-dom'
 
 const Tables = ({ heading, keys, rowData, modalComponent, modalname, editmodalname, setData, text, clearId, deleteEvent }) => {
   const dispatch = useDispatch()
@@ -72,6 +73,14 @@ const Tables = ({ heading, keys, rowData, modalComponent, modalname, editmodalna
                                 setData(data._id)
                               }}/>
                           </Typography>
+                      </TableCell>
+                      <TableCell align="left">
+                        <NavLink to={'/admin/roomlist/' + data._id}>
+                          <Typography>
+                              <ViewIcon onClick={null}/>
+                          </Typography>
+                        </NavLink>
+
                       </TableCell>
                   </TableRow>
               ))}

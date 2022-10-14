@@ -4,6 +4,7 @@ import SideNav from '../../Components/SideNav/SideNav'
 import Title from '../../features/title/Title'
 import { AdminContainer, InnerContainer, MainContainer } from './AdminStyled'
 import Room from './Room/Room'
+import RoomList from './RoomList/RoomList'
 
 const Admin = ({ page }) => {
   const [isToggleMenu, setIsToggleMenu] = useState(false)
@@ -17,6 +18,7 @@ const Admin = ({ page }) => {
             <InnerContainer>
                 <Title/>
                 {page === 'room' && <Room/>}
+                {page === 'roomlist' && <RoomList/>}
             </InnerContainer>
         </MainContainer>
 

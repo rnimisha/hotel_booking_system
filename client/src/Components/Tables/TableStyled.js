@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 
 const sharedStyle = css`
     font-size: 1.5rem;
@@ -25,6 +26,12 @@ export const DeleteIcon = styled(DeleteOutlineOutlinedIcon)`
 `
 
 export const AddIcon = styled(AddBoxOutlinedIcon)`
+    ${sharedStyle}
+    &:hover{
+            color: #58a865
+        }
+`
+export const ViewIcon = styled(VisibilityOutlinedIcon)`
     ${sharedStyle}
     &:hover{
             color: #58a865

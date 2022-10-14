@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/', getRooms)
 router.get('/:id', getRoomDetailById)
-router.get('/roomno/roomno', getRoomNoByType)
+router.get('/roomno/:roomtype', getRoomNoByType)
 
 router.post('/addroom', insertRoom)
 router.post('/addroomtype', insertRoomType)

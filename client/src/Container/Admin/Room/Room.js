@@ -69,7 +69,7 @@ const Room = () => {
     <>
       <AddBox text= 'Add Room Type' clickEvent = {() => { dispatch(handleOpen('addroomtype')) }}/>
       <Tables
-      heading = {['Name', 'Price(Rs.)', 'Capacity', 'Actions']}
+      heading = {['Name', 'Price(Rs.)', 'Capacity', 'Actions', 'Rooms']}
       keys = {['name', 'price', 'capacity']}
       rowData = {rooms}
       modalComponent = {<IndividualRoom roomId={roomId} setRoomId= {setRoomId}/>}

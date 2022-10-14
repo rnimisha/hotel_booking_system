@@ -46,6 +46,7 @@ const RoomForm = ({ populate, roomId, setRoomId, rooms, setRooms, getRooms }) =>
   }
 
   const onSubmit = (values, { setSubmitting }) => {
+    // add new room
     if ((Object.keys(populate).length === 0)) {
       const requestOptions =
       {
@@ -68,6 +69,7 @@ const RoomForm = ({ populate, roomId, setRoomId, rooms, setRooms, getRooms }) =>
         })
       setSubmitting(false)
     } else {
+      // udapte room
       const requestOptions =
       {
         method: 'PUT',

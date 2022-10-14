@@ -202,7 +202,23 @@ export const updateRoomType = async (req, res) => {
 
 export const deleteRoomType = async (req, res) => {
   try {
-    await roomTypeModel.findOneAndDelete({ _id: req.body.id })
+    await roomTypeModel.findOneAndDelete({ _id: req.body.id, status: 'active' })
+    res.json({
+      success: true
+    })
+  } catch (err) {
+    res.status(400).json({
+      error: err.message
+    })
+  }
+}
+
+export const deleteRoomNo = async (req, res) => {
+  try {
+    await roomTypeModel.findOneAndUpdate({
+      _id: req.body.id,
+      status: 'inactive'
+    })
     res.json({
       success: true
     })

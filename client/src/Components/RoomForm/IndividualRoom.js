@@ -18,15 +18,33 @@ import { StyledForm } from '../Form/FormStyle'
 import InputField from '../Form/InputField/InputField'
 import Button from '../Button/Button'
 
-const IndividualRoom = () => {
+const IndividualRoom = ({ roomId, setRoomId }) => {
   const open = useSelector((state) => state.modal.open)
   const dispatch = useDispatch()
 
   const initialValues = {
+    roomType: roomId,
     roomNo: ''
   }
 
   const onSubmit = (values, { setSubmitting }) => {
+    const requestOptions =
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      }
+
+    fetch('http://localhost:3000/rooms/addroom', requestOptions)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        dispatch(handleClose())
+        setRoomId('')
+      })
     setSubmitting(false)
   }
 
@@ -34,7 +52,10 @@ const IndividualRoom = () => {
     <div>
         <Modal
         open={open === 'individualroom'}
-        onClose={() => { dispatch(handleClose()) }}
+        onClose={() => {
+          dispatch(handleClose())
+          setRoomId('')
+        }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         >

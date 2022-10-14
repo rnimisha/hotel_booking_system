@@ -67,7 +67,10 @@ const Tables = ({ heading, keys, rowData, modalComponent, modalname, editmodalna
                                 setData(data._id)
                               }
                               }/>
-                              <AddIcon onClick={() => { dispatch(handleOpen(modalname)) }}/>
+                              <AddIcon onClick={() => {
+                                dispatch(handleOpen(modalname))
+                                setData(data._id)
+                              }}/>
                           </Typography>
                       </TableCell>
                   </TableRow>

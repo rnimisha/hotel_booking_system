@@ -72,7 +72,7 @@ const Room = () => {
       heading = {['Name', 'Price(Rs.)', 'Capacity', 'Actions']}
       keys = {['name', 'price', 'capacity']}
       rowData = {rooms}
-      modalComponent = {<IndividualRoom/>}
+      modalComponent = {<IndividualRoom roomId={roomId} setRoomId= {setRoomId}/>}
       modalname= 'individualroom'
       editmodalname = 'addroomtype'
       setData = {setRoomId}

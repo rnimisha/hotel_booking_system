@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { handleOpen } from '../../../features/modal/modalSlice'
+import { handleOpen, handleClose } from '../../../features/modal/modalSlice'
 
 import AddBox from '../../../Components/AddBox/AddBox'
 import Tables from '../../../Components/Tables/Tables'
@@ -24,6 +24,27 @@ const Room = () => {
     }).catch((error) => {
       console.log('Error : ' + error)
     })
+  }
+
+  const deleteRoom = () => {
+    const requestOptions =
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: roomId
+      })
+    }
+    fetch('http://localhost:3000/rooms', requestOptions)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        getRooms()
+        dispatch(handleClose())
+      })
   }
 
   useEffect(() => {
@@ -56,8 +77,11 @@ const Room = () => {
       editmodalname = 'addroomtype'
       setData = {setRoomId}
       text='Do you want to delete the room?'
+      roomId={roomId} setRoomId= {setRoomId}
+      deleteEvent = {deleteRoom}
+      clearId = {setRoomId}
       />
-      <RoomForm populate = {populate} roomId={roomId} setRoomId= {setRoomId} rooms={rooms} setRooms={setRooms} getRooms={getRooms}/>
+      <RoomForm populate = {populate} roomId={roomId} setRoomId= {setRoomId} getRooms={getRooms}/>
     </>
   )
 }

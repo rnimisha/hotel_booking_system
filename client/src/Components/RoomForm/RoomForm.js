@@ -19,7 +19,7 @@ import InputField from '../Form/InputField/InputField'
 import Button from '../Button/Button'
 import SelectField from '../Form/SelectField/SelectField'
 
-const RoomForm = ({ populate, roomId, setRoomId, rooms, setRooms, getRooms }) => {
+const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
   const [ammenties, setAmmenties] = useState([])
 
   const open = useSelector((state) => state.modal.open)
@@ -62,9 +62,7 @@ const RoomForm = ({ populate, roomId, setRoomId, rooms, setRooms, getRooms }) =>
           return response.json()
         })
         .then((data) => {
-          const temp = [...rooms]
-          temp.unshift(data.success)
-          setRooms(temp)
+          getRooms()
           dispatch(handleClose())
         })
       setSubmitting(false)

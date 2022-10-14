@@ -17,7 +17,7 @@ import {
 import { EditIcon, DeleteIcon, AddIcon } from './TableStyled'
 import ConfirmBox from '../ConfirmBox/ConfirmBox'
 
-const Tables = ({ heading, keys, rowData, modalComponent, modalname, editmodalname, setData, text }) => {
+const Tables = ({ heading, keys, rowData, modalComponent, modalname, editmodalname, setData, text, clearId, deleteEvent }) => {
   const dispatch = useDispatch()
   return (
     <>
@@ -58,7 +58,10 @@ const Tables = ({ heading, keys, rowData, modalComponent, modalname, editmodalna
                       {/* // actions icon */}
                       <TableCell align="left">
                           <Typography>
-                              <DeleteIcon/>
+                              <DeleteIcon onClick={() => {
+                                dispatch(handleOpen('confirmbox'))
+                                setData(data._id)
+                              }}/>
                               <EditIcon onClick={() => {
                                 dispatch(handleOpen(editmodalname))
                                 setData(data._id)
@@ -74,7 +77,7 @@ const Tables = ({ heading, keys, rowData, modalComponent, modalname, editmodalna
         </Table>
       </TableContainer>
      {modalComponent}
-     <ConfirmBox text={text}/>
+     <ConfirmBox text={text} clickEvent={deleteEvent} clearId={clearId}/>
     </>
   )
 }

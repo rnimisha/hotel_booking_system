@@ -82,12 +82,22 @@ export const getRooms = async (req, res) => {
             bathrooms: { $first: '$bathrooms' },
             ammenties: { $first: '$ammenties' }
           }
+        },
+        {
+          $sort: {
+            name: 1
+          }
         }
       ])
     } else {
       allRooms = await roomTypeModel.aggregate([
         {
           $match: filterObj
+        },
+        {
+          $sort: {
+            name: 1
+          }
         }
       ])
     }

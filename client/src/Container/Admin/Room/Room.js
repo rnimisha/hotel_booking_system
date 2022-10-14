@@ -10,16 +10,17 @@ import IndividualRoom from '../../../Components/RoomForm/IndividualRoom'
 const Room = () => {
   const dispatch = useDispatch()
   const [rooms, setRooms] = useState([])
+  // id of room selected to be edited
   const [roomId, setRoomId] = useState('')
+  // data of room to populate on form
   const [populate, setPopulate] = useState({})
+
   useEffect(() => {
     const query = 'http://localhost:3000/rooms'
     fetch(query).then((response) => {
       return response.json()
     }).then((data) => {
       setRooms(data.data)
-      console.log(rooms)
-      console.log(data.data)
     }).catch((error) => {
       console.log('Error : ' + error)
     })
@@ -41,17 +42,17 @@ const Room = () => {
 
   return (
     <>
-    <AddBox text= 'Add Room Type' clickEvent = {() => { dispatch(handleOpen('addroomtype')) }}/>
-    <Tables
-    heading = {['Name', 'Price(Rs.)', 'Capacity', 'Actions']}
-    keys = {['name', 'price', 'capacity']}
-    rowData = {rooms}
-    modalComponent = {<IndividualRoom/>}
-    modalname= 'individualroom'
-    editmodalname = 'addroomtype'
-    setData = {setRoomId}
-    />
-    <RoomForm populate = {populate} setRoomId= {setRoomId}/>
+      <AddBox text= 'Add Room Type' clickEvent = {() => { dispatch(handleOpen('addroomtype')) }}/>
+      <Tables
+      heading = {['Name', 'Price(Rs.)', 'Capacity', 'Actions']}
+      keys = {['name', 'price', 'capacity']}
+      rowData = {rooms}
+      modalComponent = {<IndividualRoom/>}
+      modalname= 'individualroom'
+      editmodalname = 'addroomtype'
+      setData = {setRoomId}
+      />
+      <RoomForm populate = {populate} setRoomId= {setRoomId} rooms={rooms} setRooms={setRooms}/>
     </>
   )
 }

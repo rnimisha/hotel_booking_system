@@ -13,7 +13,7 @@ const SelectField = ({ name, label, options, ...props }) => {
       <>
         <MultipleSelect
           label={label}
-          ismulti
+          ismulti = "true"
           {...field}
           {...props}
           value={state?.value}

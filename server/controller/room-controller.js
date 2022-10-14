@@ -131,9 +131,9 @@ export const getRoomDetailById = async (req, res) => {
 
 export const insertRoomType = async (req, res) => {
   try {
-    await roomTypeModel.create(req.body)
+    const room = await roomTypeModel.create(req.body)
     res.json({
-      success: true
+      success: room
     })
   } catch (err) {
     res.status(400).json({

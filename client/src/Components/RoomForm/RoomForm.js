@@ -14,12 +14,14 @@ import {
 import { Container, FormHeading } from '../ModalForm/ModalFormStyled'
 import { StyledForm } from '../Form/FormStyle'
 
+// components
 import InputField from '../Form/InputField/InputField'
 import Button from '../Button/Button'
 import SelectField from '../Form/SelectField/SelectField'
 
-const RoomForm = ({ populate, setRoomId }) => {
+const RoomForm = ({ populate, setRoomId, rooms, setRooms }) => {
   const [ammenties, setAmmenties] = useState([])
+
   const open = useSelector((state) => state.modal.open)
   const dispatch = useDispatch()
 
@@ -28,6 +30,8 @@ const RoomForm = ({ populate, setRoomId }) => {
       return response.json()
     }).then((data) => {
       setAmmenties(data.data)
+    }).catch((error) => {
+      console.log('Error : ' + error)
     })
   }, [])
 
@@ -36,11 +40,34 @@ const RoomForm = ({ populate, setRoomId }) => {
     capacity: '',
     price: '',
     bedrooms: '',
-    barhrooms: ''
+    bathrooms: '',
+    ammenties: [],
+    description: ''
   }
 
   const onSubmit = (values, { setSubmitting }) => {
-    setSubmitting(false)
+    if ((Object.keys(populate).length === 0)) {
+      const requestOptions =
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      }
+
+      fetch('http://localhost:3000/rooms/addroomtype', requestOptions)
+        .then((response) => {
+          return response.json()
+        })
+        .then((data) => {
+          const temp = [...rooms]
+          temp.unshift(data.success)
+          setRooms(temp)
+          dispatch(handleClose())
+        })
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -59,13 +86,20 @@ const RoomForm = ({ populate, setRoomId }) => {
             <FormHeading> Room Form </FormHeading>
           <Formik
           enableReinitialize
-          initialValues={ populate === {} ? initialValues : populate }
+          initialValues={ (Object.keys(populate).length === 0) ? initialValues : populate }
           onSubmit = {onSubmit}
           >
             {({ isSubmitting }) => {
               return (
                 <StyledForm>
                   <Grid container spacing ={{ xs: 2, md: 3 }} sx={{ padding: '10px 40px' }}>
+                    {
+                      (Object.keys(populate).length !== 0)
+                        ? <Grid item xs={12} md={12} sx={{ display: 'none' }}>
+                              <InputField type='hidden' name='_id' label='_id' widthpx='100%'/>
+                          </Grid>
+                        : null
+                    }
                     <Grid item xs={12} md={12}>
                         <InputField type='text' name='name' label='Name' widthpx='100%'/>
                     </Grid>

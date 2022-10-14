@@ -55,6 +55,7 @@ const Room = () => {
       modalname= 'individualroom'
       editmodalname = 'addroomtype'
       setData = {setRoomId}
+      text='Do you want to delete the room?'
       />
       <RoomForm populate = {populate} roomId={roomId} setRoomId= {setRoomId} rooms={rooms} setRooms={setRooms} getRooms={getRooms}/>
     </>

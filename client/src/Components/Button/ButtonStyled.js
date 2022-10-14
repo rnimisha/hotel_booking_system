@@ -5,7 +5,7 @@ export const MainButton = styled.button`
     padding: ${props => props.padding};
     border-radius: 10px;
     font-size: 1.1rem;
-    background-color: #877147;
+    background-color:${props => props.btntype === 'cancel' ? '#e34049' : '#877147'};
     border: none;
     color : #f7f7f7;
     cursor: pointer;

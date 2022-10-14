@@ -15,8 +15,9 @@ import {
 
 // styled component
 import { EditIcon, DeleteIcon, AddIcon } from './TableStyled'
+import ConfirmBox from '../ConfirmBox/ConfirmBox'
 
-const Tables = ({ heading, keys, rowData, modalComponent, modalname, editmodalname, setData }) => {
+const Tables = ({ heading, keys, rowData, modalComponent, modalname, editmodalname, setData, text }) => {
   const dispatch = useDispatch()
   return (
     <>
@@ -73,6 +74,7 @@ const Tables = ({ heading, keys, rowData, modalComponent, modalname, editmodalna
         </Table>
       </TableContainer>
      {modalComponent}
+     <ConfirmBox text={text}/>
     </>
   )
 }

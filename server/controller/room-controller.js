@@ -117,6 +117,19 @@ export const getRooms = async (req, res) => {
   }
 }
 
+export const getRoomNoByType = async (req, res) => {
+  try {
+    const rooms = await roomModel.find()
+    res.json({
+      data: rooms
+    })
+  } catch (err) {
+    res.status(400).json({
+      error: err.message
+    })
+  }
+}
+
 export const getRoomDetailById = async (req, res) => {
   try {
     const roomDetail = await roomTypeModel.findOne(

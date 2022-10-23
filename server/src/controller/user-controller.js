@@ -1,5 +1,9 @@
-import userModel from '../model/User.js'
+// packages
 import bcrypt from 'bcrypt'
+// models
+import userModel from '../model/User.js'
+// functions
+import { createToken } from '../utils/common.js'
 
 export const registerUser = async (req, res) => {
   const saltRounds = 10
@@ -47,10 +51,18 @@ export const loginUser = async (req, res) => {
         })
       }
 
+      if (!result) {
+        res.status(403).json({
+          success: false,
+          error: 'Password does not match'
+        })
+      }
+      console.log(userData._id)
+      const token = createToken(userData._id)
       res.json({
-        success: 'checking'
+        success: true,
+        token
       })
-      console.log(result)
     })
   } catch (err) {
     res.status(400).json({

@@ -2,13 +2,14 @@ import express from 'express'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import connection from './db/connect.js'
+import connection from './src/db/connect.js'
 
-import RoomRouter from './routes/rooms/room-routes.js'
-import AmmentiesRouter from './routes/ammenties/ammenties-routes.js'
-import BookRouter from './routes/book/book-routes.js'
-import UserRouter from './routes/users/user-routes.js'
-import ServiceRouter from './routes/services/services-route.js'
+// routes
+import RoomRouter from './src/routes/rooms/room-routes.js'
+import AmmentiesRouter from './src/routes/ammenties/ammenties-routes.js'
+import BookRouter from './src/routes/book/book-routes.js'
+import UserRouter from './src/routes/users/user-routes.js'
+import ServiceRouter from './src/routes/services/services-route.js'
 dotenv.config()
 
 const app = express()

@@ -8,15 +8,37 @@ import InputField from '../InputField/InputField'
 
 const RegisterForm = () => {
   const initialValues = {
-    username: '',
-    useremail: '',
-    userpass: '',
+    name: '',
+    email: '',
+    password: '',
     confirmpass: ''
   }
 
-  const onSubmit = (values, { setSubmitting }) => {
+  const onSubmit = async (values, { setSubmitting, resetForm }) => {
+    delete values.confirmpass
+
     console.log(values)
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values)
+    }
+
+    fetch('http://localhost:3000/users/register', requestOptions)
+      .then((response) => {
+        return response.json()
+      }).then((data) => {
+        return data
+      }).catch((error) => {
+        console.log('Error : ' + error)
+      })
+
     setSubmitting(false)
+    resetForm()
+
+    // ------- to do --------- let user know success message----------------------------
   }
 
   return (
@@ -28,9 +50,9 @@ const RegisterForm = () => {
         {({ isSubmitting }) => {
           return (
           <StyledForm>
-            <InputField type='text' label='Name' name='username'/>
-            <InputField label='Email' name='useremail' />
-            <InputField type='password' label='Password' name='userpass'/>
+            <InputField type='text' label='Name' name='name'/>
+            <InputField label='Email' name='email' />
+            <InputField type='password' label='Password' name='password'/>
             <InputField type='password' label='Confirm Password' name='confirmpass'/>
             <Button
             text= {isSubmitting ? 'Submiting...' : 'Register'}

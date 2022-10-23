@@ -11,8 +11,8 @@ import InputField from '../InputField/InputField'
 
 const LoginForm = () => {
   const initialValues = {
-    useremail: '',
-    userpass: ''
+    email: '',
+    password: ''
   }
 
   const onSubmit = (values, { setSubmitting }) => {
@@ -27,8 +27,8 @@ const LoginForm = () => {
       {({ isSubmitting }) => {
         return (
           <StyledForm>
-              <InputField name='useremail' label='Email'/>
-              <InputField type='password' name='userpass' label='Password'/>
+              <InputField name='email' label='Email'/>
+              <InputField type='password' name='password' label='Password'/>
               <br />
               <Button
               text= {isSubmitting ? 'Submiting...' : 'Login'}

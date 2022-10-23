@@ -15,8 +15,25 @@ const LoginForm = () => {
     password: ''
   }
 
-  const onSubmit = (values, { setSubmitting }) => {
+  const onSubmit = (values, { setSubmitting, resetForm }) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(values)
+    }
+
+    fetch('http://localhost:3000/users/login', requestOptions)
+      .then((response) => {
+        return response.json()
+      }).then((data) => {
+        console.log(data)
+      }).catch((error) => {
+        console.log('Error : ' + error)
+      })
     setSubmitting(false)
+    resetForm()
   }
   return (
     <Formik

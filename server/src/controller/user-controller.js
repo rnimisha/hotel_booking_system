@@ -10,21 +10,31 @@ import { createToken } from '../utils/common.js'
 export const registerUser = async (req, res) => {
   const saltRounds = 10
   try {
-    bcrypt.hash(req.body.password, saltRounds, async function (err, hash) {
-      if (err) {
-        console.log(err.message)
-        res.status(403).json({
-          success: false,
-          error: err.message
-        })
-      } else {
-        req.body.password = hash
-        await userModel.create(req.body)
-        res.json({
-          success: true
-        })
-      }
-    })
+    const userData = await userModel.findOne({ email: req.body.email })
+    if (userData) {
+      res.status(401).json({
+        success: false,
+        error: {
+          email: 'Email is already registered'
+        }
+      })
+    } else {
+      bcrypt.hash(req.body.password, saltRounds, async function (err, hash) {
+        if (err) {
+          console.log(err.message)
+          res.status(403).json({
+            success: false,
+            error: err.message
+          })
+        } else {
+          req.body.password = hash
+          await userModel.create(req.body)
+          res.json({
+            success: true
+          })
+        }
+      })
+    }
   } catch (err) {
     res.status(400).json({
       success: false,

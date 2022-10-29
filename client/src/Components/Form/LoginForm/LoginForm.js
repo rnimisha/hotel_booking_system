@@ -15,7 +15,7 @@ const LoginForm = () => {
     password: ''
   }
 
-  const onSubmit = (values, { setSubmitting, resetForm }) => {
+  const onSubmit = (values, { setSubmitting, resetForm, setErrors }) => {
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -28,12 +28,15 @@ const LoginForm = () => {
       .then((response) => {
         return response.json()
       }).then((data) => {
-        console.log(data)
+        if (data.success) {
+          resetForm()
+        } else {
+          setErrors(data.error)
+        }
       }).catch((error) => {
         console.log('Error : ' + error)
       })
     setSubmitting(false)
-    resetForm()
   }
   return (
     <Formik

@@ -57,7 +57,7 @@ export const loginUser = async (req, res) => {
           error: 'Password does not match'
         })
       }
-      console.log(userData._id)
+      // res.json({ success: true })
       const token = createToken(userData._id)
       res.json({
         success: true,

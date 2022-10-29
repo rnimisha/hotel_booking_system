@@ -1,7 +1,9 @@
 // packages
 import bcrypt from 'bcrypt'
+
 // models
 import userModel from '../model/User.js'
+
 // functions
 import { createToken } from '../utils/common.js'
 
@@ -33,16 +35,19 @@ export const registerUser = async (req, res) => {
 
 export const loginUser = async (req, res) => {
   try {
-    if (!req.body.email || !req.body.password) {
-      throw new Error('Email and password are required')
-    }
-
     const userData = await userModel.findOne({ email: req.body.email })
 
+    // --------------check if email exists-------------
     if (!userData) {
-      throw new Error('Email is not registered')
+      res.status(401).json({
+        success: false,
+        error: {
+          email: 'Email is not registed'
+        }
+      })
     }
 
+    // ------------compare password matches-------------
     bcrypt.compare(req.body.password, userData.password, function (err, result) {
       if (err) {
         res.status(403).json({
@@ -52,20 +57,22 @@ export const loginUser = async (req, res) => {
       }
 
       if (!result) {
-        res.status(403).json({
+        res.status(401).json({
           success: false,
-          error: 'Password does not match'
+          error: {
+            password: 'Password does not match'
+          }
+        })
+      } else {
+        const token = createToken(userData._id)
+        res.json({
+          success: true,
+          token
         })
       }
-      // res.json({ success: true })
-      const token = createToken(userData._id)
-      res.json({
-        success: true,
-        token
-      })
     })
   } catch (err) {
-    res.status(400).json({
+    res.status(500).json({
       success: false,
       error: err.message
     })

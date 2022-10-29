@@ -3,7 +3,7 @@ import Validators from '../validators/index.js'
 export const validateBody = (validateSchema) => {
   return async (req, res, next) => {
     try {
-      const validatedValue = await Validators[validateSchema].validateAsync(req.body)
+      const validatedValue = await Validators[validateSchema].validateAsync(req.body, { abortEarly: false })
       req.body = validatedValue
       next()
     } catch (err) {

@@ -1,3 +1,3 @@
 import loginValidationSchema from './login-validator.js'
 
-export { loginValidationSchema }
+export default { loginValidationSchema }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik } from 'formik'
+import ROOMNO_VALIDATION_SCHEMA from '../../Validation/RoomNoValidation'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { handleClose } from '../../features/modal/modalSlice'
@@ -44,9 +45,9 @@ const IndividualRoom = ({ roomId, getRoomList }) => {
       })
       .then((data) => {
         dispatch(handleClose())
+        getRoomList()
       })
     setSubmitting(false)
-    getRoomList()
   }
 
   return (
@@ -64,6 +65,7 @@ const IndividualRoom = ({ roomId, getRoomList }) => {
           <Formik
           enableReinitialize
           initialValues={ initialValues }
+          validationSchema= {ROOMNO_VALIDATION_SCHEMA}
           onSubmit = {onSubmit}
           >
             {({ isSubmitting }) => {

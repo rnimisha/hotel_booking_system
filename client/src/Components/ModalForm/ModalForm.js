@@ -99,21 +99,21 @@ const ModalForm = ({ id }) => {
                             {
                                 services.map((serviceItem, id) => {
                                   return (
-                                        <FormControlLabel
-                                        key ={id}
-                                            control={
-                                            <Checkbox
-                                            checked={isChecked[id] || false}
-                                            name={serviceItem._id}
-                                            style ={{
-                                              color: '#877147'
-                                            }}
-                                            onClick={() => {
-                                              handleCheckBox(id, serviceItem._id)
-                                            }}/>
-                                            }
-                                            label={<Label name = {serviceItem.name} price = {serviceItem.price}/>}
-                                        />
+                                    <FormControlLabel
+                                    key ={id}
+                                        control={
+                                        <Checkbox
+                                        checked={isChecked[id] || false}
+                                        name={serviceItem._id}
+                                        style ={{
+                                          color: '#877147'
+                                        }}
+                                        onClick={() => {
+                                          handleCheckBox(id, serviceItem._id)
+                                        }}/>
+                                        }
+                                        label={<Label name = {serviceItem.name} price = {serviceItem.price}/>}
+                                    />
                                   )
                                 })
                             }

@@ -22,7 +22,6 @@ const theme = createTheme({
     fontFamily: [
       'Crimson Pro',
       'Roboto',
-      '"Helvetica Neue"',
       'Arial',
       'serif'
     ].join(',')

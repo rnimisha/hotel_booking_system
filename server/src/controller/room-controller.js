@@ -3,6 +3,8 @@ import roomModel from '../model/room.js'
 import ammentiesModel from '../model/Ammenties.js'
 
 export const getRooms = async (req, res) => {
+  const page = req.query.page || 0
+  const roomsPerPage = 6
   let filterObj = {}
 
   filterObj = req.query.roomtype ? { ...filterObj, name: req.query.roomtype } : { ...filterObj }
@@ -87,6 +89,12 @@ export const getRooms = async (req, res) => {
           $sort: {
             name: 1
           }
+        },
+        {
+          $skip: page * roomsPerPage
+        },
+        {
+          $limit: roomsPerPage
         }
       ])
     } else {
@@ -98,6 +106,12 @@ export const getRooms = async (req, res) => {
           $sort: {
             name: 1
           }
+        },
+        {
+          $skip: page * roomsPerPage
+        },
+        {
+          $limit: roomsPerPage
         }
       ])
     }

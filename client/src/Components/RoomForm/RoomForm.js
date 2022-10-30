@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik'
+import ROOM_VALIDATION_SCHEMA from '../../Validation/RoomValidationSchema'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { handleClose } from '../../features/modal/modalSlice'
@@ -108,6 +109,7 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
           <Formik
           enableReinitialize
           initialValues={ (Object.keys(populate).length === 0) ? initialValues : populate }
+          validationSchema= {ROOM_VALIDATION_SCHEMA}
           onSubmit = {onSubmit}
           >
             {({ isSubmitting }) => {

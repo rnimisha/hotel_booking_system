@@ -14,31 +14,33 @@ const RegisterForm = () => {
     confirmpass: ''
   }
 
-  const onSubmit = async (values, { setSubmitting, resetForm }) => {
-    delete values.confirmpass
+  const onSubmit = async (values, { setSubmitting, resetForm, setErrors }) => {
+    const { confirmpass, ...details } = values
 
-    console.log(values)
     const requestOptions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(values)
+      body: JSON.stringify(details)
     }
 
     fetch('http://localhost:3000/users/register', requestOptions)
       .then((response) => {
         return response.json()
       }).then((data) => {
-        return data
+        console.log(data)
+        if (data.success) {
+          // ------- to do --------- let user know success message----------------------------
+          resetForm()
+        } else {
+          setErrors(data.error)
+        }
       }).catch((error) => {
         console.log('Error : ' + error)
       })
 
     setSubmitting(false)
-    resetForm()
-
-    // ------- to do --------- let user know success message----------------------------
   }
 
   return (

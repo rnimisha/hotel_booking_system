@@ -1,13 +1,19 @@
 import styled from 'styled-components'
 
 export const RoomBox = styled.div`
-    width: 30%;
+    width: 33%;
     height: 600px;
     /* background-color: #ececec; */
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
     overflow: hidden;
+    @media (max-width: 960px) {
+        width: 45%;
+    }
+    @media (max-width: 630px) {
+        width: 80%;
+    }
 `
 export const RoomImgContainer = styled.div`
     position: relative;

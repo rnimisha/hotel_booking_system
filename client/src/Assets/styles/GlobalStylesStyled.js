@@ -39,6 +39,12 @@ const GlobalStyles = createGlobalStyle`
        border-bottom-width: 1.3px !important;
       border-color: #877147 !important;
   }
+  .MuiFormControl-root{
+    width: 150px;
+    @media (max-width: 768px) {
+      width: 120px;
+    }
+  }
 `
 
 export default GlobalStyles

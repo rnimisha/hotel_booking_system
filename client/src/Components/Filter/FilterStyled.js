@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const FilterBox = styled.div`
     width: 60%; 
-    height: 20vh;
+    min-height: 20vh;
     margin-left: 20%;
     display: flex;
     justify-content: center;
@@ -13,4 +13,11 @@ export const FilterBox = styled.div`
     border-radius: 30px;
     margin-top: 2rem;
     color: #1f1f1f;
+
+    @media (max-width: 960px) {
+        width: 90%;
+        margin-left: 5%;
+        flex-wrap:wrap;
+        padding: 15px 10px;
+    }
 `

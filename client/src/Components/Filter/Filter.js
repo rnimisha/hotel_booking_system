@@ -11,8 +11,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import {
   MenuItem,
-  InputLabel,
-  FormControl
+  FormControl,
+  InputLabel
 } from '@mui/material'
 
 const Filter = ({ filterData, setFilterDate }) => {
@@ -39,7 +39,7 @@ const Filter = ({ filterData, setFilterDate }) => {
 
   return (
     <FilterBox>
-      <FormControl sx={{ width: '150px' }}>
+      <FormControl>
           <InputLabel id="roomtype">Room Type</InputLabel>
           <BorderSelect
               name="roomtype"
@@ -58,7 +58,7 @@ const Filter = ({ filterData, setFilterDate }) => {
               }
           </BorderSelect>
       </FormControl>
-      <FormControl sx={{ width: '150px' }}>
+      <FormControl>
           <BorderTextField name="capacity" label="Capacity" variant="outlined" onChange={handleFormData} value={filterData.capacity || ''}/>
       </FormControl>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -70,7 +70,7 @@ const Filter = ({ filterData, setFilterDate }) => {
             setCheckIn(newValue)
             handleFormData({ target: { name: 'checkin', value: format(newValue.toDate(), 'yyyy/MM/dd') } })
           }}
-          renderInput={(params) => <BorderTextField {...params} variant="outlined" sx={{ width: '150px' }}/>}
+          renderInput={(params) => <BorderTextField {...params} variant="outlined"/>}
         />
         <DatePicker
             label="Check out"
@@ -79,7 +79,7 @@ const Filter = ({ filterData, setFilterDate }) => {
               setCheckOut(newValue)
               handleFormData({ target: { name: 'checkout', value: format(newValue.toDate(), 'yyyy/MM/dd') } })
             }}
-            renderInput={(params) => <BorderTextField {...params} variant="outlined" sx={{ width: '150px' }}/>}
+            renderInput={(params) => <BorderTextField {...params} variant="outlined" />}
           />
         </LocalizationProvider>
     </FilterBox>

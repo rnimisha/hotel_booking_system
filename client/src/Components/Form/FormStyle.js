@@ -46,6 +46,7 @@ export const Span = styled.span`
     }
 `
 export const BorderTextField = styled(TextField)`
+  width: 150px;
   & label.Mui-focused {
     color: #877147;
   }

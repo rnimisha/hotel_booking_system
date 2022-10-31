@@ -13,4 +13,9 @@ export const RoomContainer = styled.div`
     min-height: 30vh;
     flex-wrap: wrap;
     padding: 20px 5px;
+    @media (max-width: 960px) {
+        width: 90%;
+        margin-left: 5%;
+        gap: 1.2rem;
+    }
 `

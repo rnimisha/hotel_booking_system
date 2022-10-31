@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  page: 1
+  page: 1,
+  count: 1
 }
 
 const PageSlice = createSlice({
@@ -10,9 +11,12 @@ const PageSlice = createSlice({
   reducers: {
     changePage: (state, action) => {
       state.page = action.payload
+    },
+    changeCount: (state, action) => {
+      state.count = action.payload
     }
   }
 })
 
 export default PageSlice.reducer
-export const { changePage } = PageSlice.actions
+export const { changePage, changeCount } = PageSlice.actions

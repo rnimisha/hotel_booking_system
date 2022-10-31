@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeCount } from '../../features/page/pageSlice'
 
 // components
 import Filter from '../../Components/Filter/Filter'
@@ -16,6 +17,7 @@ import Paginate from '../../Components/Paginate/Paginate'
 
 const Rooms = () => {
   const page = useSelector((state) => state.page.page)
+  const dispatch = useDispatch()
   const [rooms, setRooms] = useState([])
   const [filterData, setFilterDate] = useState({
     roomtype: '',
@@ -41,6 +43,7 @@ const Rooms = () => {
       return response.json()
     }).then((data) => {
       setRooms(data.data)
+      dispatch(changeCount(parseInt(data.count)))
     }).catch((error) => {
       console.log('Error : ' + error)
     })

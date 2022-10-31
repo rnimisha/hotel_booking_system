@@ -146,7 +146,7 @@ export const getRooms = async (req, res) => {
 
     res.json({
       data: allRooms[0].data,
-      count: Math.ceil((allRooms[0].count[0].total) / roomsPerPage)
+      count: Math.ceil((allRooms[0]?.count[0]?.total) / roomsPerPage) || 0
     })
   } catch (err) {
     res.status(400).json({

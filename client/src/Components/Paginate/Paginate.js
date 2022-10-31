@@ -11,7 +11,7 @@ const Paginate = () => {
   return (
      <Stack spacing={2} mb={4}>
       <Pagination
-      count={10}
+      count={2}
       page={page}
       shape="rounded"
       onChange = {(event, value) => dispatch(changePage(value))}

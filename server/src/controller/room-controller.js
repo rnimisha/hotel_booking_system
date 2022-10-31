@@ -3,7 +3,7 @@ import roomModel from '../model/room.js'
 import ammentiesModel from '../model/Ammenties.js'
 
 export const getRooms = async (req, res) => {
-  const page = req.query.page || 0
+  const page = req.query.page - 1 || 0
   const roomsPerPage = 6
   let filterObj = {}
 
@@ -91,11 +91,23 @@ export const getRooms = async (req, res) => {
           }
         },
         {
-          $skip: page * roomsPerPage
-        },
-        {
-          $limit: roomsPerPage
+          $facet: {
+            data: [
+              {
+                $skip: page * roomsPerPage
+              },
+              {
+                $limit: roomsPerPage
+              }
+            ],
+            count: [
+              {
+                $count: 'total'
+              }
+            ]
+          }
         }
+
       ])
     } else {
       allRooms = await roomTypeModel.aggregate([
@@ -108,10 +120,21 @@ export const getRooms = async (req, res) => {
           }
         },
         {
-          $skip: page * roomsPerPage
-        },
-        {
-          $limit: roomsPerPage
+          $facet: {
+            data: [
+              {
+                $skip: page * roomsPerPage
+              },
+              {
+                $limit: roomsPerPage
+              }
+            ],
+            count: [
+              {
+                $count: 'total'
+              }
+            ]
+          }
         }
       ])
     }
@@ -122,7 +145,8 @@ export const getRooms = async (req, res) => {
     })
 
     res.json({
-      data: allRooms
+      data: allRooms[0].data,
+      count: allRooms[0].count[0].total
     })
   } catch (err) {
     res.status(400).json({

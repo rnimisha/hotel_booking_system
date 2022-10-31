@@ -35,6 +35,12 @@ export const FormBox = styled.div`
     align-items: center;
     flex-direction: column;
     gap: 1rem;
+    @media (max-width: 780px) {
+        width: 60%;
+    }
+    @media (max-width: 680px) {
+        width: 80%;
+    }
 `
 
 export const Span = styled.span`

@@ -25,15 +25,7 @@ A platform built with Node.js(Express.js), React.js and MongoDB(Mongoose) to boo
 - [ ]  Filter booking by upcoming, ongoing and completed.
 - [ ]  Dashboard with visual analytics.
 - [ ]  Update and manage profile.
-# Installation
 
-Install my-project with npm
-
-```bash
-  npm install my-project
-  cd my-project
-```
-    
 ## Run Locally
 
 Clone the project

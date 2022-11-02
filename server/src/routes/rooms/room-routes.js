@@ -1,6 +1,7 @@
 import express from 'express'
 import { getRooms, getRoomDetailById, insertRoom, insertRoomType, updateRoomType, deleteRoomType, getRoomNoByType, deleteRoomNo } from '../../controller/room-controller.js'
 import { validateBody } from '../../middleware/validator.js'
+import upload from '../../middleware/multer-storage.js'
 
 const router = express.Router()
 
@@ -9,7 +10,7 @@ router.get('/:id', getRoomDetailById)
 router.get('/roomno/:roomtype', getRoomNoByType)
 
 router.post('/addroom', insertRoom)
-router.post('/addroomtype', validateBody('roomValidationSchema'), insertRoomType)
+router.post('/addroomtype', upload, validateBody('roomValidationSchema'), insertRoomType)
 
 router.put('/', updateRoomType)
 

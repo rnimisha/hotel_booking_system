@@ -9,15 +9,16 @@ export const SideNavBar = styled.div`
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    width: 20vw;
-    @media (max-width: 800px) {
-       width: 10vw;
+    width : ${(props) => props.toggle ? '8vw' : '20vw'};
+
+    @media (max-width: 890px) {
+       width:  ${(props) => props.toggle ? '10vw' : '25vw'};
     }
      @media (max-width: 680px) {
-       width: 15vw;
+       width: ${(props) => props.toggle ? '15vw' : '40vw'};
     }
      @media (max-width: 460px) {
-       width: 20vw;
+       width: ${(props) => props.toggle ? '20vw' : '50vw'};
     }
 `
 export const LogoHeader = styled.div`
@@ -53,7 +54,7 @@ export const NavList = styled.div`
 export const NavELement = styled(NavLink)`
     width: 76%;
     margin-left: 12%;
-    font-size: 1.6rem;
+    font-size: clamp(1.1rem, 0.475rem + 2vw, 1.6rem);
     padding: 15px 20px;
     cursor: pointer;
     font-weight: 500;

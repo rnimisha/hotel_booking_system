@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import FormData from 'form-data'
 import { Formik } from 'formik'
 import ROOM_VALIDATION_SCHEMA from '../../Validation/RoomValidationSchema'
 
@@ -43,29 +44,32 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
     bedrooms: '',
     bathrooms: '',
     ammenties: [],
-    description: ''
+    description: '',
+    image: ''
   }
 
   const onSubmit = (values, { setSubmitting }) => {
     // add new room
     if ((Object.keys(populate).length === 0)) {
-      const requestOptions =
-      {
+      const formData = new FormData()
+      for (const value in values) {
+        formData.set(value, values[value])
+      }
+
+      console.log(formData)
+      const requestOptions = {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
+        body: formData
       }
 
       fetch('http://localhost:3000/rooms/addroomtype', requestOptions)
-        .then((response) => {
-          return response.json()
-        })
-        .then((data) => {
-          getRooms()
-          dispatch(handleClose())
-        })
+      // .then((response) => {
+      //   return response.json()
+      // })
+      // .then((data) => {
+      //   getRooms()
+      //   dispatch(handleClose())
+      // })
       setSubmitting(false)
     } else {
       // udapte room
@@ -111,8 +115,9 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
           initialValues={ (Object.keys(populate).length === 0) ? initialValues : populate }
           validationSchema= {ROOM_VALIDATION_SCHEMA}
           onSubmit = {onSubmit}
+          encType="multipart/form-data"
           >
-            {({ isSubmitting }) => {
+            {({ isSubmitting, setFieldValue }) => {
               return (
                 <StyledForm>
                   <Grid container spacing ={{ xs: 2, md: 3 }} sx={{ padding: '10px 40px' }}>
@@ -128,28 +133,35 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
                     <Grid item xs={12} md={6}>
                         <InputField type='number' name='bedrooms' label='Bedrooms' widthpx='100%'/>
                     </Grid>
-                     <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={6}>
                         <InputField type='number' name='bathrooms' label='Bathrooms' widthpx='100%'/>
                     </Grid>
                     <Grid item xs={12} md={12}>
                         <SelectField name='ammenties' label='Ammenties' options={ammenties}/>
                     </Grid>
-                     <Grid item xs={12} md={12}>
-                        <InputField
-                        type='text'
-                        name='description'
-                        label='Description.......'
-                        multiline={true}
-                        rows={3}
-                        widthpx='100%'/>
+                    <Grid item xs={12} md={12}>
+                      <InputField
+                      type='text'
+                      name='description'
+                      label='Description.......'
+                      multiline={true}
+                      rows={3}
+                      widthpx='100%'/>
                     </Grid>
+                    <input
+                    type='file'
+                    name='image'
+                    onChange={(e) =>
+                      setFieldValue('image', e.currentTarget.files[0])
+                    }
+                  />
                   </Grid>
-                    <Button
-                    text= {isSubmitting ? 'Submiting...' : 'Add Room'}
-                    styling = {{ padding: '15px 40px', marginBottom: '5px' }}
-                    disabled= {isSubmitting}
-                    type= 'submit'
-                    />
+                  <Button
+                  text= {isSubmitting ? 'Submiting...' : 'Add Room'}
+                  styling = {{ padding: '15px 40px', marginBottom: '5px' }}
+                  disabled= {isSubmitting}
+                  type= 'submit'
+                  />
                 </StyledForm>
               )
             }}

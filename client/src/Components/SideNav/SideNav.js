@@ -23,7 +23,7 @@ const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
   const dispatch = useDispatch()
 
   return (
-    <SideNavBar style={{ width: isToggleMenu ? '8vw' : '20vw' }}>
+    <SideNavBar toggle={isToggleMenu}>
         <LogoHeader>
             {!isToggleMenu && <LogoContainer style={{ marginTop: '10px' }}>
                 <img src={logoimg} alt="logo" style={{ height: '80px', width: '100px', cursor: 'pointer' }}/>

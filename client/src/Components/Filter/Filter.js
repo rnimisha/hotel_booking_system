@@ -36,10 +36,13 @@ const Filter = ({ filterData, setFilterDate }) => {
       console.log('Error : ' + error)
     })
   }, [])
+  const styling = {
+    width: '150px'
+  }
 
   return (
     <FilterBox>
-      <FormControl>
+      <FormControl sx={styling}>
           <InputLabel id="roomtype">Room Type</InputLabel>
           <BorderSelect
               name="roomtype"
@@ -58,7 +61,7 @@ const Filter = ({ filterData, setFilterDate }) => {
               }
           </BorderSelect>
       </FormControl>
-      <FormControl>
+      <FormControl sx={styling}>
           <BorderTextField name="capacity" label="Capacity" variant="outlined" onChange={handleFormData} value={filterData.capacity || ''}/>
       </FormControl>
       <LocalizationProvider dateAdapter={AdapterDayjs}>

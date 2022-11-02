@@ -59,7 +59,9 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
       console.log(formData)
       const requestOptions = {
         method: 'POST',
-        body: formData
+        body: formData,
+        dataType: 'jsonp'
+
       }
 
       fetch('http://localhost:3000/rooms/addroomtype', requestOptions)

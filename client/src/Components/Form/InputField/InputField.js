@@ -18,6 +18,7 @@ const InputField = ({ name, label, widthpx, ...props }) => {
         label={label}
         error = {!!((meta?.touched && meta?.error))}
         InputLabelProps={{ shrink: field.value }}
+        sx={{ width: widthpx || '220px' }}
         />
         <ErrorMessage name={name}>
           {

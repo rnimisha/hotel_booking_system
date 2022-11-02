@@ -197,6 +197,7 @@ export const getRoomDetailById = async (req, res) => {
 
 export const insertRoomType = async (req, res) => {
   try {
+    req.body.image = req.file.filename
     const room = await roomTypeModel.create(req.body)
     res.json({
       success: room

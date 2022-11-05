@@ -11,7 +11,6 @@ import IndividualRoom from '../../Components/IndividualRoom/IndividualRoom'
 import { RoomContainer } from './RoomsStyled'
 
 // images
-import roomImg from '../../Assets/images/room1.jpeg'
 import headerImg from '../../Assets/images/header1.jpeg'
 import Paginate from '../../Components/Paginate/Paginate'
 
@@ -63,7 +62,7 @@ const Rooms = () => {
             return (
               <IndividualRoom
               key={id}
-              image = {roomImg}
+              image = {item.image}
               price ={item.price}
               name={item.name}
               people={item.capacity}

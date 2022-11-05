@@ -7,7 +7,6 @@ import headerImg from '../../Assets/images/header2.jpeg'
 
 // styles
 import { Image, ImageContainer, MainContainer } from './RoomDetailStyled'
-import roomImg from '../../Assets/images/roomimg.jpeg'
 import Ammenties from '../../Components/Ammenties/Ammenties'
 import ModalForm from '../../Components/ModalForm/ModalForm'
 
@@ -35,7 +34,7 @@ const RoomDetail = () => {
         text ={roomDetail.name}/>
         <MainContainer>
             <ImageContainer>
-              <Image src={roomImg} alt={roomDetail.name} />
+              <Image src={`${process.env.PUBLIC_URL}/uploads/${roomDetail.image}`} alt={roomDetail.name} />
             </ImageContainer>
             <RoomInfo data ={roomDetail}/>
         </MainContainer>

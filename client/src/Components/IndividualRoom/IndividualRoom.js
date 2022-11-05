@@ -10,7 +10,7 @@ const IndividualRoom = ({ image, price, name, bedrooms, people, id }) => {
   return (
     <RoomBox>
         <RoomImgContainer onClick = {showRoomDetails}>
-            <RoomImg src={image} alt={name} />
+            <RoomImg src={`${process.env.PUBLIC_URL}/uploads/${image}`} alt={name} />
             <Price>
               Rs.{price}
             </Price>

@@ -87,7 +87,7 @@ export const getRooms = async (req, res) => {
         },
         {
           $sort: {
-            name: 1
+            createdAt: -1
           }
         },
         {
@@ -116,7 +116,7 @@ export const getRooms = async (req, res) => {
         },
         {
           $sort: {
-            name: 1
+            createdAt: -1
           }
         },
         {

@@ -33,7 +33,8 @@ const roomTypeSchema = new mongoose.Schema({
   image: {
     type: String
   }
-}, {
+}, { timestamps: true },
+{
   collection: 'roomType'
 })
 

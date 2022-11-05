@@ -20,9 +20,11 @@ import { StyledForm } from '../Form/FormStyle'
 import InputField from '../Form/InputField/InputField'
 import Button from '../Button/Button'
 import SelectField from '../Form/SelectField/SelectField'
+import { Error } from '../Form/InputField/InputFieldStyled'
 
 const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
   const [ammenties, setAmmenties] = useState([])
+  const [imageError, setImageError] = useState('')
 
   const open = useSelector((state) => state.modal.open)
   const dispatch = useDispatch()
@@ -49,6 +51,12 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
   }
 
   const onSubmit = (values, { setSubmitting }) => {
+    if (values.image.length === 0) {
+      setImageError('Image is required')
+      setSubmitting(false)
+      return
+    }
+    setImageError('')
     // add new room
     if ((Object.keys(populate).length === 0)) {
       const formData = new FormData()
@@ -63,7 +71,6 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
         formData.append('ammenties', item)
       })
 
-      console.log(formData)
       const requestOptions = {
         method: 'POST',
         body: formData,
@@ -72,13 +79,16 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
       }
 
       fetch('http://localhost:3000/rooms/addroomtype', requestOptions)
-      // .then((response) => {
-      //   return response.json()
-      // })
-      // .then((data) => {
-      //   getRooms()
-      //   dispatch(handleClose())
-      // })
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          }
+          throw new Error('Something went wrong')
+        })
+        .then((data) => {
+          getRooms()
+          dispatch(handleClose())
+        })
       setSubmitting(false)
     } else {
       // udapte room
@@ -157,13 +167,22 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
                       rows={3}
                       widthpx='100%'/>
                     </Grid>
-                    <input
-                    type='file'
-                    name='image'
-                    onChange={(e) =>
-                      setFieldValue('image', e.currentTarget.files[0])
-                    }
-                  />
+                     <Grid item xs={12} md={12}>
+                      <input
+                      type='file'
+                      name='image'
+                      onChange={(e) => {
+                        setFieldValue('image', e.currentTarget.files[0])
+                        setImageError('')
+                      }}
+                      onClick = {(e) => {
+                        e.currentTarget?.files?.length === 0
+                          ? setImageError('Image is required')
+                          : setImageError('')
+                      }}
+                      />
+                      {imageError.length > 1 ? <Error> {imageError}</Error> : null}
+                     </Grid>
                   </Grid>
                   <Button
                   text= {isSubmitting ? 'Submiting...' : 'Add Room'}

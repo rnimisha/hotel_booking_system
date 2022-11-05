@@ -52,14 +52,14 @@ const IndividualRoom = ({ roomId, getRoomList }) => {
 
   return (
     <div>
-        <Modal
-        open={open === 'individualroom'}
-        onClose={() => {
-          dispatch(handleClose())
-        }}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        >
+      <Modal
+      open={open === 'individualroom'}
+      onClose={() => {
+        dispatch(handleClose())
+      }}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+      >
         <Container style={{ width: '60%', minHeight: '40%' }}>
             <FormHeading> Room Number Form </FormHeading>
           <Formik
@@ -87,7 +87,7 @@ const IndividualRoom = ({ roomId, getRoomList }) => {
             }}
           </Formik>
         </Container>
-        </Modal>
+      </Modal>
     </div>
   )
 }

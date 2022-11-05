@@ -9,9 +9,7 @@ router.get('/:id', getRoomDetailById)
 router.get('/roomno/:roomtype', getRoomNoByType)
 
 router.post('/addroom', insertRoom)
-router.post('/addroomtype', upload, (req, res) => {
-  insertRoomType(req, res)
-})
+router.post('/addroomtype', upload, insertRoomType)
 router.put('/', updateRoomType)
 
 router.delete('/', deleteRoomType)

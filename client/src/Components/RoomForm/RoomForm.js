@@ -52,9 +52,16 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
     // add new room
     if ((Object.keys(populate).length === 0)) {
       const formData = new FormData()
+
       for (const value in values) {
-        formData.set(value, values[value])
+        if (value !== 'ammenties') {
+          formData.set(value, values[value])
+        }
       }
+
+      (values.ammenties).forEach(item => {
+        formData.append('ammenties', item)
+      })
 
       console.log(formData)
       const requestOptions = {

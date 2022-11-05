@@ -211,11 +211,22 @@ export const insertRoomType = async (req, res) => {
 
 export const insertRoom = async (req, res) => {
   const newRoom = req.body
+
   try {
-    await roomModel.create(newRoom)
-    res.json({
-      success: true
-    })
+    const roomNumber = await roomModel.findOne({ roomNo: req.body.roomNo })
+    if (roomNumber) {
+      res.status(401).json({
+        success: false,
+        error: {
+          roomNo: ' Room Number already exists'
+        }
+      })
+    } else {
+      await roomModel.create(newRoom)
+      res.json({
+        success: true
+      })
+    }
   } catch (err) {
     res.status(400).json({
       error: err.message

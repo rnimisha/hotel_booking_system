@@ -31,6 +31,10 @@ const roomSchema = new mongoose.Schema({
           type: [mongoose.Schema.Types.ObjectId],
           ref: 'services',
           default: []
+        },
+        mode: {
+          type: String,
+          default: 'online'
         }
       }
     ]

@@ -57,20 +57,24 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
       return
     }
     setImageError('')
-    // add new room
-    if ((Object.keys(populate).length === 0)) {
-      const formData = new FormData()
 
-      for (const value in values) {
+    console.log(values)
+    const formData = new FormData()
+
+    for (const value in values) {
+      if ((Object.keys(initialValues)).includes(value)) {
         if (value !== 'ammenties') {
           formData.set(value, values[value])
         }
       }
+    }
 
-      (values.ammenties).forEach(item => {
-        formData.append('ammenties', item)
-      })
+    (values.ammenties).forEach(item => {
+      formData.append('ammenties', item)
+    })
 
+    // add new room
+    if ((Object.keys(populate).length === 0)) {
       const requestOptions = {
         method: 'POST',
         body: formData,
@@ -92,20 +96,19 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
       setSubmitting(false)
     } else {
       // udapte room
+      formData.append('id', roomId)
       const requestOptions =
       {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          id: roomId,
-          data: values
-        })
+        body: formData,
+        dataType: 'jsonp'
       }
       fetch('http://localhost:3000/rooms', requestOptions)
         .then((response) => {
-          return response.json()
+          if (response.ok) {
+            return response.json()
+          }
+          throw new Error('Something went wrong')
         })
         .then((data) => {
           getRooms()
@@ -185,7 +188,7 @@ const RoomForm = ({ populate, roomId, setRoomId, getRooms }) => {
                      </Grid>
                   </Grid>
                   <Button
-                  text= {isSubmitting ? 'Submiting...' : 'Add Room'}
+                  text= {isSubmitting ? 'Submiting...' : (Object.keys(populate).length === 0) ? 'Add Room' : 'Submit Changes'}
                   styling = {{ padding: '15px 40px', marginBottom: '5px' }}
                   disabled= {isSubmitting}
                   type= 'submit'

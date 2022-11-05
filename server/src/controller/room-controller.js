@@ -197,7 +197,6 @@ export const getRoomDetailById = async (req, res) => {
 
 export const insertRoomType = async (req, res) => {
   try {
-    console.log(req.body)
     req.body.image = req.file.filename
     const room = await roomTypeModel.create(req.body)
     res.json({
@@ -226,14 +225,19 @@ export const insertRoom = async (req, res) => {
 
 export const updateRoomType = async (req, res) => {
   try {
+    const id = req.body.id
+    console.log(req.body.ammenties)
+    delete req.body.id
+    req.body.image = req.file.filename
     await roomTypeModel.findOneAndUpdate(
-      { _id: req.body.id },
-      req.body.data
+      { _id: id },
+      req.body
     )
     res.json({
       success: true
     })
   } catch (err) {
+    console.log(err.message)
     res.status(400).json({
       error: err.message
     })

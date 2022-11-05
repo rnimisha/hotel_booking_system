@@ -10,7 +10,7 @@ router.get('/roomno/:roomtype', getRoomNoByType)
 
 router.post('/addroom', insertRoom)
 router.post('/addroomtype', upload, insertRoomType)
-router.put('/', updateRoomType)
+router.put('/', upload, updateRoomType)
 
 router.delete('/', deleteRoomType)
 router.delete('/roomno', deleteRoomNo)

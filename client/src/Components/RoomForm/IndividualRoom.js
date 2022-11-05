@@ -28,7 +28,7 @@ const IndividualRoom = ({ roomId, getRoomList }) => {
     roomNo: ''
   }
 
-  const onSubmit = (values, { setSubmitting }) => {
+  const onSubmit = (values, { setSubmitting, setErrors }) => {
     console.log(values)
     const requestOptions =
       {
@@ -44,8 +44,12 @@ const IndividualRoom = ({ roomId, getRoomList }) => {
         return response.json()
       })
       .then((data) => {
-        dispatch(handleClose())
-        getRoomList()
+        if (data.success) {
+          dispatch(handleClose())
+          getRoomList()
+        } else {
+          setErrors(data.error)
+        }
       })
     setSubmitting(false)
   }

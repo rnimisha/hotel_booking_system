@@ -15,3 +15,27 @@ export const insertBooking = async (req, res) => {
     })
   }
 }
+
+export const getBooking = async (req, res) => {
+  try {
+    const bookings = await roomModel.aggregate([
+      {
+        $project: {
+          roomNo: 1,
+          bookings: 1
+        }
+      },
+      {
+        $unwind: '$bookings'
+      }
+    ])
+    res.json({
+      success: true,
+      data: bookings
+    })
+  } catch (err) {
+    res.status(400).json({
+      error: err.message
+    })
+  }
+}

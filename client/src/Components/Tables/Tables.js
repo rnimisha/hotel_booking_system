@@ -58,6 +58,7 @@ const Tables = ({ heading, keys, rowData, editmodalname, setData, text, clearId,
                       )}
 
                       {/* // actions icon */}
+                      {heading.includes('Actions') &&
                       <TableCell align="left">
                           <Typography>
                               <DeleteIcon onClick={() => {
@@ -70,14 +71,15 @@ const Tables = ({ heading, keys, rowData, editmodalname, setData, text, clearId,
                               }
                               }/>
                           </Typography>
-                      </TableCell>
+                      </TableCell>}
+                      {heading.includes('Rooms') &&
                       <TableCell align="left">
                         <NavLink to={'/admin/roomlist/' + data._id}>
                           <Typography>
                               <ViewIcon onClick={null}/>
                           </Typography>
                         </NavLink>
-                      </TableCell>
+                      </TableCell>}
                   </TableRow>
               ))}
           </TableBody>

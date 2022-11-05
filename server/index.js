@@ -26,5 +26,5 @@ app.get('/', (_, res) => {
 app.use('/users', UserRouter)
 app.use('/rooms', RoomRouter)
 app.use('/ammenties', AmmentiesRouter)
-app.use('/book', BookRouter)
+app.use('/bookings', BookRouter)
 app.use('/services', ServiceRouter)

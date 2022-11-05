@@ -1,23 +1,43 @@
-import React from 'react'
-import FormData from 'form-data'
+import React, { useState, useEffect } from 'react'
+import Tables from '../../../Components/Tables/Tables'
 
 const Booking = () => {
-  const handleFile = (e) => {
-    const form = new FormData()
-    form.append('image', e.target.files[0])
+  const [bookings, setBookings] = useState([])
 
-    const requestOptions = {
-      method: 'POST',
-      body: form,
-      dataType: 'jsonp'
-    }
-
-    fetch('http://localhost:3000/rooms/addroomtype', requestOptions)
+  const getBookings = () => {
+    const query = 'http://localhost:3000/bookings'
+    fetch(query).then((response) => {
+      if (response.ok) {
+        return response.json()
+      }
+      throw new Error('Something went wrong')
+    }).then((data) => {
+      const allData = (data.data).reduce((acc, current) => {
+        const temp = {}
+        temp._id = current._id
+        temp.roomNo = current.roomNo
+        temp.services = current.bookings.services
+        temp.mode = current.bookings.mode
+        temp.user = current.bookings._id
+        return [...acc, temp]
+      }, [])
+      setBookings(allData)
+      console.log(allData)
+    }).catch((error) => {
+      console.log('Error : ' + error)
+    })
   }
+  useEffect(() => {
+    getBookings()
+  }, [])
   return (
-    <div>
-      <input type="file" name="image" onChange={handleFile}/>
-    </div>
+    <>
+      <Tables
+      heading = {['Room No', 'Mode']}
+      keys = {['roomNo', 'mode']}
+      rowData = {bookings}
+      />
+    </>
   )
 }
 

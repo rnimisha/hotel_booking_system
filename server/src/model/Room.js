@@ -27,6 +27,10 @@ const roomSchema = new mongoose.Schema({
           type: Date,
           required: true
         },
+        total: {
+          type: Number,
+          required: true
+        },
         services: {
           type: [mongoose.Schema.Types.ObjectId],
           ref: 'services',

@@ -25,7 +25,8 @@ const Tables = ({ heading, keys, rowData, editmodalname, setData, text, clearId,
       <TableContainer sx={{
         borderRadius: '25px',
         borderBottom: 'none',
-        boxShadow: 'rgba(0, 0, 0, 0.1) 0px 0px 4px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px'
+        boxShadow: 'rgba(0, 0, 0, 0.1) 0px 0px 4px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px',
+        marginBottom: '20px'
       }}>
         <Table sx={{ minWidth: 650 }}>
 

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { handleOpen, handleClose } from '../../../features/modal/modalSlice'
+import { changeCount } from '../../../features/page/pageSlice'
 
 import AddBox from '../../../Components/AddBox/AddBox'
 import Tables from '../../../Components/Tables/Tables'
 import RoomForm from '../../../Components/RoomForm/RoomForm'
+import Paginate from '../../../Components/Paginate/Paginate'
 
 const Room = () => {
+  const page = useSelector((state) => state.page.page)
   const dispatch = useDispatch()
   const [rooms, setRooms] = useState([])
   // id of room selected to be edited
@@ -15,11 +18,12 @@ const Room = () => {
   const [populate, setPopulate] = useState({})
 
   const getRooms = () => {
-    const query = 'http://localhost:3000/rooms'
+    const query = `http://localhost:3000/rooms?page=${page}`
     fetch(query).then((response) => {
       return response.json()
     }).then((data) => {
       setRooms(data.data)
+      dispatch(changeCount(parseInt(data.count)))
     }).catch((error) => {
       console.log('Error : ' + error)
     })
@@ -48,7 +52,7 @@ const Room = () => {
 
   useEffect(() => {
     getRooms()
-  }, [])
+  }, [page])
 
   useEffect(() => {
     if (roomId !== '') {
@@ -79,6 +83,7 @@ const Room = () => {
       clearId = {setRoomId}
       />
       <RoomForm populate = {populate} roomId={roomId} setRoomId= {setRoomId} getRooms={getRooms}/>
+      <Paginate/>
     </>
   )
 }

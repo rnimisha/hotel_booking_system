@@ -79,9 +79,9 @@ export const loginUser = async (req, res) => {
           success: true,
           userData: {
             id: userData._id,
-            role: userData.role
-          },
-          token
+            role: userData.role,
+            token
+          }
         })
       }
     })

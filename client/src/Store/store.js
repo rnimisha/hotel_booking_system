@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 import titleReducer from '../features/title/titleSlice'
 import modalReducer from '../features/modal/modalSlice'
 import pageReducer from '../features/page/pageSlice'
-import userReducer from './features/page/userReducer'
+import userReducer from '../features/user/userSlice.js'
 
 const reducers = combineReducers({
   title: titleReducer,

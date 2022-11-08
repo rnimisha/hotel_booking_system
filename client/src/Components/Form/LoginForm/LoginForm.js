@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { changeUserInfo } from '../../../features/user/userSlice'
 import { Formik } from 'formik'
 import LOGIN_VALIDATION_SCHEMA from '../../../Validation/LoginValidationSchema'
 
@@ -10,6 +12,7 @@ import Button from '../../Button/Button'
 import InputField from '../InputField/InputField'
 
 const LoginForm = () => {
+  const dispatch = useDispatch()
   const initialValues = {
     email: '',
     password: ''
@@ -29,6 +32,8 @@ const LoginForm = () => {
         return response.json()
       }).then((data) => {
         if (data.success) {
+          const { id, role, token } = data.userData
+          dispatch(changeUserInfo({ id, role, token }))
           resetForm()
         } else {
           setErrors(data.error)

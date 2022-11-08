@@ -1,14 +1,25 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import titleReducer from '../features/title/titleSlice'
 import modalReducer from '../features/modal/modalSlice'
 import pageReducer from '../features/page/pageSlice'
 
+const reducers = combineReducers({
+  title: titleReducer,
+  modal: modalReducer,
+  page: pageReducer
+})
+
+const persistConfig = {
+  key: 'root',
+  storage
+}
+
+const persistedReducer = persistReducer(persistConfig, reducers)
+
 const store = configureStore({
-  reducer: {
-    title: titleReducer,
-    modal: modalReducer,
-    page: pageReducer
-  }
+  reducer: persistedReducer
 })
 
 export default store

@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+import { ToastContainer } from 'react-toastify'
+
 import Header from '../../Components/Header/Header'
 import Form from '../../Components/Form/Form'
 import headerImg from '../../Assets/images/header1.jpeg'
@@ -16,6 +18,7 @@ const LoginRegister = ({ form }) => {
   }, [])
   return (
     <>
+      <ToastContainer/>
         <Header
         height='45vh'
         headerImg= {headerImg}

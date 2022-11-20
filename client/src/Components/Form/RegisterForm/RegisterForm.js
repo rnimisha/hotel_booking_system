@@ -2,6 +2,9 @@ import React from 'react'
 import { Formik } from 'formik'
 import REGISTER_VALIDATION_SCHEMA from '../../../Validation/RegisterValidationSchema'
 
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 import Button from '../../Button/Button'
 import { StyledForm } from '../FormStyle'
 import InputField from '../InputField/InputField'
@@ -31,8 +34,8 @@ const RegisterForm = () => {
       }).then((data) => {
         console.log(data)
         if (data.success) {
-          // ------- to do --------- let user know success message----------------------------
           resetForm()
+          toast.success('You have been registered successfully!')
         } else {
           setErrors(data.error)
         }
@@ -44,6 +47,7 @@ const RegisterForm = () => {
   }
 
   return (
+    <>
       <Formik
       initialValues = {initialValues}
       validationSchema = {REGISTER_VALIDATION_SCHEMA}
@@ -66,6 +70,7 @@ const RegisterForm = () => {
           )
         }}
       </Formik>
+    </>
   )
 }
 

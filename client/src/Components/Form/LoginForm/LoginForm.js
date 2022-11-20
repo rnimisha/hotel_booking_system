@@ -35,7 +35,11 @@ const LoginForm = () => {
       }).then((data) => {
         if (data.success) {
           dispatch(changeUserInfo(data.userData))
-          navigate('/')
+          if (data.userData.role === 'customer') {
+            navigate('/')
+          } else {
+            navigate('/admin/dashboard')
+          }
         } else {
           setErrors(data.error)
         }

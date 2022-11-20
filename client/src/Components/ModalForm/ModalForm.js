@@ -3,6 +3,9 @@ import { format } from 'date-fns'
 import { useSelector, useDispatch } from 'react-redux'
 import { handleClose } from '../../features/modal/modalSlice'
 
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 // material ui
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
@@ -30,6 +33,7 @@ const ModalForm = ({ id, total, setTotal }) => {
   const open = useSelector((state) => state.modal.open)
   const userId = useSelector((state) => state.users.id)
   const dispatch = useDispatch()
+  const notify = () => toast.success('Room Booked Successfully!')
 
   const [services, setServices] = useState([])
   const [isChecked, setIsChecked] = useState(new Array(services.length).fill(false))
@@ -114,6 +118,13 @@ const ModalForm = ({ id, total, setTotal }) => {
         return response.json()
       }).then((data) => {
         if (data.success) {
+          notify()
+          setBookingDetail({
+            checkIn: '',
+            checkOut: '',
+            services: []
+
+          })
           dispatch(handleClose())
         }
       }).catch((error) => {
@@ -123,6 +134,7 @@ const ModalForm = ({ id, total, setTotal }) => {
 
   return (
     <div>
+        <ToastContainer />
         <Modal
         open={open === 'bookingform'}
         onClose={() => { dispatch(handleClose()) }}

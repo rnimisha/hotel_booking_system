@@ -1,6 +1,9 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { handleOpen } from '../../features/modal/modalSlice'
+
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 // styles
 import { InfoContainer, Price, Span } from './RoomInfoStyled'
@@ -16,12 +19,23 @@ import LogoText from '../LogoText/LogoText'
 
 const RoomInfo = ({ data }) => {
   const dispatch = useDispatch()
+  const userToken = useSelector((state) => state.users.token)
   const iconStyle = {
     fontSize: '2rem',
     stroke: '#ffffff',
     strokeWidth: 1
   }
+
+  const handleClick = () => {
+    if (userToken.trim().length === 0) {
+      toast.warn('Login first!')
+    } else {
+      dispatch(handleOpen('bookingform'))
+    }
+  }
   return (
+    <>
+    <ToastContainer/>
     <InfoContainer>
       <h1 style={{
         color: '#877147',
@@ -58,9 +72,11 @@ const RoomInfo = ({ data }) => {
         <Button
         text="Book Now"
         styling = {{ padding: '20px 60px' }}
-        clickEvent = {() => { dispatch(handleOpen('bookingform')) }}/>
+        clickEvent = {() => handleClick()}/>
       </div>
     </InfoContainer>
+    </>
+
   )
 }
 

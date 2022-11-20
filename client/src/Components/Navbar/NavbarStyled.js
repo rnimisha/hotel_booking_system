@@ -63,3 +63,20 @@ export const MenuBtn = styled.div`
     font-weight: 400;
     color : #f7f7f7; 
 `
+export const LoggedUser = styled.span`
+    display: flex;
+    justify-content: center;
+    gap : 2px;
+    align-items: center;
+    position: relative;
+`
+
+export const PopUpMenu = styled.div`
+    z-index: 9999;
+    position: absolute;
+    width: 40px;
+    min-height: 90px;
+    background-color: #fff;
+    bottom: -100%;
+    right: -5%;
+`

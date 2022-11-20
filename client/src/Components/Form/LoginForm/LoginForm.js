@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { changeUserInfo } from '../../../features/user/userSlice'
 import { Formik } from 'formik'
@@ -13,6 +14,7 @@ import InputField from '../InputField/InputField'
 
 const LoginForm = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const initialValues = {
     email: '',
     password: ''
@@ -33,7 +35,7 @@ const LoginForm = () => {
       }).then((data) => {
         if (data.success) {
           dispatch(changeUserInfo(data.userData))
-          resetForm()
+          navigate('/')
         } else {
           setErrors(data.error)
         }

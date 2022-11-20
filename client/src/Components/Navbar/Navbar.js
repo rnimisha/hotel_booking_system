@@ -2,11 +2,14 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useLogout } from '../../hooks/useLogout'
 
 import NavItem from '../NavItem/NavItem'
 
 // styles
-import { Logo, Menus, NavigationBar } from './NavbarStyled'
+import { Logo, Menus, NavigationBar, LoggedUser } from './NavbarStyled'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import logoimg from '../../Assets/images/logo.png'
@@ -14,6 +17,7 @@ import logoimg from '../../Assets/images/logo.png'
 const Navbar = () => {
   const [colorChange, setColorchange] = useState(false)
   const userDetail = useSelector((state) => state.users)
+  const { logOut } = useLogout()
 
   const changeNavbarColor = () => {
     if (window.scrollY >= 80) {
@@ -23,6 +27,17 @@ const Navbar = () => {
     }
   }
   window.addEventListener('scroll', changeNavbarColor)
+
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
   return (
         <NavigationBar navStyle={colorChange ? 'color-nav' : 'video-nav'}>
@@ -47,9 +62,25 @@ const Navbar = () => {
                       Login
                       </NavItem>
                     : <NavItem colorChange={colorChange} path= '#' >
-                      <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2px' }}>
+                      <LoggedUser
+                      id="basic-button"
+                      aria-controls={open ? 'basic-menu' : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}>
                         <AccountCircleOutlinedIcon/> {userDetail.name}
-                      </span>
+                      </LoggedUser>
+                      <Menu
+                          id="basic-menu"
+                          anchorEl={anchorEl}
+                          open={open}
+                          onClose={handleClose}
+                          MenuListProps={{
+                            'aria-labelledby': 'basic-button'
+                          }}
+                        >
+                          <MenuItem onClick={() => { logOut() }}>Logout</MenuItem>
+                        </Menu>
                   </NavItem>
                 }
 

@@ -80,6 +80,7 @@ export const loginUser = async (req, res) => {
           userData: {
             id: userData._id,
             role: userData.role,
+            name: userData.name,
             token
           }
         })

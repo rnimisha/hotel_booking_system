@@ -1,5 +1,6 @@
 // libraries and packages
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import NavItem from '../NavItem/NavItem'
@@ -7,10 +8,12 @@ import NavItem from '../NavItem/NavItem'
 // styles
 import { Logo, Menus, NavigationBar } from './NavbarStyled'
 
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import logoimg from '../../Assets/images/logo.png'
 
 const Navbar = () => {
   const [colorChange, setColorchange] = useState(false)
+  const userDetail = useSelector((state) => state.users)
 
   const changeNavbarColor = () => {
     if (window.scrollY >= 80) {
@@ -38,9 +41,18 @@ const Navbar = () => {
                 <NavItem colorChange={colorChange} path= '/rooms' >
                     Gallery
                 </NavItem>
-                <NavItem colorChange={colorChange} path= '/login' >
-                    Login
-                </NavItem>
+                {
+                  userDetail.token.trim().length === 0
+                    ? <NavItem colorChange={colorChange} path= '/login' >
+                      Login
+                      </NavItem>
+                    : <NavItem colorChange={colorChange} path= '#' >
+                      <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2px' }}>
+                        <AccountCircleOutlinedIcon/> {userDetail.name}
+                      </span>
+                  </NavItem>
+                }
+
             </Menus>
         </NavigationBar>
   )

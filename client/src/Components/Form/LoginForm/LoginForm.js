@@ -32,8 +32,7 @@ const LoginForm = () => {
         return response.json()
       }).then((data) => {
         if (data.success) {
-          const { id, role, token } = data.userData
-          dispatch(changeUserInfo({ id, role, token }))
+          dispatch(changeUserInfo(data.userData))
           resetForm()
         } else {
           setErrors(data.error)

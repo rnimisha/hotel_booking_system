@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import Header from '../../Components/Header/Header'
 import Form from '../../Components/Form/Form'
 import headerImg from '../../Assets/images/header1.jpeg'
 
 const LoginRegister = ({ form }) => {
+  const userToken = useSelector((state) => state.users.token)
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (userToken.trim().length > 0) {
+      navigate('/')
+    }
+  }, [])
   return (
     <>
         <Header

@@ -28,6 +28,7 @@ import Label from '../Label/Label'
 
 const ModalForm = ({ id, total, setTotal }) => {
   const open = useSelector((state) => state.modal.open)
+  const userId = useSelector((state) => state.users.id)
   const dispatch = useDispatch()
 
   const [services, setServices] = useState([])
@@ -85,8 +86,39 @@ const ModalForm = ({ id, total, setTotal }) => {
     }
 
     if (isInvalid) {
-      // return
+      return
     }
+    setErrors({
+      checkIn: '',
+      checkOut: '',
+      services: ''
+    })
+
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id,
+        userId,
+        checkInDate: bookingDetail.checkIn,
+        checkOutDate: bookingDetail.checkOut,
+        services: bookingDetail.services,
+        total
+      })
+    }
+
+    fetch('http://localhost:3000/bookings', requestOptions)
+      .then((response) => {
+        return response.json()
+      }).then((data) => {
+        if (data.success) {
+          dispatch(handleClose())
+        }
+      }).catch((error) => {
+        console.log('Error : ' + error)
+      })
   }
 
   return (

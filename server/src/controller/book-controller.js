@@ -2,9 +2,12 @@ import roomModel from '../model/room.js'
 
 export const insertBooking = async (req, res) => {
   try {
+    const { id, userId, checkInDate, checkOutDate } = req.body
+
+    const roomDetail = await roomModel.findOne({ roomType: id })
     await roomModel.findOneAndUpdate(
-      { _id: req.body.id },
-      { $push: { bookings: req.body.data } }
+      { _id: roomDetail._id },
+      { $push: { bookings: { userId, checkInDate, checkOutDate } } }
     )
     res.json({
       success: true

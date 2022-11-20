@@ -16,12 +16,14 @@ const RoomDetail = () => {
 
   // state for room details fetched from api
   const [roomDetail, setRoomDetail] = useState([])
+  const [total, setTotal] = useState(0)
 
   useEffect(() => {
     fetch('http://localhost:3000/rooms/' + id).then((response) => {
       return response.json()
     }).then((data) => {
       setRoomDetail(data.data)
+      setTotal(parseFloat(data.data.price))
     }).catch((error) => {
       console.log('Error : ' + error)
     })
@@ -40,7 +42,10 @@ const RoomDetail = () => {
         </MainContainer>
         <Ammenties data ={roomDetail.ammenties}/>
         <ModalForm
-        id={id}/>
+        id={id}
+        total = {total}
+        setTotal = {setTotal}
+        />
     </>
   )
 }

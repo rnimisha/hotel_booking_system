@@ -50,12 +50,12 @@ const Navbar = () => {
                 <NavItem colorChange={colorChange} path= '/rooms' >
                     Rooms
                 </NavItem>
-                <NavItem colorChange={colorChange} path= '/rooms' >
+                {/* <NavItem colorChange={colorChange} path= '/rooms' >
                     Services
                 </NavItem>
                 <NavItem colorChange={colorChange} path= '/rooms' >
                     Gallery
-                </NavItem>
+                </NavItem> */}
                 {
                   userDetail.token.trim().length === 0
                     ? <NavItem colorChange={colorChange} path= '/login' >

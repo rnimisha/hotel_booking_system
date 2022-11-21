@@ -1,6 +1,7 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { changeTitle } from '../../features/title/titleSlice'
+import { useLogout } from '../../hooks/useLogout'
 
 // styles
 import { LogoHeader, SideNavBar, LogoContainer, ToggleBtn, NavList, NavELement } from './SideNavStyled'
@@ -21,6 +22,8 @@ import LogoText from '../LogoText/LogoText'
 
 const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
   const dispatch = useDispatch()
+  const { logOut } = useLogout()
+  const userName = useSelector((state) => state.users.name)
 
   return (
     <SideNavBar toggle={isToggleMenu}>
@@ -78,7 +81,7 @@ const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
 
             <NavELement
             to ='/admin/profile'
-            onClick={() => { dispatch(changeTitle('My Profile')) }}>
+            onClick={() => { dispatch(changeTitle(`${userName}'s Profile`)) }}>
               <LogoText
               icon={<ManageAccountsOutlinedIcon/>}
               data={isToggleMenu ? '' : 'Profile'}
@@ -86,7 +89,9 @@ const SideNav = ({ isToggleMenu, setIsToggleMenu }) => {
               gapping='1rem'/>
             </NavELement>
 
-            <NavELement to ='/logout'>
+            <NavELement onClick={() => {
+              logOut()
+            }} to="/login" >
               <LogoText
               icon={<LogoutOutlinedIcon/>}
               data={isToggleMenu ? '' : 'Logout'}

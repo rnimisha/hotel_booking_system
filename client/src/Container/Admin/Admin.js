@@ -6,6 +6,7 @@ import { AdminContainer, InnerContainer, MainContainer } from './AdminStyled'
 import Room from './Room/Room'
 import RoomList from './RoomList/RoomList'
 import Booking from './Booking/Booking'
+import Profile from './Profile/Profile'
 
 const Admin = ({ page }) => {
   const [isToggleMenu, setIsToggleMenu] = useState(false)
@@ -21,6 +22,7 @@ const Admin = ({ page }) => {
                 {page === 'room' && <Room/>}
                 {page === 'roomlist' && <RoomList/>}
                 {page === 'booking' && <Booking/>}
+                {page === 'profile' && <Profile/>}
             </InnerContainer>
         </MainContainer>
 

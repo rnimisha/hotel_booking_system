@@ -100,10 +100,15 @@ export const updateProfile = async (req, res) => {
     const id = req.body.id
     delete req.body.id
     await userModel.findOneAndUpdate({ _id: id }, req.body)
-    const data = await userModel.find({ _id: id })
+    const userData = await userModel.findOne({ _id: id })
     res.json({
       success: true,
-      data
+      userData: {
+        id: userData._id,
+        role: userData.role,
+        name: userData.name,
+        email: userData.email
+      }
     })
   } catch (err) {
     res.status(400).json({

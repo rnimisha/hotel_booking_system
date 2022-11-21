@@ -237,7 +237,6 @@ export const insertRoom = async (req, res) => {
 export const updateRoomType = async (req, res) => {
   try {
     const id = req.body.id
-    console.log(req.body.ammenties)
     delete req.body.id
     req.body.image = req.file.filename
     await roomTypeModel.findOneAndUpdate(

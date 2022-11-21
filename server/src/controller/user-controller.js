@@ -94,3 +94,20 @@ export const loginUser = async (req, res) => {
     })
   }
 }
+
+export const updateProfile = async (req, res) => {
+  try {
+    const id = req.body.id
+    delete req.body.id
+    await userModel.findOneAndUpdate({ _id: id }, req.body)
+    const data = await userModel.find({ _id: id })
+    res.json({
+      success: true,
+      data
+    })
+  } catch (err) {
+    res.status(400).json({
+      success: false
+    })
+  }
+}
